@@ -18,7 +18,7 @@ export function Footer() {
           <FooterColumn title="Quick Links">
             <FooterLink to="/">Home</FooterLink>
             <FooterLink to="/download">Download</FooterLink>
-            <FooterLink to="/releases">Releases</FooterLink>
+
             <FooterLink to="/about">About</FooterLink>
           </FooterColumn>
 

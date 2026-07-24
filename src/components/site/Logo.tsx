@@ -1,11 +1,11 @@
-import logoAsset from "@/assets/zyphor-logo.png.asset.json";
+import logoImage from "@/assets/logo.png";
 import { Link } from "@tanstack/react-router";
 
 export function Logo({ size = 32 }: { size?: number }) {
   return (
     <Link to="/" className="flex items-center gap-2.5 group">
       <img
-        src={logoAsset.url}
+        src={logoImage}
         alt="Zyphor OS"
         width={size}
         height={size}

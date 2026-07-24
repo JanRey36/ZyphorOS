@@ -14,9 +14,10 @@ import {
   ArrowUpRight,
 } from "lucide-react";
 import { SiteLayout } from "@/components/site/SiteLayout";
-import desktopAsset from "@/assets/desktop.png.asset.json";
-import fileManagerAsset from "@/assets/filemanager.png.asset.json";
-import zccAsset from "@/assets/zcc.jpg.asset.json";
+import image1 from "@/assets/1.jpg";
+import image2 from "@/assets/2.jpg";
+import image3 from "@/assets/3.jpg";
+import logoImage from "@/assets/logo.png";
 import { latestRelease } from "@/data/releases";
 
 export const Route = createFileRoute("/")({
@@ -84,19 +85,19 @@ const whyChoose = [
     title: "A minimal, controlled environment.",
     body:
       "Zyphor OS ships lean by default. No bloated defaults, no hidden services running behind your back — just the tools you asked for and a clear path to add more.",
-    image: desktopAsset.url,
+    image: image1,
   },
   {
     title: "One CLI to rule the whole system.",
     body:
       "The Zyphor CLI abstracts installation, updates, theming, doctor checks and diagnostics behind a single, consistent command surface. Learn it once, use it everywhere.",
-    image: zccAsset.url,
+    image: image2,
   },
   {
     title: "Files, apps and system tools, unified.",
     body:
       "From the file manager to the Zyphor Command Center, every surface follows the same design language. It feels like a real product, not a stack of unrelated components.",
-    image: fileManagerAsset.url,
+    image: image3,
   },
 ];
 
@@ -112,7 +113,7 @@ function HomePage() {
           <div className="grid lg:grid-cols-12 gap-12 items-center">
             <div className="lg:col-span-6">
               <div className="inline-flex items-center gap-2 rounded-full border border-border/60 bg-surface/60 px-3 py-1 text-xs font-medium text-muted-foreground backdrop-blur">
-                <Sparkles className="h-3.5 w-3.5 text-brand" />
+                <img src={logoImage} alt="Zyphor OS Logo" className="h-4 w-4 rounded-sm" />
                 {latestRelease.version} · {latestRelease.codename ?? "Stable"}
               </div>
               <h1 className="mt-5 text-4xl sm:text-5xl lg:text-6xl font-bold leading-[1.05] tracking-tight">
@@ -159,16 +160,14 @@ function HomePage() {
             </div>
 
             <div className="lg:col-span-6">
-              <div className="relative">
-                <div className="absolute -inset-4 bg-glow blur-2xl opacity-60" />
-                <div className="relative rounded-2xl overflow-hidden border-glow card-elevated">
-                  <img
-                    src={desktopAsset.url}
-                    alt="Zyphor OS desktop environment"
-                    className="w-full h-auto block"
-                    loading="eager"
-                  />
-                </div>
+              <div className="relative flex items-center justify-center">
+                <div className="absolute -inset-4 bg-glow blur-3xl opacity-80" />
+                <img
+                  src={logoImage}
+                  alt="Zyphor OS Logo"
+                  className="relative w-64 h-64 sm:w-80 sm:h-80 object-contain drop-shadow-[0_0_60px_rgba(0,180,255,0.4)]"
+                  loading="eager"
+                />
               </div>
             </div>
           </div>
@@ -206,30 +205,6 @@ function HomePage() {
         </div>
       </section>
 
-      {/* SCREENSHOTS */}
-      <section className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-20">
-        <div className="flex items-end justify-between flex-wrap gap-4">
-          <div>
-            <p className="text-sm font-medium text-brand">See it in action</p>
-            <h2 className="mt-2 text-3xl sm:text-4xl font-bold tracking-tight">
-              A desktop that feels like one product.
-            </h2>
-          </div>
-          <Link
-            to="/documentation"
-            className="text-sm text-muted-foreground hover:text-foreground inline-flex items-center gap-1"
-          >
-            Explore the docs <ArrowUpRight className="h-4 w-4" />
-          </Link>
-        </div>
-
-        <div className="mt-10 grid gap-4 md:grid-cols-6">
-          <Shot src={desktopAsset.url} className="md:col-span-4" label="Desktop" />
-          <Shot src={zccAsset.url} className="md:col-span-2" label="Command Center" />
-          <Shot src={fileManagerAsset.url} className="md:col-span-3" label="File Manager" />
-          <Shot src={zccAsset.url} className="md:col-span-3" label="Package Management" />
-        </div>
-      </section>
 
       {/* LATEST RELEASE */}
       <section className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-20">
@@ -264,7 +239,7 @@ function HomePage() {
                   <Download className="h-4 w-4" /> Download ISO
                 </Link>
                 <Link
-                  to="/releases"
+                  to="/download"
                   className="inline-flex items-center gap-2 rounded-lg border border-border bg-surface/60 px-5 py-3 text-sm font-semibold hover:bg-surface transition"
                 >
                   Release notes <ArrowRight className="h-4 w-4" />

@@ -15,7 +15,6 @@ import { Route as CommunityRouteImport } from './routes/community'
 import { Route as ContributeRouteImport } from './routes/contribute'
 import { Route as DocumentationRouteImport } from './routes/documentation'
 import { Route as DownloadRouteImport } from './routes/download'
-import { Route as ReleasesRouteImport } from './routes/releases'
 import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
 
 const IndexRoute = IndexRouteImport.update({
@@ -48,11 +47,6 @@ const DownloadRoute = DownloadRouteImport.update({
   path: '/download',
   getParentRoute: () => rootRouteImport,
 } as any)
-const ReleasesRoute = ReleasesRouteImport.update({
-  id: '/releases',
-  path: '/releases',
-  getParentRoute: () => rootRouteImport,
-} as any)
 const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
   id: '/sitemap.xml',
   path: '/sitemap.xml',
@@ -66,7 +60,6 @@ export interface FileRoutesByFullPath {
   '/contribute': typeof ContributeRoute
   '/documentation': typeof DocumentationRoute
   '/download': typeof DownloadRoute
-  '/releases': typeof ReleasesRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
 }
 export interface FileRoutesByTo {
@@ -76,7 +69,6 @@ export interface FileRoutesByTo {
   '/contribute': typeof ContributeRoute
   '/documentation': typeof DocumentationRoute
   '/download': typeof DownloadRoute
-  '/releases': typeof ReleasesRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
 }
 export interface FileRoutesById {
@@ -87,7 +79,6 @@ export interface FileRoutesById {
   '/contribute': typeof ContributeRoute
   '/documentation': typeof DocumentationRoute
   '/download': typeof DownloadRoute
-  '/releases': typeof ReleasesRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
 }
 export interface FileRouteTypes {
@@ -99,7 +90,6 @@ export interface FileRouteTypes {
     | '/contribute'
     | '/documentation'
     | '/download'
-    | '/releases'
     | '/sitemap.xml'
   fileRoutesByTo: FileRoutesByTo
   to:
@@ -109,7 +99,6 @@ export interface FileRouteTypes {
     | '/contribute'
     | '/documentation'
     | '/download'
-    | '/releases'
     | '/sitemap.xml'
   id:
     | '__root__'
@@ -119,7 +108,6 @@ export interface FileRouteTypes {
     | '/contribute'
     | '/documentation'
     | '/download'
-    | '/releases'
     | '/sitemap.xml'
   fileRoutesById: FileRoutesById
 }
@@ -130,7 +118,6 @@ export interface RootRouteChildren {
   ContributeRoute: typeof ContributeRoute
   DocumentationRoute: typeof DocumentationRoute
   DownloadRoute: typeof DownloadRoute
-  ReleasesRoute: typeof ReleasesRoute
   SitemapDotxmlRoute: typeof SitemapDotxmlRoute
 }
 
@@ -178,13 +165,6 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof DownloadRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/releases': {
-      id: '/releases'
-      path: '/releases'
-      fullPath: '/releases'
-      preLoaderRoute: typeof ReleasesRouteImport
-      parentRoute: typeof rootRouteImport
-    }
     '/sitemap.xml': {
       id: '/sitemap.xml'
       path: '/sitemap.xml'
@@ -202,9 +182,18 @@ const rootRouteChildren: RootRouteChildren = {
   ContributeRoute: ContributeRoute,
   DocumentationRoute: DocumentationRoute,
   DownloadRoute: DownloadRoute,
-  ReleasesRoute: ReleasesRoute,
   SitemapDotxmlRoute: SitemapDotxmlRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
+
+import type { getRouter } from './router.tsx'
+import type { startInstance } from './start.ts'
+declare module '@tanstack/react-start' {
+  interface Register {
+    ssr: true
+    router: Awaited<ReturnType<typeof getRouter>>
+    config: Awaited<ReturnType<typeof startInstance.getOptions>>
+  }
+}
