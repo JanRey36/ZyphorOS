@@ -1,0 +1,75 @@
+export type ReleaseChannel = "LTS" | "Stable" | "Legacy";
+
+export interface Release {
+  version: string;
+  codename?: string;
+  date: string; // ISO
+  channel: ReleaseChannel;
+  notes?: string;
+  latest?: boolean;
+}
+
+// Zyphor OS release archive
+export const releases: Release[] = [
+  {
+    version: "v1.13.0-LTS-AdaLovelace-u21",
+    codename: "Ada Lovelace",
+    date: "2026-06-24",
+    channel: "LTS",
+    latest: true,
+    notes:
+      "Theme switching via CLI, unified appearance management, and improved Zyphor Command Center.",
+  },
+  {
+    version: "v1.12.4-LTS-AdaLovelace-u18",
+    codename: "Ada Lovelace",
+    date: "2026-04-10",
+    channel: "LTS",
+    notes: "Kernel refresh, security patches, package manager stability improvements.",
+  },
+  {
+    version: "v1.12.0-LTS-AdaLovelace-u12",
+    codename: "Ada Lovelace",
+    date: "2026-01-15",
+    channel: "LTS",
+    notes: "First LTS release under the new alphabetical codename scheme.",
+  },
+  {
+    version: "v1.11.2-2025-11-08-r3",
+    date: "2025-11-08",
+    channel: "Stable",
+    notes: "Bugfix release for the standard channel.",
+  },
+  {
+    version: "v1.11.0-2025-09-30-r1",
+    date: "2025-09-30",
+    channel: "Stable",
+    notes: "Introduction of the unified CLI abstraction layer.",
+  },
+  {
+    version: "v1.10.0-2025-06-14-r1",
+    date: "2025-06-14",
+    channel: "Stable",
+    notes: "Independent package ecosystem foundation.",
+  },
+  {
+    version: "v0.9.4",
+    date: "2024-12-02",
+    channel: "Legacy",
+    notes: "Legacy codebase — early Debian/Kali derivative.",
+  },
+  {
+    version: "v0.9.0",
+    date: "2024-08-18",
+    channel: "Legacy",
+    notes: "First public preview of Zyphor OS.",
+  },
+  {
+    version: "v0.8.2",
+    date: "2024-05-04",
+    channel: "Legacy",
+    notes: "Internal milestone build — legacy codebase.",
+  },
+];
+
+export const latestRelease = releases.find((r) => r.latest) ?? releases[0];
