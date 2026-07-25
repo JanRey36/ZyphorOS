@@ -12,10 +12,15 @@ import {
   Lightbulb,
   AlertTriangle,
   Terminal,
+  User,
+  Shield,
 } from "lucide-react";
 import { SiteLayout } from "@/components/site/SiteLayout";
 import { cn } from "@/lib/utils";
-import zccImage from "@/assets/2.jpg";
+import zccImage from "@/documentation/zyphor-os/assets/images/zcc.jpg.jpg";
+import profileImage1 from "@/documentation/zyphor-os/assets/images/profile-login-1.jpg";
+import profileImage2 from "@/documentation/zyphor-os/assets/images/profile-login-2.jpg";
+import profileImage3 from "@/documentation/zyphor-os/assets/images/profile-login-3.jpg";
 
 export const Route = createFileRoute("/documentation")({
   head: () => ({
@@ -59,7 +64,14 @@ const navSections: NavSection[] = [
     ],
   },
   {
-    title: "Packages",
+    title: "How To",
+    items: [
+      { id: "profile-management", label: "Manage Profile", Icon: User },
+      { id: "firewall-management", label: "Manage Firewall", Icon: Shield },
+    ],
+  },
+  {
+    title: "Custom Packages",
     items: [
       { id: "zyphor-cli", label: "Zyphor CLI", Icon: Box },
       { id: "zyphor-command-center", label: "Zyphor Command Center", Icon: Box },
@@ -69,8 +81,10 @@ const navSections: NavSection[] = [
     ],
   },
   {
-    title: "Support",
-    items: [{ id: "faq", label: "FAQ", Icon: HelpCircle }],
+    title: "Contributing",
+    items: [
+      { id: "contributing-packages", label: "Packages", Icon: Box },
+    ],
   },
 ] as const;
 
@@ -95,6 +109,8 @@ function DocsPage() {
   const [repoData, setRepoData] = useState<RepoData | null>(null);
   const [releaseData, setReleaseData] = useState<ReleaseData | null>(null);
   const observerRef = useRef<IntersectionObserver | null>(null);
+  const isManualScroll = useRef(false);
+
   useEffect(() => {
     const REPO = "zyphor-os/zyphor-os-desktop";
 
@@ -114,6 +130,8 @@ function DocsPage() {
 
     observerRef.current = new IntersectionObserver(
       (entries) => {
+        if (isManualScroll.current) return;
+        
         const visible = entries
           .filter((e) => e.isIntersecting)
           .sort((a, b) => b.intersectionRatio - a.intersectionRatio);
@@ -123,7 +141,7 @@ function DocsPage() {
         }
       },
       {
-        rootMargin: "-20% 0px -60% 0px",
+        rootMargin: "-100px 0px -40% 0px",
         threshold: [0, 0.25, 0.5, 0.75, 1],
       },
     );
@@ -147,8 +165,16 @@ function DocsPage() {
 
   const handleNavClick = (id: string) => {
     setSidebarOpen(false);
+    setActiveSection(id);
+    isManualScroll.current = true;
+    
     const el = document.getElementById(id);
     if (el) el.scrollIntoView({ behavior: "smooth", block: "start" });
+    
+    // Re-enable intersection observer after smooth scroll completes
+    setTimeout(() => {
+      isManualScroll.current = false;
+    }, 1000);
   };
 
   return (
@@ -190,6 +216,7 @@ function DocsPage() {
         <div className="flex-1 min-w-0 flex flex-col">
           <div className="sticky top-16 z-30 flex items-center gap-3 px-4 py-3 border-b border-border/60 bg-background/80 backdrop-blur lg:hidden">
             <button
+              type="button"
               onClick={() => setSidebarOpen(true)}
               className="p-1.5 rounded-md text-muted-foreground hover:text-foreground hover:bg-white/5 transition"
               aria-label="Open sidebar"
@@ -281,6 +308,99 @@ function DocsPage() {
                   allowFullScreen
                   title="Zyphor OS Installation Guide"
                 />
+              </div>
+            </section>
+
+            <section
+              id="profile-management"
+              className="mb-16 [scroll-margin-top:5.5rem] lg:[scroll-margin-top:4.5rem]"
+            >
+              <SectionHeading level={2}>Profile Management</SectionHeading>
+              <div className="mt-5 text-muted-foreground leading-relaxed">
+                Zyphor OS provides an integrated Profile Management feature through{" "}
+                <button
+                  type="button"
+                  onClick={() => handleNavClick("zyphor-command-center")}
+                  className="text-brand hover:underline font-medium"
+                >
+                  Zyphor Command Center
+                </button>
+                , allowing users to personalize and manage their system profile
+                with ease. Users can update their profile information and upload
+                a custom profile image that is automatically optimized for system
+                use. The selected profile image is synchronized across the desktop
+                environment, including the Start Menu panel icon and the LightDM
+                login screen, providing a more personal and consistent user
+                experience throughout Zyphor OS.
+              </div>
+
+              <div className="mt-8 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                <div className="rounded-xl overflow-hidden border border-border/60 bg-surface/40">
+                  <img src={profileImage1} alt="Profile Login 1" className="w-full h-auto" />
+                </div>
+                <div className="rounded-xl overflow-hidden border border-border/60 bg-surface/40">
+                  <img src={profileImage2} alt="Profile Login 2" className="w-full h-auto" />
+                </div>
+                <div className="rounded-xl overflow-hidden border border-border/60 bg-surface/40">
+                  <img src={profileImage3} alt="Profile Login 3" className="w-full h-auto" />
+                </div>
+              </div>
+            </section>
+
+            <section
+              id="firewall-management"
+              className="mb-16 [scroll-margin-top:5.5rem] lg:[scroll-margin-top:4.5rem]"
+            >
+              <SectionHeading level={2}>Manage Firewall</SectionHeading>
+              <p className="mt-3 text-muted-foreground leading-relaxed">
+                Zyphor OS uses <strong className="font-semibold text-foreground">UFW (Uncomplicated Firewall)</strong> to provide
+                a simple and reliable way to manage firewall rules and protect your system
+                from unauthorized network access.
+              </p>
+
+              <div className="mt-6 space-y-6">
+                <div className="rounded-xl border border-border/60 bg-surface/30 p-5">
+                  <h3 className="font-semibold text-lg">Enable the Firewall</h3>
+                  <p className="mt-2 text-sm text-muted-foreground">Turn on the firewall to start protecting your system from unauthorized incoming connections.</p>
+                  <CodeBlock className="mt-3">sudo ufw enable</CodeBlock>
+                </div>
+
+                <div className="rounded-xl border border-border/60 bg-surface/30 p-5">
+                  <h3 className="font-semibold text-lg">Check Firewall Status</h3>
+                  <p className="mt-2 text-sm text-muted-foreground">Check whether the firewall is active and view the currently configured firewall rules.</p>
+                  <CodeBlock className="mt-3">sudo ufw status</CodeBlock>
+                </div>
+
+                <div className="rounded-xl border border-border/60 bg-surface/30 p-5">
+                  <h3 className="font-semibold text-lg">Allow a Port</h3>
+                  <p className="mt-2 text-sm text-muted-foreground">Allow incoming connections to a specific port. For example, the following command allows SSH connections on port 22.</p>
+                  <CodeBlock className="mt-3">sudo ufw allow 22/tcp</CodeBlock>
+                </div>
+
+                <div className="rounded-xl border border-border/60 bg-surface/30 p-5">
+                  <h3 className="font-semibold text-lg">Deny a Port</h3>
+                  <p className="mt-2 text-sm text-muted-foreground">Block incoming connections to a specific port.</p>
+                  <CodeBlock className="mt-3">sudo ufw deny 22/tcp</CodeBlock>
+                </div>
+
+                <div className="rounded-xl border border-border/60 bg-surface/30 p-5">
+                  <h3 className="font-semibold text-lg">Remove a Firewall Rule</h3>
+                  <p className="mt-2 text-sm text-muted-foreground">Remove an existing firewall rule when it is no longer needed.</p>
+                  <CodeBlock className="mt-3">sudo ufw delete allow 22/tcp</CodeBlock>
+                </div>
+
+                <div className="rounded-xl border border-border/60 bg-surface/30 p-5">
+                  <h3 className="font-semibold text-lg">Disable the Firewall</h3>
+                  <p className="mt-2 text-sm text-muted-foreground">Temporarily disable UFW if firewall protection is not required.</p>
+                  <CodeBlock className="mt-3">sudo ufw disable</CodeBlock>
+                </div>
+
+                <WarnAlert className="mt-6">
+                  <strong className="font-semibold block mb-1">Warning:</strong>
+                  Before enabling UFW on a remote server, make sure the required
+                  management ports, such as SSH (port 22), are allowed. Otherwise,
+                  you may lose remote access to the system.
+                </WarnAlert>
               </div>
             </section>
 
@@ -537,6 +657,73 @@ function DocsPage() {
               </p>
             </section>
 
+            <section
+              id="contributing-packages"
+              className="mb-16 [scroll-margin-top:5.5rem] lg:[scroll-margin-top:4.5rem]"
+            >
+              <SectionHeading level={2}>Contributing to Packages</SectionHeading>
+              <p className="mt-5 text-muted-foreground leading-relaxed">
+                Zyphor OS maintains its own collection of official packages that are developed specifically for the distribution. These packages include system utilities, desktop enhancements, command-line tools, themes, configuration packages, applications, and other components that make up the Zyphor OS experience.
+              </p>
+              
+              <ul className="mt-5 space-y-2 text-sm text-muted-foreground list-decimal list-inside ml-2">
+                <li><InlineCode>zyphor-cli</InlineCode> - shell script</li>
+                <li><InlineCode>zyphor-command-center</InlineCode> - python</li>
+                <li><InlineCode>zyphor-command-center-web</InlineCode> - php</li>
+                <li><InlineCode>zylearn</InlineCode> - C</li>
+                <li><InlineCode>zyphor-updates</InlineCode> - Debian config file</li>
+                <li><InlineCode>zysh</InlineCode> - shell script</li>
+                <li><InlineCode>zyshell</InlineCode> - C (removed temporary)</li>
+                <li><InlineCode>fastfetch-config-1</InlineCode> - filesystem config and Debian config file</li>
+                <li><InlineCode>grub-screensaver-1</InlineCode> - filesystem config and Debian config file</li>
+                <li><InlineCode>zyphor-display-mac-v1</InlineCode> - filesystem config and Debian config file (optional - for v1 Stable)</li>
+                <li><InlineCode>zyphor-os-release</InlineCode> - filesystem config and Debian config file</li>
+                <li><InlineCode>zyphor-repo-config</InlineCode> - filesystem config and Debian config file</li>
+                <li><InlineCode>zyphor-whats-new</InlineCode> - filesystem config, html and Debian config file</li>
+                <li><InlineCode>zyphor-wallpapers-default-2026-2027</InlineCode> - filesystem config, images and Debian config file</li>
+                <li><InlineCode>zyphor-wallpapers-nature</InlineCode> - filesystem config, images and Debian config file</li>
+                <li><InlineCode>zyphor-wallpapers-pragmata</InlineCode> - filesystem config, images and Debian config file</li>
+              </ul>
+
+              <h3 className="mt-8 text-lg font-semibold tracking-tight text-foreground">How to Contribute?</h3>
+              <p className="mt-3 text-muted-foreground leading-relaxed">
+                Want to help improve Zyphor OS? Awesome! You can contribute by updating existing packages, creating new ones, fixing bugs, improving the documentation, or adding new features.
+              </p>
+
+              <ul className="mt-4 space-y-3 text-sm text-muted-foreground list-disc list-inside ml-2">
+                <li><strong className="font-semibold text-foreground">Step 1:</strong> Fork the <InlineCode>https://github.com/zyphor-os/zyphor-os-desktop</InlineCode> repository.</li>
+                <li><strong className="font-semibold text-foreground">Step 2:</strong> Clone your fork:<br/><span className="ml-5 mt-1 block"><InlineCode>git clone https://github.com/YOUR_USERNAME/zyphor-os-desktop</InlineCode></span></li>
+                <li><strong className="font-semibold text-foreground">Step 3:</strong> Open the <InlineCode>/pkg</InlineCode> folder.</li>
+                <li><strong className="font-semibold text-foreground">Step 4:</strong> Find the package you want to update, or create a new one.</li>
+                <li><strong className="font-semibold text-foreground">Step 5:</strong> Make your changes and test them.</li>
+                <li><strong className="font-semibold text-foreground">Step 6:</strong> Commit your changes and push them to your GitHub fork.</li>
+                <li><strong className="font-semibold text-foreground">Step 7:</strong> Open a Pull Request so the Zyphor OS maintainers can review your work.</li>
+              </ul>
+
+              <h3 className="mt-8 text-lg font-semibold tracking-tight text-foreground">How to Test a Package?</h3>
+              <p className="mt-3 text-muted-foreground leading-relaxed">
+                The easiest way to test a package is by installing <InlineCode>zyphor-cli</InlineCode>. It comes with a command that builds packages for you:<br/>
+                <span className="mt-2 block"><InlineCode>zyphor build package PACKAGE_NAME</InlineCode></span>
+              </p>
+              
+              <p className="mt-4 text-muted-foreground leading-relaxed">
+                For example, if you're updating the <InlineCode>zylearn</InlineCode> package in Ada Lovelace LTS:
+              </p>
+
+              <ol className="mt-4 space-y-3 text-sm text-muted-foreground list-decimal list-inside ml-2">
+                <li><InlineCode>cd pkg/v2/zylearn</InlineCode></li>
+                <li>Update the version number in <InlineCode>DEBIAN/control</InlineCode>.</li>
+                <li>Edit the files you want to change.</li>
+                <li>Go back to the package directory:<br/><span className="ml-5 mt-1 block"><InlineCode>cd ..</InlineCode></span></li>
+                <li>Build the package:<br/><span className="ml-5 mt-1 block"><InlineCode>zyphor build package zylearn</InlineCode></span></li>
+                <li>A <InlineCode>.deb</InlineCode> file will be created, ready for testing.</li>
+              </ol>
+
+              <WarnAlert className="mt-6">
+                💡 Always test your package in a virtual machine or another safe environment before installing it on your main system.
+              </WarnAlert>
+            </section>
+
             <footer className="border-t border-border/60 pt-6 pb-8 text-sm text-muted-foreground">
               © {new Date().getFullYear()} Zyphor OS
             </footer>
@@ -601,6 +788,7 @@ function SidebarContent({
                       </Link>
                     ) : (
                       <button
+                        type="button"
                         onClick={() => onNavClick(item.id)}
                         className={cn(
                           "w-full flex items-center gap-2 rounded-lg px-3 py-2 text-sm transition text-left",

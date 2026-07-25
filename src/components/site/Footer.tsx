@@ -26,13 +26,13 @@ export function Footer() {
             <FooterLink to="/documentation">Documentation</FooterLink>
             <FooterLink to="/documentation">Getting Started</FooterLink>
             <FooterLink to="/documentation">FAQ</FooterLink>
-            <FooterLink to="/contribute">Contribute</FooterLink>
+            <FooterLink to="/team">Team</FooterLink>
           </FooterColumn>
 
           <FooterColumn title="Community">
-            <FooterLink to="/community">Overview</FooterLink>
+            <FooterLink to="/team">Team</FooterLink>
             <a
-              href="https://github.com/"
+              href="https://github.com/zyphor-os/zyphor-os-desktop"
               target="_blank"
               rel="noreferrer"
               className="text-sm text-muted-foreground hover:text-foreground transition"

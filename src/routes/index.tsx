@@ -311,16 +311,10 @@ function HomePage() {
             </p>
             <div className="mt-8 flex flex-wrap justify-center gap-3">
               <Link
-                to="/contribute"
+                to="/documentation"
                 className="btn-brand btn-brand-hover inline-flex items-center gap-2 rounded-lg px-5 py-3 text-sm font-semibold"
               >
                 Contribute
-              </Link>
-              <Link
-                to="/community"
-                className="inline-flex items-center gap-2 rounded-lg border border-border bg-background/60 px-5 py-3 text-sm font-semibold hover:bg-surface transition"
-              >
-                Join community
               </Link>
             </div>
           </div>

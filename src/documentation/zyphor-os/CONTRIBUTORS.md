@@ -1,0 +1,68 @@
+(This file must be updated only by the Lead OS Maintainer)
+
+All contributors will be credited in this project.
+
+Contributions (code, design, ideas, testing, documentation) will be recorded in the CONTRIBUTORS file and commit history whenever possible.
+
+Contributors and their Contributions
+
+---
+
+**Mark Jason Espelita**  
+**Creator and Lead Maintainer**  
+markjasonespelita@gmail.com  
+https://www.facebook.com/mark.jason.penote.espelita  
+09978972884  
+09203454006  
+
+Contributions
+
+- Founder and project initiator of Zyphor OS
+- Project vision, philosophy, and direction
+- System integration and distribution customization
+- Build system configuration using live-build
+- Branding and identity development
+- Community management and contributor coordination
+- Documentation and project planning
+- University outreach and demonstrations
+- Quality assurance and testing
+
+---
+
+**Dan Stephen B. Blanco**  
+https://github.com/fen-lowcode  
+**Security Tester | Reverse Engineering Specialist**
+
+### Contributions
+
+- Conducted security testing and analysis of Zyphor CLI components.  
+- Identified and responsibly reported a privilege escalation vulnerability within Zyphor CLI.  
+- Performed reverse engineering and technical assessments to improve system security.  
+- Provided security recommendations that contributed to the hardening of Zyphor OS tools and infrastructure.  
+
+---
+
+**Jenalyn Iso**  
+https://github.com/isojenalyn14  
+**Graphic Designer**
+
+### Contributions
+
+- Contributed 4 default wallpapers for the v2.0.0-r6  
+- Wallpaper Link: wallpapers/v2/jenalyn-3.png  
+- Wallpaper Link: wallpapers/v2/jenalyn-5.png  
+- Wallpaper Link: wallpapers/v2/jenalyn-6.png  
+- Wallpaper Link: wallpapers/v2/jenalyn-7.png  
+
+---
+
+**John Rey A. Castillo**  
+https://github.com/JanRey36  
+**Full Stack Web Developer**
+
+### Contributions
+
+- Removed AI image watermark in /usr/share/backgrounds/zyphor-grub-bootloader-screensavers/zyphor-full.png
+- Removed AI image watermark in https://zyphor-os.github.io/assets/images/logo.png
+
+---

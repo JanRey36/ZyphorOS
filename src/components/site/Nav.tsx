@@ -8,8 +8,7 @@ const links = [
   { to: "/", label: "Home" },
   { to: "/about", label: "About" },
   { to: "/documentation", label: "Documentation" },
-  { to: "/community", label: "Community" },
-  { to: "/contribute", label: "Contribute" },
+  { to: "/team", label: "Team" },
 ] as const;
 
 export function Nav() {
@@ -52,7 +51,7 @@ export function Nav() {
 
           <div className="hidden lg:flex items-center gap-2">
             <a
-              href="https://github.com/"
+              href="https://github.com/zyphor-os/zyphor-os-desktop"
               target="_blank"
               rel="noreferrer"
               className="p-2 rounded-md text-muted-foreground hover:text-foreground hover:bg-white/5 transition"

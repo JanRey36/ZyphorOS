@@ -139,8 +139,8 @@ function AboutPage() {
         {/* Why Zyphor exists */}
         <div className="card-elevated rounded-3xl p-8 sm:p-12 relative overflow-hidden">
           <div className="absolute inset-0 bg-glow opacity-60 pointer-events-none" />
-          <div className="relative max-w-3xl">
-            <h2 className="text-3xl font-bold tracking-tight">Why Zyphor exists.</h2>
+          <div className="relative max-w-3xl mx-auto text-center">
+            <h2 className="text-3xl font-bold tracking-tight">Why Zyphor exists?</h2>
             <p className="mt-4 text-muted-foreground leading-relaxed">
               Most distributions optimize either for beginners or for experts. Zyphor OS
               tries to bridge that gap: a system that's approachable enough for a first-time

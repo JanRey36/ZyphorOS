@@ -1,0 +1,893 @@
+<!DOCTYPE html>
+<html lang="en" data-bs-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Documentation</title>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/css/bootstrap.min.css" rel="stylesheet">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" rel="stylesheet">
+<style>
+  :root {
+    --sidebar-width: 280px;
+  }
+
+  body {
+    font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+  }
+
+  /* Sidebar */
+  .sidebar {
+    width: var(--sidebar-width);
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    overflow-y: auto;
+    border-right: 1px solid var(--bs-border-color);
+    background-color: var(--bs-tertiary-bg);
+    transition: transform 0.3s ease;
+    z-index: 1030;
+  }
+
+  .sidebar-brand {
+    padding: 1.25rem 1.5rem;
+    border-bottom: 1px solid var(--bs-border-color);
+  }
+
+  .sidebar .nav-link {
+    color: var(--bs-body-color);
+    padding: 0.5rem 1.5rem;
+    border-radius: 0;
+    font-size: 0.92rem;
+  }
+
+  .sidebar .nav-link.active {
+    background-color: var(--bs-primary);
+    color: #fff;
+    font-weight: 500;
+  }
+
+  .sidebar .nav-link:hover:not(.active) {
+    background-color: var(--bs-secondary-bg);
+  }
+
+  .sidebar .nav-section-title {
+    text-transform: uppercase;
+    font-size: 0.72rem;
+    letter-spacing: 0.06em;
+    color: var(--bs-secondary-color);
+    padding: 1rem 1.5rem 0.35rem;
+    font-weight: 600;
+  }
+
+  /* Main content */
+  .main-content {
+    margin-left: var(--sidebar-width);
+    min-height: 100vh;
+  }
+
+  .topbar {
+    border-bottom: 1px solid var(--bs-border-color);
+    background-color: var(--bs-body-bg);
+    position: sticky;
+    top: 0;
+    z-index: 1020;
+  }
+
+  .content-section {
+    scroll-margin-top: 80px;
+  }
+
+  pre.code-block {
+    background-color: var(--bs-tertiary-bg);
+    border: 1px solid var(--bs-border-color);
+    border-radius: 0.5rem;
+    padding: 1rem 1.25rem;
+    overflow-x: auto;
+    font-size: 0.875rem;
+  }
+
+  .theme-toggle-btn {
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  /* Mobile sidebar */
+  @media (max-width: 991.98px) {
+    .sidebar {
+      transform: translateX(-100%);
+    }
+    .sidebar.show {
+      transform: translateX(0);
+    }
+    .main-content {
+      margin-left: 0;
+    }
+  }
+
+  .sidebar-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.4);
+    z-index: 1025;
+  }
+  .sidebar-overlay.show {
+    display: block;
+  }
+
+  ::-webkit-scrollbar { width: 8px; }
+  ::-webkit-scrollbar-thumb { background: var(--bs-secondary-color); border-radius: 4px; }
+</style>
+</head>
+<body>
+
+<!-- Sidebar -->
+<nav class="sidebar" id="sidebar">
+  <div class="sidebar-brand d-flex align-items-center gap-2">
+    <i class="fa-solid fa-book fs-5 text-primary"></i>
+    <span class="fw-bold fs-5">Documentation</span>
+  </div>
+
+  <div class="pb-4">
+    <div class="nav-section-title">Getting Started</div>
+    <ul class="nav flex-column">
+      <li class="nav-item"><a class="nav-link" href="index.html"><i class="fa-solid fa-house me-2"></i>Home</a></li>
+      <li class="nav-item"><a class="nav-link active" href="#introduction"><i class="fa-solid fa-circle-info me-2"></i>Introduction</a></li>
+      <li class="nav-item"><a class="nav-link" href="#installation"><i class="fa-solid fa-download me-2"></i>Installation</a></li>
+    </ul>
+
+    <div class="nav-section-title">How To</div>
+    <ul class="nav flex-column">
+      <li class="nav-item"><a class="nav-link" href="#profile-management"><i class="fa-solid fa-user me-2"></i>Manage Profile</a></li>
+      <li class="nav-item"><a class="nav-link" href="#firewall-management"><i class="fa-solid fa-shield me-2"></i>Manage Firewall</a></li>
+    </ul>
+
+    <div class="nav-section-title">Custom Packages</div>
+    <ul class="nav flex-column">
+      <li class="nav-item"><a class="nav-link" href="#zyphor-cli"><i class="fa-solid fa-box me-2"></i>Zyphor CLI</a></li>
+      <li class="nav-item"><a class="nav-link" href="#zyphor-command-center"><i class="fa-solid fa-box me-2"></i>Zyphor Command Center</a></li>
+      <li class="nav-item"><a class="nav-link" href="#zylearn"><i class="fa-solid fa-box me-2"></i>ZyLearn</a></li>
+      <li class="nav-item"><a class="nav-link" href="#zyphor-updates"><i class="fa-solid fa-box me-2"></i>Zyphor Updates</a></li>
+      <li class="nav-item"><a class="nav-link" href="#zysh"><i class="fa-solid fa-box me-2"></i>Zysh</a></li>
+    </ul>
+
+    <div class="nav-section-title">Contributing</div>
+    <ul class="nav flex-column">
+      <li class="nav-item"><a class="nav-link" href="#contibuting-packages"><i class="fa-solid fa-box me-2"></i>Packages</a></li>
+    </ul>
+
+
+    <div class="nav-section-title">Support</div>
+    <ul class="nav flex-column">
+      <li class="nav-item"><a class="nav-link" href="#faq"><i class="fa-solid fa-circle-question me-2"></i>FAQ</a></li>
+    </ul>
+  </div>
+</nav>
+
+<div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+<!-- Main content -->
+<div class="main-content">
+
+  <!-- Top bar -->
+  <div class="topbar d-flex align-items-center justify-content-between px-3 px-md-4 py-3">
+    <div class="d-flex align-items-center gap-3">
+      <button class="btn btn-outline-secondary d-lg-none" id="sidebarToggle">
+        <i class="fa-solid fa-bars"></i>
+      </button>
+      <div class="position-relative d-none d-sm-block">
+        <i class="fa-solid fa-magnifying-glass position-absolute top-50 translate-middle-y ms-3 text-secondary"></i>
+        <input type="text" class="form-control ps-5" style="width: 280px;" placeholder="Search docs...">
+      </div>
+    </div>
+
+    <div class="d-flex align-items-center gap-2">
+      <a href="" class="btn btn-outline-secondary d-none d-sm-inline-flex _repoUrl">
+        <i class="fa-brands fa-github me-1"></i> GitHub
+      </a>
+      <button class="btn btn-outline-secondary theme-toggle-btn" id="themeToggle" title="Toggle theme">
+        <i class="fa-solid fa-moon" id="themeIcon"></i>
+      </button>
+    </div>
+  </div>
+
+  <!-- Content -->
+  <div class="container-fluid px-3 px-md-5 py-4" style="max-width: 900px;">
+
+    <section id="introduction" class="content-section mb-5">
+      <span class="badge text-bg-primary mb-2 _latestVersion">v....</span>
+      <h1 class="fw-bold">Introduction</h1>
+      <p class="lead text-secondary">Everything you need to know to get up and running quickly.</p>
+      <p class="_description"></p>
+      <div class="_topics"></div> <br>
+      <div class="alert alert-info d-flex align-items-start gap-2" role="alert">
+        <i class="fa-solid fa-lightbulb mt-1"></i>
+        <div>Tip: you can toggle between light and dark mode using the button in the top-right corner.</div>
+      </div>
+    </section>
+
+    <!-- installation -->
+    <section id="installation" class="content-section mb-5">
+      <h2 class="fw-bold">Installation</h2>
+      <p>ISO File Size: 3.5GB</p>
+      <p>Latest Operating System Version: <span class="_latestVersion">...</span></p>
+      <p>ISO Download (On Github Readme): <a href="https://github.com/zyphor-os/zyphor-os-desktop" class="navlink">Zyphor OS</a></p>
+    </section>
+
+    <hr>
+    <h1 style="text-align: center;">How To</h1>
+    <hr>
+
+    <!-- profile management -->
+    <section id="profile-management" class="content-section mb-5">
+        <h2 class="fw-bold">Profile Management</h2>
+        <p>
+            Zyphor OS provides an integrated Profile Management feature through <a href="#zyphor-command-center" class="text-info">Zyphor Command Center,</a>
+            allowing users to personalize and manage their system profile with ease. Users can update
+            their profile information and upload a custom profile image that is automatically optimized
+            for system use. The selected profile image is synchronized across the desktop environment,
+            including the Start Menu panel icon and the LightDM login screen, providing a more personal
+            and consistent user experience throughout Zyphor OS.
+        </p>
+        <div class="row">
+          <div class="col-lg-6 col-md-6 col-sm-12">
+              <img src="./assets/images/profile-login-1.jpg" alt="" width="100%">
+          </div>
+          <div class="col-lg-6 col-md-6 col-sm-12">
+              <img src="./assets/images/profile-login-2.jpg" alt="" width="100%">
+          </div>
+          <div class="col-lg-6 col-md-6 col-sm-12">
+              <img src="./assets/images/profile-login-3.jpg" alt="" width="100%">
+          </div>
+        </div>
+    </section>
+
+	
+	<section id="firewall-management" class="content-section py-5">
+	    <div class="row">
+		<div class="col-lg-12">
+
+		    <!-- Section Header -->
+		    <div class="mb-4">
+			<h2 class="fw-bold">Manage Firewall</h2>
+			<p class="text-muted">
+			    Zyphor OS uses <strong>UFW (Uncomplicated Firewall)</strong> to provide
+			    a simple and reliable way to manage firewall rules and protect your system
+			    from unauthorized network access.
+			</p>
+		    </div>
+
+		    <!-- Enable Firewall -->
+		    <div class="card mb-4 shadow-sm">
+			<div class="card-body">
+			    <h5 class="card-title">Enable the Firewall</h5>
+			    <p class="card-text">
+				Turn on the firewall to start protecting your system from
+				unauthorized incoming connections.
+			    </p>
+
+			    <pre class="bg-dark text-light p-3 rounded"><code>sudo ufw enable</code></pre>
+			</div>
+		    </div>
+
+		    <!-- Check Status -->
+		    <div class="card mb-4 shadow-sm">
+			<div class="card-body">
+			    <h5 class="card-title">Check Firewall Status</h5>
+			    <p class="card-text">
+				Check whether the firewall is active and view the currently
+				configured firewall rules.
+			    </p>
+
+			    <pre class="bg-dark text-light p-3 rounded"><code>sudo ufw status</code></pre>
+			</div>
+		    </div>
+
+		    <!-- Allow Port -->
+		    <div class="card mb-4 shadow-sm">
+			<div class="card-body">
+			    <h5 class="card-title">Allow a Port</h5>
+			    <p class="card-text">
+				Allow incoming connections to a specific port. For example,
+				the following command allows SSH connections on port 22.
+			    </p>
+
+			    <pre class="bg-dark text-light p-3 rounded"><code>sudo ufw allow 22/tcp</code></pre>
+			</div>
+		    </div>
+
+		    <!-- Deny Port -->
+		    <div class="card mb-4 shadow-sm">
+			<div class="card-body">
+			    <h5 class="card-title">Deny a Port</h5>
+			    <p class="card-text">
+				Block incoming connections to a specific port.
+			    </p>
+
+			    <pre class="bg-dark text-light p-3 rounded"><code>sudo ufw deny 22/tcp</code></pre>
+			</div>
+		    </div>
+
+		    <!-- Delete Rule -->
+		    <div class="card mb-4 shadow-sm">
+			<div class="card-body">
+			    <h5 class="card-title">Remove a Firewall Rule</h5>
+			    <p class="card-text">
+				Remove an existing firewall rule when it is no longer needed.
+			    </p>
+
+			    <pre class="bg-dark text-light p-3 rounded"><code>sudo ufw delete allow 22/tcp</code></pre>
+			</div>
+		    </div>
+
+		    <!-- Disable Firewall -->
+		    <div class="card mb-4 shadow-sm">
+			<div class="card-body">
+			    <h5 class="card-title">Disable the Firewall</h5>
+			    <p class="card-text">
+				Temporarily disable UFW if firewall protection is not required.
+			    </p>
+
+			    <pre class="bg-dark text-light p-3 rounded"><code>sudo ufw disable</code></pre>
+			</div>
+		    </div>
+
+		    <!-- Warning -->
+		    <div class="alert alert-warning" role="alert">
+			<strong>Warning:</strong>
+			Before enabling UFW on a remote server, make sure the required
+			management ports, such as SSH (port 22), are allowed. Otherwise,
+			you may lose remote access to the system.
+		    </div>
+
+		</div>
+	    </div>
+	</section>
+    <hr>
+    <h1 style="text-align: center;">Custom Packages</h1>
+    <hr>
+
+    <!-- zyphor cli -->
+    <section id="zyphor-cli" class="content-section mb-5">
+        <h2 class="fw-bold">Zyphor CLI</h2>
+        <p>Installation: <code>zyphor pkg install zyphor-cli</code></p>
+        <div class="alert alert-info d-flex align-items-start gap-2" role="alert">
+            <i class="fa-solid fa-lightbulb mt-1"></i>
+            <div>Note: Zyphor CLI is pre-installed and available by default after operating system installation.</div>
+        </div>
+        <p><strong>Zyphor CLI Abstraction Layer</strong> — A unified command framework that transforms complex Linux operations into simple, consistent, and easy-to-remember commands for developers, administrators, and everyday users.</p>
+        <code><pre>zyphor help</pre></code>
+        <div class="table-responsive">
+            <table class="table table-striped table-hover align-middle">
+                <thead>
+                    <tr>
+                        <th width="20%">Category</th>
+                        <th width="35%">Command</th>
+                        <th>Description</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>SYSTEM</td>
+                        <td><code>zyphor system upgrade</code></td>
+                        <td>Upgrade all installed system packages to their latest available versions from configured repositories, ensuring security updates, bug fixes, and feature improvements are applied.</td>
+                    </tr>
+
+                    <tr>
+                        <td>SYSTEM</td>
+                        <td><code>zyphor system clean</code></td>
+                        <td>Remove package caches, temporary files, and unused dependencies to free disk space and keep the system optimized.</td>
+                    </tr>
+
+                    <tr>
+                        <td>SYSTEM</td>
+                        <td><code>zyphor system info</code></td>
+                        <td>Display detailed information about the operating system, kernel version, hardware resources, and system environment.</td>
+                    </tr>
+
+                    <tr>
+                        <td>SETUP</td>
+                        <td><code>zyphor setup dev &lt;target&gt;</code></td>
+                        <td>Automatically configure a complete development environment for the selected programming language or technology stack.</td>
+                    </tr>
+
+                    <tr>
+                        <td>SETUP</td>
+                        <td><code>zyphor setup dev php</code></td>
+                        <td>Install and configure PHP, Composer, Node.js, and other tools commonly required for modern PHP application development.</td>
+                    </tr>
+
+                    <tr>
+                        <td>SETUP</td>
+                        <td><code>zyphor setup dev node</code></td>
+                        <td>Install Node.js runtime and package management tools for building JavaScript and TypeScript applications.</td>
+                    </tr>
+
+                    <tr>
+                        <td>SETUP</td>
+                        <td><code>zyphor setup dev composer</code></td>
+                        <td>Install Composer and configure the environment for managing PHP packages and project dependencies.</td>
+                    </tr>
+
+                    <tr>
+                        <td>SETUP</td>
+                        <td><code>zyphor setup dev git</code></td>
+                        <td>Generate SSH keys, configure Git settings, and prepare secure authentication for GitHub and Git-based workflows.</td>
+                    </tr>
+
+                    <tr>
+                        <td>SETUP</td>
+                        <td><code>zyphor setup wine</code></td>
+                        <td>Install and configure Wine with 32-bit compatibility, then initialize the default Wine environment for running Windows applications.</td>
+                    </tr>
+
+                    <tr>
+                        <td>SETUP</td>
+                        <td><code>zyphor setup theme light</code></td>
+                        <td>Apply the Windows-10 inspired desktop theme for a bright and familiar user experience.</td>
+                    </tr>
+
+                    <tr>
+                        <td>SETUP</td>
+                        <td><code>zyphor setup theme dark</code></td>
+                        <td>Apply the Kali-Dark inspired desktop theme optimized for developers and low-light environments.</td>
+                    </tr>
+
+                    <tr>
+                        <td>PACKAGE</td>
+                        <td><code>zyphor pkg install &lt;pkg&gt;</code></td>
+                        <td>Install software packages from configured repositories while automatically resolving required dependencies.</td>
+                    </tr>
+
+                    <tr>
+                        <td>PACKAGE</td>
+                        <td><code>zyphor pkg remove &lt;pkg&gt;</code></td>
+                        <td>Uninstall a package and optionally remove associated dependencies that are no longer required.</td>
+                    </tr>
+
+                    <tr>
+                        <td>PACKAGE</td>
+                        <td><code>zyphor pkg search &lt;key&gt;</code></td>
+                        <td>Search available repositories for packages matching a keyword, name, or partial package identifier.</td>
+                    </tr>
+
+                    <tr>
+                        <td>PACKAGE</td>
+                        <td><code>zyphor pkg list</code></td>
+                        <td>Display all currently installed packages along with their versions and installation status.</td>
+                    </tr>
+
+                    <tr>
+                        <td>SERVICE</td>
+                        <td><code>zyphor service restart &lt;name&gt;</code></td>
+                        <td>Restart a running service to apply configuration changes or recover from operational issues.</td>
+                    </tr>
+
+                    <tr>
+                        <td>NETWORK / STORAGE</td>
+                        <td><code>zyphor smb mount</code></td>
+                        <td>Connect and mount a remote SMB/CIFS network share, making it accessible like a local directory.</td>
+                    </tr>
+
+                    <tr>
+                        <td>FTP</td>
+                        <td><code>zyphor ftp upload</code></td>
+                        <td>Transfer files securely from the local system to a configured FTP server.</td>
+                    </tr>
+
+                    <tr>
+                        <td>SSH</td>
+                        <td><code>zyphor ssh connect</code></td>
+                        <td>Establish a secure encrypted shell session to a remote server for administration and maintenance.</td>
+                    </tr>
+
+                    <tr>
+                        <td>SSH</td>
+                        <td><code>zyphor ssh cmd</code></td>
+                        <td>Execute commands on a remote server over SSH without opening an interactive terminal session.</td>
+                    </tr>
+
+                    <tr>
+                        <td>DOCTOR</td>
+                        <td><code>zyphor doctor scan</code></td>
+                        <td>Analyze the system for configuration issues, missing dependencies, broken packages, and common problems.</td>
+                    </tr>
+
+                    <tr>
+                        <td>DOCTOR</td>
+                        <td><code>zyphor doctor fix</code></td>
+                        <td>Attempt to automatically repair issues detected during a diagnostic scan.</td>
+                    </tr>
+
+                    <tr>
+                        <td>DOCTOR</td>
+                        <td><code>zyphor doctor report</code></td>
+                        <td>Generate a comprehensive diagnostic report for troubleshooting and technical support purposes.</td>
+                    </tr>
+
+                    <tr>
+                        <td>BUILD</td>
+                        <td><code>zyphor build package [dir]</code></td>
+                        <td>Build a Debian package from a project directory, simplifying software packaging and distribution.</td>
+                    </tr>
+
+                    <tr>
+                        <td>BUILD</td>
+                        <td><code>zyphor build repo</code></td>
+                        <td>Generate repository metadata files such as Packages.gz for hosting a Debian-compatible package repository.</td>
+                    </tr>
+
+                    <tr>
+                        <td>CORE</td>
+                        <td><code>zyphor help</code></td>
+                        <td>Display the complete Zyphor CLI command reference, categories, usage examples, and available options.</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+
+    <!-- zyphor command-center -->
+    <section id="zyphor-command-center" class="content-section mb-5">
+        <h2 class="fw-bold">Zyphor Command Center</h2>
+        <p>Installation: <code>zyphor pkg install zyphor-comand-center</code></p>
+        <div class="alert alert-info d-flex align-items-start gap-2" role="alert">
+            <i class="fa-solid fa-lightbulb mt-1"></i>
+            <div>Note: Zyphor Command Center is pre-installed and available by default after operating system installation.</div>
+        </div>
+        <p></p>
+        <p>
+            <strong>Zyphor Command Center</strong> — A graphical management interface built on top of Zyphor CLI, providing an intuitive point-and-click experience for non-technical users. Perform system updates, install software, manage services, configure development environments, mount network shares, run diagnostics, and customize system settings without memorizing terminal commands.
+        </p>
+        <img src="assets/images/zcc.jpg.jpg" alt="" width="100%">
+    </section>
+
+    <!-- zylearn -->
+    <section id="zylearn" class="content-section mb-5">
+        <h2 class="fw-bold">ZyLearn</h2>
+        <p>Installation: <code>zyphor pkg install zylearn</code></p>
+        <div class="alert alert-warning d-flex align-items-start gap-2" role="alert">
+            <i class="fa-solid fa-lightbulb mt-1"></i>
+            <div>Note: ZyLearn is <b>NOT</b> pre-installed and available by default after operating system installation.</div>
+        </div>
+        <p> <strong>ZyLearn</strong> is an interactive learning tool designed to teach Linux distribution development through practical, real-world experience. Rather than relying solely on documentation or videos, ZyLearn provides a working project that users can explore, modify, and build themselves. </p>
+
+        <p> When launched, ZyLearn automatically clones the <code>zyphor-os-minimal</code> project into the current directory and includes a comprehensive <code>GUIDE.md</code> file containing step-by-step instructions for Linux operating system development. </p>
+
+        <p> ZyLearn serves as a hands-on educational environment for students, Linux enthusiasts, and aspiring distribution maintainers who want to understand how modern Linux distributions are built from the ground up. </p>
+    
+        <h4 class="mt-4 mb-3">Available Commands</h4>
+
+        <div class="table-responsive">
+            <table class="table table-striped table-hover align-middle">
+                <thead>
+                    <tr>
+                        <th width="30%">Command</th>
+                        <th>Description</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><code>zylearn setup skeleton</code></td>
+                        <td>
+                            Install the Zyphor OS learning skeleton environment in the current directory.
+                            This command downloads and prepares the <code>zyphor-os-minimal</code> project,
+                            including the <code>GUIDE.md</code> documentation that walks learners through
+                            Linux distribution development step by step.
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td><code>zylearn show logs</code></td>
+                        <td>
+                            Display recorded learning activity logs, including completed lessons,
+                            executed learning tasks, and progress information generated by ZyLearn.
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td><code>zylearn clear logs</code></td>
+                        <td>
+                            Remove all stored learning activity logs and reset ZyLearn progress history
+                            for a fresh learning experience.
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td><code>zylearn --help</code></td>
+                        <td>
+                            Display command usage information, available commands, options, and examples
+                            for the ZyLearn learning environment.
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td><code>zylearn --version</code></td>
+                        <td>
+                            Show the installed ZyLearn version and release information.
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+
+    <!-- zyphor updates-->
+    <section id="zyphor-updates" class="content-section mb-5">
+        <h2 class="fw-bold">Zyphor Updates</h2>
+        <p>Installation: <code>zyphor pkg install zyphor-updates</code></p>
+        <div class="alert alert-info d-flex align-items-start gap-2" role="alert">
+            <i class="fa-solid fa-lightbulb mt-1"></i>
+            <div>Note: Zyphor Updates is pre-installed and available by default after operating system installation.</div>
+        </div>
+        <p><strong>Zyphor Updates</strong> is the official post-installation package for Zyphor OS. It provides a curated collection of software, developer tools, desktop enhancements, system utilities, multimedia applications, and Zyphor-specific components that extend the base operating system experience. </p>
+    </section>
+
+    <!-- zysh-->
+    <section id="zysh" class="content-section mb-5">
+        <h2 class="fw-bold">Zysh</h2>
+        <p>Installation: <code>zyphor pkg install zysh</code></p>
+        <div class="alert alert-info d-flex align-items-start gap-2" role="alert">
+            <i class="fa-solid fa-lightbulb mt-1"></i>
+            <div>Note: Zysh is pre-installed and available by default after operating system installation.</div>
+        </div>
+        <p>
+            <strong>Zysh</strong> is the official Zsh customization layer for Zyphor OS. It enhances the standard Zsh shell with Zyphor-specific branding, version information, color schemes, and terminal experience improvements. Rather than replacing Zsh, Zysh operates on top of it, extending and customizing the shell to provide a consistent and recognizable command-line environment across the Zyphor OS ecosystem.
+        </p>
+    </section>
+
+    <hr>
+    <h1 style="text-align: center;">Contributing</h1>
+    <hr>
+
+    <!-- ontibuting-packages-->
+    <section id="contibuting-packages" class="content-section mb-5">
+        <h2 class="fw-bold">Contibuting to Packages</h2>
+        <p>Zyphor OS maintains its own collection of official packages that are developed specifically for the distribution. These packages include system utilities, desktop enhancements, command-line tools, themes, configuration packages, applications, and other components that make up the Zyphor OS experience.</p>
+        <ol>
+          <li><code>zyphor-cli</code> - shell script</li>
+          <li><code>zyphor-command-center</code> - python</li>
+          <li><code>zyphor-command-center-web</code> - php</li>
+          <li><code>zylearn</code> - C</li>
+          <li><code>zyphor-updates</code> - Debian config file</li>
+          <li><code>zysh</code> - shell script</li>
+          <li><code>zyshell</code> - C (removed temporary)</li>
+          <li><code>fastfetch-config-1</code> - filesystem config and Debian config file</li>
+          <li><code>grub-screensaver-1</code> - filesystem config and Debian config file</li>
+          <li><code>zyphor-display-mac-v1</code> - filesystem config and Debian config file (optional - for v1 Stable)</li>
+          <li><code>zyphor-os-release</code> - filsystem config and Debian config file</li>
+          <li><code>zyphor-repo-config</code> - filsystem config and Debian config file</li>
+          <li><code>zyphor-whats-new</code> - filsystem config, html and Debian config file</li>
+          <li><code>zyphor-wallpapers-default-2026-2027</code> - filsystem config, images and Debian config file</li>
+          <li><code>zyphor-wallpapers-nature</code> - filsystem config, images and Debian config file</li>
+          <li><code>zyphor-wallpapers-pragmata</code> - filsystem config, images and Debian config file</li>
+        </ol>
+        <b>How to Contribute?</b>
+
+        <p>
+        Want to help improve Zyphor OS? Awesome! You can contribute by updating existing packages, creating new ones, fixing bugs, improving the documentation, or adding new features.
+        </p>
+
+        <ul>
+          <li><b>Step 1:</b> Fork the <code>https://github.com/zyphor-os/zyphor-os-desktop</code> repository.</li>
+          <li><b>Step 2:</b> Clone your fork:
+            <br><code>git clone https://github.com/YOUR_USERNAME/zyphor-os-desktop</code>
+          </li>
+          <li><b>Step 3:</b> Open the <code>/pkg</code> folder.</li>
+          <li><b>Step 4:</b> Find the package you want to update, or create a new one.</li>
+          <li><b>Step 5:</b> Make your changes and test them.</li>
+          <li><b>Step 6:</b> Commit your changes and push them to your GitHub fork.</li>
+          <li><b>Step 7:</b> Open a Pull Request so the Zyphor OS maintainers can review your work.</li>
+        </ul>
+
+        <b>How to Test a Package?</b>
+
+        <p>
+        The easiest way to test a package is by installing <code>zyphor-cli</code>. It comes with a command that builds packages for you:
+        <br><code>zyphor build package PACKAGE_NAME</code>
+        </p>
+
+        <p>
+        For example, if you're updating the <code>zylearn</code> package in Ada Lovelace LTS:
+        </p>
+
+        <ol>
+          <li><code>cd pkg/v2/zylearn</code></li>
+          <li>Update the version number in <code>DEBIAN/control</code>.</li>
+          <li>Edit the files you want to change.</li>
+          <li>Go back to the package directory:
+            <br><code>cd ..</code>
+          </li>
+          <li>Build the package:
+            <br><code>zyphor build package zylearn</code>
+          </li>
+          <li>A <code>.deb</code> file will be created, ready for testing.</li>
+        </ol>
+
+        <p class="alert alert-warning">
+        💡 Always test your package in a virtual machine or another safe environment before installing it on your main system.
+        </p>
+
+      </section>
+
+      <!-- Message from the Creator -->
+      <section id="creator-message" class="my-5">
+          <div class="card border-0 shadow-sm rounded-4">
+              <div class="card-body p-4">
+                  <div class="row align-items-center">
+                      
+                      <!-- Creator Image -->
+                      <div class="col-md-3 text-center mb-4 mb-md-0">
+                          <img src="assets/images/creator.jpg"
+                              alt="Creator"
+                              class="img-fluid rounded-circle border shadow"
+                              style="width:180px;height:180px;object-fit:cover;">
+                      </div>
+
+                      <!-- Message -->
+                      <div class="col-md-9">
+                          <h2 class="fw-bold mb-1">A Message from the Creator</h2>
+                          <h5 class="text-primary">Mark Jason Penote Espelita</h5>
+                          <b>Full Stack Web Developer | Lead OS Maintainer</b>
+
+                          <br> <br>
+
+                          <p class="text-muted">
+                              To everyone who has been part of the development of Zyphor OS—the contributors, the creators of the technologies we rely on, and the entire open-source community—thank you so much for your support and dedication.
+                              
+                              <br> <br>
+                              
+                              Let's continue working together to make Linux easier to use and more accessible for everyone.
+                          </p>
+
+                          <p class="mb-3">
+                              <strong>Thank you for supporting Zyphor OS and being part of this journey.</strong>
+                          </p>
+                          <a href="https://github.com/zyphor-os/zyphor-os-desktop/blob/main/CONTRIBUTORS.md">
+                            <button class="btn btn-info">View Contributors.md</button>
+                          </a>
+                      </div>
+
+                  </div>
+              </div>
+          </div>
+      </section>
+
+    <!-- text-->
+    <section id="" class="content-section mb-5">
+      <h4>The Technology Stack Behind Zyphor OS</h4>
+      <div class="bg-light p-4">
+        <img src="./assets/images/logos/logo-linux.jpg" class="p-2" width="100px" height="100px" alt="">
+        <img src="./assets/images/logos/logo-gnu.png" class="p-2" width="100px" height="100px" alt="">
+        <img src="./assets/images/logos/logo-debian.png" class="p-2" width="100px" height="100px" alt="">
+        <img src="./assets/images/logos/logo-kali.png" class="p-2" width="100px" height="100px" alt="">
+        <img src="./assets/images/logos/logo-xfce.png" class="p-2" width="100px" height="100px" alt="">
+        <img src="./assets/images/logos/logo-c.png" class="p-2" width="100px" height="100px" alt="">
+        <img src="./assets/images/logos/logo-cpp.png" class="p-2" width="100px" height="100px" alt="">
+        <img src="./assets/images/logos/logo-html.png" class="p-2" width="100px" height="100px" alt="">
+        <img src="./assets/images/logos/logo-css.png" class="p-2" width="100px" height="100px" alt="">
+        <img src="./assets/images/logos/logo-js.png" class="p-2" width="100px" height="100px" alt="">
+        <img src="./assets/images/logos/logo-jquery.png" class="p-2" width="100px" height="100px" alt="">
+        <img src="./assets/images/logos/logo-php.png" class="p-2" width="100px" height="100px" alt="">
+        <img src="./assets/images/logos/logo-shell.png" class="p-2" width="100px" height="100px" alt="">
+        <img src="./assets/images/logos/logo-python.jpg" class="p-2" width="100px" height="100px" alt="">
+      </div>
+    </section>
+
+    <footer class="border-top pt-4 pb-5 text-secondary small">
+        © <span id="currentYear"></span> Zyphor OS
+    </footer>
+
+  </div>
+</div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+
+<script>
+    $(document).ready(function() {
+
+        $.get('https://api.github.com/repos/zyphor-os/zyphor-os-desktop', function(res) {
+            let repoUrl = res.html_url;
+            let description = res.description;
+            let topics = res.topics;
+
+            console.log(res);
+
+            // implementation
+            $('._repoUrl').attr('href', repoUrl);
+            $('._description').text(description);
+            topics.forEach(element => {
+                $('._topics').append(`
+                    <span class="badge rounded-pill text-bg-secondary me-1">
+                        ${element}
+                    </span>
+                `);
+            });
+        })
+
+        $.get('https://api.github.com/repos/zyphor-os/zyphor-os-desktop/releases/latest', function(res) {
+            let latestVersion = res.tag_name;
+            console.log(res);
+
+            // implementation
+            $('._latestVersion').text(latestVersion);
+        })
+    })
+</script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/js/bootstrap.bundle.min.js"></script>
+<script>
+
+
+    // get full year
+
+    document.getElementById('currentYear').textContent = new Date().getFullYear();
+
+  // Theme toggle
+  const root = document.documentElement;
+  const themeToggle = document.getElementById('themeToggle');
+  const themeIcon = document.getElementById('themeIcon');
+
+  function setTheme(theme) {
+    root.setAttribute('data-bs-theme', theme);
+    themeIcon.className = theme === 'dark' ? 'fa-solid fa-sun' : 'fa-solid fa-moon';
+  }
+
+  // Default to light; could also check matchMedia, kept simple here
+  setTheme('dark');
+
+  themeToggle.addEventListener('click', () => {
+    const current = root.getAttribute('data-bs-theme');
+    setTheme(current === 'dark' ? 'light' : 'dark');
+  });
+
+  // Mobile sidebar toggle
+  const sidebar = document.getElementById('sidebar');
+  const sidebarToggle = document.getElementById('sidebarToggle');
+  const sidebarOverlay = document.getElementById('sidebarOverlay');
+
+  function toggleSidebar() {
+    sidebar.classList.toggle('show');
+    sidebarOverlay.classList.toggle('show');
+  }
+
+  sidebarToggle.addEventListener('click', toggleSidebar);
+  sidebarOverlay.addEventListener('click', toggleSidebar);
+
+  // Close mobile sidebar on link click
+  document.querySelectorAll('.sidebar .nav-link').forEach(link => {
+    link.addEventListener('click', () => {
+      if (window.innerWidth < 992) {
+        sidebar.classList.remove('show');
+        sidebarOverlay.classList.remove('show');
+      }
+    });
+  });
+
+  // Active link highlighting on scroll
+  const sections = document.querySelectorAll('.content-section');
+  const navLinks = document.querySelectorAll('.sidebar .nav-link');
+
+  window.addEventListener('scroll', () => {
+    let current = '';
+    sections.forEach(section => {
+      const rect = section.getBoundingClientRect();
+      if (rect.top <= 100) {
+        current = section.id;
+      }
+    });
+    navLinks.forEach(link => {
+      link.classList.remove('active');
+      if (link.getAttribute('href') === '#' + current) {
+        link.classList.add('active');
+      }
+    });
+  });
+</script>
+</body>
+</html>
