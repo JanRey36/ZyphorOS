@@ -1,4 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
+import { useEffect, useRef } from "react";
 import {
   Download,
   ArrowRight,
@@ -10,10 +11,9 @@ import {
   ShieldCheck,
   FileText,
   Terminal,
-  Sparkles,
-  ArrowUpRight,
 } from "lucide-react";
 import { SiteLayout } from "@/components/site/SiteLayout";
+import { useScrollReveal } from "@/lib/useScrollReveal";
 import image1 from "@/assets/1.jpg";
 import image2 from "@/assets/2.jpg";
 import image3 from "@/assets/3.jpg";
@@ -102,18 +102,20 @@ const whyChoose = [
 ];
 
 function HomePage() {
+  useScrollReveal();
+
   return (
     <SiteLayout>
       {/* HERO */}
       <section className="relative overflow-hidden">
-        <div className="absolute inset-0 bg-glow pointer-events-none" />
+        <div className="absolute inset-0 bg-aurora opacity-70 pointer-events-none" />
         <div className="absolute inset-0 bg-grid opacity-[0.18] pointer-events-none [mask-image:radial-gradient(ellipse_at_center,black_40%,transparent_75%)]" />
 
         <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pt-16 pb-20 sm:pt-24 sm:pb-28">
           <div className="grid lg:grid-cols-12 gap-12 items-center">
-            <div className="lg:col-span-6">
+            <div className="lg:col-span-6 animate-fade-in-up">
               <div className="inline-flex items-center gap-2 rounded-full border border-border/60 bg-surface/60 px-3 py-1 text-xs font-medium text-muted-foreground backdrop-blur">
-                <img src={logoImage} alt="Zyphor OS Logo" className="h-4 w-4 rounded-sm" />
+                <img src={logoImage} alt="Zyphor OS Logo" className="h-4 w-4 rounded-sm animate-pulse" />
                 {latestRelease.version} · {latestRelease.codename ?? "Stable"}
               </div>
               <h1 className="mt-5 text-4xl sm:text-5xl lg:text-6xl font-bold leading-[1.05] tracking-tight">
@@ -136,7 +138,7 @@ function HomePage() {
                 </Link>
                 <Link
                   to="/about"
-                  className="inline-flex items-center gap-2 rounded-lg border border-border bg-surface/50 px-5 py-3 text-sm font-semibold text-foreground hover:bg-surface transition"
+                  className="btn-ghost inline-flex items-center gap-2 rounded-lg px-5 py-3 text-sm font-semibold"
                 >
                   Learn more
                   <ArrowRight className="h-4 w-4" />
@@ -149,7 +151,7 @@ function HomePage() {
                   { k: "100%", v: "Open source" },
                   { k: "Debian", v: "Rock-solid base" },
                 ].map((s) => (
-                  <div key={s.v}>
+                  <div key={s.v} className="reveal">
                     <dt className="text-2xl font-display font-semibold text-foreground">
                       {s.k}
                     </dt>
@@ -159,13 +161,13 @@ function HomePage() {
               </dl>
             </div>
 
-            <div className="lg:col-span-6">
+            <div className="lg:col-span-6 animate-fade-in">
               <div className="relative flex items-center justify-center">
-                <div className="absolute -inset-4 bg-glow blur-3xl opacity-80" />
+                <div className="absolute -inset-4 bg-glow blur-3xl opacity-80 animate-pulse-glow" />
                 <img
                   src={logoImage}
                   alt="Zyphor OS Logo"
-                  className="relative w-64 h-64 sm:w-80 sm:h-80 object-contain drop-shadow-[0_0_60px_rgba(0,180,255,0.4)]"
+                  className="relative w-64 h-64 sm:w-80 sm:h-80 object-contain drop-shadow-[0_0_60px_rgba(0,180,255,0.4)] animate-float"
                   loading="eager"
                 />
               </div>
@@ -175,7 +177,7 @@ function HomePage() {
       </section>
 
       {/* FEATURES */}
-      <section className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-20">
+      <section className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-20 reveal">
         <div className="max-w-2xl">
           <p className="text-sm font-medium text-brand">Why Zyphor OS</p>
           <h2 className="mt-2 text-3xl sm:text-4xl font-bold tracking-tight">
@@ -188,12 +190,13 @@ function HomePage() {
         </div>
 
         <div className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-          {features.map(({ icon: Icon, title, desc }) => (
+          {features.map(({ icon: Icon, title, desc }, idx) => (
             <article
               key={title}
-              className="group card-elevated rounded-2xl p-6 transition hover:-translate-y-0.5 hover:border-brand/40"
+              className="group card-elevated card-hover rounded-2xl p-6 transition-all duration-300 reveal"
+              style={{ transitionDelay: `${idx * 50}ms` }}
             >
-              <div className="inline-flex h-10 w-10 items-center justify-center rounded-lg bg-brand/10 text-brand ring-1 ring-brand/20">
+              <div className="inline-flex h-10 w-10 items-center justify-center rounded-lg bg-brand/10 text-brand ring-1 ring-brand/20 group-hover:bg-brand/20 group-hover:scale-110 transition-all duration-300">
                 <Icon className="h-5 w-5" />
               </div>
               <h3 className="mt-4 text-lg font-semibold">{title}</h3>
@@ -207,12 +210,16 @@ function HomePage() {
 
 
       {/* LATEST RELEASE */}
-      <section className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-20">
+      <section className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-20 reveal">
         <div className="relative overflow-hidden rounded-3xl card-elevated p-8 sm:p-12">
           <div className="absolute inset-0 bg-glow opacity-70 pointer-events-none" />
           <div className="relative grid lg:grid-cols-2 gap-8 items-center">
             <div>
               <div className="inline-flex items-center gap-2 rounded-full bg-brand/15 text-brand px-3 py-1 text-xs font-semibold ring-1 ring-brand/30">
+                <span className="relative flex h-2 w-2">
+                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-brand opacity-75"></span>
+                  <span className="relative inline-flex rounded-full h-2 w-2 bg-brand"></span>
+                </span>
                 Latest release
               </div>
               <h2 className="mt-4 text-3xl sm:text-4xl font-bold tracking-tight">
@@ -240,14 +247,14 @@ function HomePage() {
                 </Link>
                 <Link
                   to="/download"
-                  className="inline-flex items-center gap-2 rounded-lg border border-border bg-surface/60 px-5 py-3 text-sm font-semibold hover:bg-surface transition"
+                  className="btn-ghost inline-flex items-center gap-2 rounded-lg px-5 py-3 text-sm font-semibold"
                 >
                   Release notes <ArrowRight className="h-4 w-4" />
                 </Link>
               </div>
             </div>
 
-            <div className="rounded-xl border border-border/60 bg-background/60 p-5 font-mono text-sm">
+            <div className="rounded-xl border border-border/60 bg-background/60 p-5 font-mono text-sm shadow-xl code-block">
               <div className="flex items-center gap-1.5 mb-3">
                 <span className="h-2.5 w-2.5 rounded-full bg-red-400/70" />
                 <span className="h-2.5 w-2.5 rounded-full bg-yellow-400/70" />
@@ -258,7 +265,7 @@ function HomePage() {
 <span className="text-brand">$</span> zyphor system upgrade
 <span className="text-brand">$</span> zyphor setup theme dark
 <span className="text-brand">$</span> zyphor doctor scan
-<span className="text-muted-foreground">→ System healthy · 0 issues found</span>
+<span className="text-muted-foreground">→ System healthy · 0 issues found</span><span className="animate-blink inline-block w-2 h-4 bg-foreground align-middle ml-1"></span>
               </pre>
             </div>
           </div>
@@ -267,7 +274,7 @@ function HomePage() {
 
       {/* WHY CHOOSE — alternating */}
       <section className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-20 space-y-24">
-        <div>
+        <div className="reveal">
           <p className="text-sm font-medium text-brand">Why choose Zyphor</p>
           <h2 className="mt-2 text-3xl sm:text-4xl font-bold tracking-tight max-w-2xl">
             A distribution that respects your time and teaches you as you go.
@@ -277,7 +284,7 @@ function HomePage() {
         {whyChoose.map((row, i) => (
           <div
             key={row.title}
-            className="grid lg:grid-cols-2 gap-10 items-center"
+            className="grid lg:grid-cols-2 gap-10 items-center reveal"
           >
             <div className={i % 2 === 1 ? "lg:order-2" : ""}>
               <h3 className="text-2xl sm:text-3xl font-semibold tracking-tight">
@@ -288,8 +295,9 @@ function HomePage() {
               </p>
             </div>
             <div className={i % 2 === 1 ? "lg:order-1" : ""}>
-              <div className="rounded-2xl overflow-hidden border-glow card-elevated">
-                <img src={row.image} alt="" className="w-full h-auto block" loading="lazy" />
+              <div className="rounded-2xl overflow-hidden border-glow card-elevated group relative">
+                 <div className="absolute inset-0 bg-brand/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 mix-blend-overlay z-10" />
+                <img src={row.image} alt="" className="w-full h-auto block transition-transform duration-700 group-hover:scale-105" loading="lazy" />
               </div>
             </div>
           </div>
@@ -297,11 +305,14 @@ function HomePage() {
       </section>
 
       {/* COMMUNITY CTA */}
-      <section className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-20">
+      <section className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-20 reveal">
         <div className="relative overflow-hidden rounded-3xl border border-border/60 bg-surface/60 p-10 sm:p-14 text-center">
-          <div className="absolute inset-0 bg-glow opacity-60 pointer-events-none" />
+          <div className="absolute inset-0 bg-glow opacity-60 pointer-events-none animate-pulse-glow" />
           <div className="relative">
-            <Terminal className="h-8 w-8 mx-auto text-brand" />
+            <div className="inline-flex items-center justify-center p-3 rounded-full bg-brand/10 text-brand ring-1 ring-brand/30 mb-4 shadow-[0_0_15px_-3px_var(--brand)] animate-float">
+               <Terminal className="h-8 w-8" />
+            </div>
+            
             <h2 className="mt-4 text-3xl sm:text-4xl font-bold tracking-tight">
               Zyphor is built in the open.
             </h2>
@@ -312,7 +323,7 @@ function HomePage() {
             <div className="mt-8 flex flex-wrap justify-center gap-3">
               <Link
                 to="/documentation"
-                className="btn-brand btn-brand-hover inline-flex items-center gap-2 rounded-lg px-5 py-3 text-sm font-semibold"
+                className="btn-brand btn-brand-hover inline-flex items-center gap-2 rounded-lg px-8 py-3 text-sm font-semibold"
               >
                 Contribute
               </Link>

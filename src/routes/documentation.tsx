@@ -17,6 +17,7 @@ import {
 } from "lucide-react";
 import { SiteLayout } from "@/components/site/SiteLayout";
 import { cn } from "@/lib/utils";
+import { useScrollReveal } from "@/lib/useScrollReveal";
 import zccImage from "@/documentation/zyphor-os/assets/images/zcc.jpg.jpg";
 import profileImage1 from "@/documentation/zyphor-os/assets/images/profile-login-1.jpg";
 import profileImage2 from "@/documentation/zyphor-os/assets/images/profile-login-2.jpg";
@@ -110,6 +111,8 @@ function DocsPage() {
   const [releaseData, setReleaseData] = useState<ReleaseData | null>(null);
   const observerRef = useRef<IntersectionObserver | null>(null);
   const isManualScroll = useRef(false);
+
+  useScrollReveal();
 
   useEffect(() => {
     const REPO = "zyphor-os/zyphor-os-desktop";
@@ -232,7 +235,7 @@ function DocsPage() {
 
             <section
               id="introduction"
-              className="mb-16 [scroll-margin-top:5.5rem] lg:[scroll-margin-top:4.5rem]"
+              className="mb-16 [scroll-margin-top:5.5rem] lg:[scroll-margin-top:4.5rem] reveal"
             >
               <div className="flex items-center gap-2 mb-3">
                 {releaseData?.tag_name ? (
@@ -293,7 +296,7 @@ function DocsPage() {
 
             <section
               id="installation"
-              className="mb-16 [scroll-margin-top:5.5rem] lg:[scroll-margin-top:4.5rem]"
+              className="mb-16 [scroll-margin-top:5.5rem] lg:[scroll-margin-top:4.5rem] reveal"
             >
               <SectionHeading level={2}>Installation</SectionHeading>
               <p className="mt-3 text-muted-foreground">
@@ -313,7 +316,7 @@ function DocsPage() {
 
             <section
               id="profile-management"
-              className="mb-16 [scroll-margin-top:5.5rem] lg:[scroll-margin-top:4.5rem]"
+              className="mb-16 [scroll-margin-top:5.5rem] lg:[scroll-margin-top:4.5rem] reveal"
             >
               <SectionHeading level={2}>Profile Management</SectionHeading>
               <div className="mt-5 text-muted-foreground leading-relaxed">
@@ -349,7 +352,7 @@ function DocsPage() {
 
             <section
               id="firewall-management"
-              className="mb-16 [scroll-margin-top:5.5rem] lg:[scroll-margin-top:4.5rem]"
+              className="mb-16 [scroll-margin-top:5.5rem] lg:[scroll-margin-top:4.5rem] reveal"
             >
               <SectionHeading level={2}>Manage Firewall</SectionHeading>
               <p className="mt-3 text-muted-foreground leading-relaxed">
@@ -406,7 +409,7 @@ function DocsPage() {
 
             <section
               id="zyphor-cli"
-              className="mb-16 [scroll-margin-top:5.5rem] lg:[scroll-margin-top:4.5rem]"
+              className="mb-16 [scroll-margin-top:5.5rem] lg:[scroll-margin-top:4.5rem] reveal"
             >
               <SectionHeading level={2}>Zyphor CLI</SectionHeading>
               <p className="mt-3 text-muted-foreground">
@@ -472,7 +475,7 @@ function DocsPage() {
 
             <section
               id="zyphor-command-center"
-              className="mb-16 [scroll-margin-top:5.5rem] lg:[scroll-margin-top:4.5rem]"
+              className="mb-16 [scroll-margin-top:5.5rem] lg:[scroll-margin-top:4.5rem] reveal"
             >
               <SectionHeading level={2}>Zyphor Command Center</SectionHeading>
               <p className="mt-3 text-muted-foreground">
@@ -522,7 +525,7 @@ function DocsPage() {
 
             <section
               id="zylearn"
-              className="mb-16 [scroll-margin-top:5.5rem] lg:[scroll-margin-top:4.5rem]"
+              className="mb-16 [scroll-margin-top:5.5rem] lg:[scroll-margin-top:4.5rem] reveal"
             >
               <SectionHeading level={2}>ZyLearn</SectionHeading>
               <p className="mt-3 text-muted-foreground">
@@ -602,7 +605,7 @@ function DocsPage() {
 
             <section
               id="zyphor-updates"
-              className="mb-16 [scroll-margin-top:5.5rem] lg:[scroll-margin-top:4.5rem]"
+              className="mb-16 [scroll-margin-top:5.5rem] lg:[scroll-margin-top:4.5rem] reveal"
             >
               <SectionHeading level={2}>Zyphor Updates</SectionHeading>
               <p className="mt-3 text-muted-foreground">
@@ -630,7 +633,7 @@ function DocsPage() {
 
             <section
               id="zysh"
-              className="mb-16 [scroll-margin-top:5.5rem] lg:[scroll-margin-top:4.5rem]"
+              className="mb-16 [scroll-margin-top:5.5rem] lg:[scroll-margin-top:4.5rem] reveal"
             >
               <SectionHeading level={2}>Zysh</SectionHeading>
               <p className="mt-3 text-muted-foreground">
@@ -659,7 +662,7 @@ function DocsPage() {
 
             <section
               id="contributing-packages"
-              className="mb-16 [scroll-margin-top:5.5rem] lg:[scroll-margin-top:4.5rem]"
+              className="mb-16 [scroll-margin-top:5.5rem] lg:[scroll-margin-top:4.5rem] reveal"
             >
               <SectionHeading level={2}>Contributing to Packages</SectionHeading>
               <p className="mt-5 text-muted-foreground leading-relaxed">

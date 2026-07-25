@@ -1,4 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
+import { useEffect } from "react";
 import {
   Download,
   HardDrive,
@@ -17,6 +18,7 @@ import {
 import { SiteLayout, PageHeader } from "@/components/site/SiteLayout";
 import { cn } from "@/lib/utils";
 import { useZyphorDownloads } from "@/lib/useZyphorDownloads";
+import { useScrollReveal } from "@/lib/useScrollReveal";
 
 // ─── Route ────────────────────────────────────────────────────────────────────
 
@@ -38,6 +40,7 @@ export const Route = createFileRoute("/download")({
 
 function DownloadPage() {
   const { desktopLatest, serverLatest, adaTags, legacyTags, state } = useZyphorDownloads();
+  useScrollReveal();
 
   return (
     <SiteLayout>
@@ -65,7 +68,7 @@ function DownloadPage() {
         )}
 
         {/* ── Latest Releases Grid ── */}
-        <div>
+        <div className="reveal">
           <div className="flex items-center gap-3 mb-8">
             <Download className="h-6 w-6 text-brand" />
             <h2 className="text-3xl font-bold">Latest Releases</h2>
@@ -112,7 +115,7 @@ function DownloadPage() {
         </div>
 
         {/* ── Hardware Requirements ── */}
-        <div className="grid gap-5 lg:grid-cols-2">
+        <div className="grid gap-5 lg:grid-cols-2 reveal">
           <ReqCard
             title="Minimum hardware"
             items={[
@@ -132,7 +135,7 @@ function DownloadPage() {
         </div>
 
         {/* ── Installation Guide ── */}
-        <div className="card-elevated rounded-2xl p-8">
+        <div className="card-elevated rounded-2xl p-8 reveal">
           <h3 className="text-2xl font-semibold">Installation guide</h3>
           <p className="mt-2 text-muted-foreground max-w-2xl">
             Zyphor OS installs like any modern Linux distribution. Write the ISO to a USB drive, boot from it, and follow the installer.
@@ -156,7 +159,7 @@ function DownloadPage() {
         </div>
 
         {/* ── Release Archives ── */}
-        <div id="archives">
+        <div id="archives" className="reveal">
           <div className="flex items-center gap-3 mb-8">
             <Package className="h-6 w-6 text-brand" />
             <h2 className="text-3xl font-bold">Release Archives</h2>
@@ -251,7 +254,7 @@ function EditionCard({
   url: string;
 }) {
   return (
-    <div className="card-elevated rounded-2xl p-6 flex flex-col h-full group hover:border-brand/30 transition-colors">
+    <div className="card-elevated rounded-2xl p-6 flex flex-col h-full group hover:-translate-y-1 transition-all duration-300">
       <div className="flex items-start justify-between mb-4">
         <div className="inline-flex h-12 w-12 items-center justify-center rounded-xl bg-brand/10 text-brand ring-1 ring-brand/20 group-hover:bg-brand group-hover:text-white transition-colors">
           <Icon className="h-6 w-6" />
