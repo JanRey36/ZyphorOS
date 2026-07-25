@@ -9,7 +9,6 @@ export function SiteLayout({ children }: { children: ReactNode }) {
 
   return (
     <div className="min-h-screen flex flex-col bg-background text-foreground relative z-0">
-      {/* Persistent Ambient Background */}
       <div className="fixed inset-0 bg-aurora opacity-10 pointer-events-none -z-10" />
 
       <Nav />
@@ -34,10 +33,9 @@ export function PageHeader({
 }) {
   return (
     <section className={cn("relative overflow-hidden", className)}>
-      {/* Background effects */}
       <div className="absolute inset-0 bg-glow opacity-70 pointer-events-none animate-pulse-glow" />
       <div className="absolute inset-0 bg-grid opacity-[0.15] pointer-events-none" />
-      
+
       <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-16 sm:py-24 animate-fade-in-up">
         {eyebrow && (
           <div className="inline-flex items-center gap-2 rounded-full border border-brand/30 bg-brand/5 px-3 py-1.5 text-xs font-medium text-brand mb-4 shadow-[0_0_15px_-3px_var(--brand)]">

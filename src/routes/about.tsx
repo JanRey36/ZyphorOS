@@ -91,7 +91,6 @@ function AboutPage() {
       />
 
       <section className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-16 space-y-24">
-        {/* Intro */}
         <div className="grid lg:grid-cols-5 gap-12 items-center reveal">
           <div className="lg:col-span-3">
             <h2 className="text-3xl font-bold tracking-tight">About Zyphor OS</h2>
@@ -117,7 +116,6 @@ function AboutPage() {
           </div>
         </div>
 
-        {/* Philosophy pillars */}
         <div className="reveal">
           <p className="text-sm font-medium text-brand">Philosophy &amp; Vision</p>
           <h2 className="mt-2 text-3xl sm:text-4xl font-bold tracking-tight">
@@ -142,7 +140,6 @@ function AboutPage() {
           </div>
         </div>
 
-        {/* Why Zyphor exists */}
         <div className="card-elevated rounded-3xl p-10 sm:p-16 relative overflow-hidden reveal">
           <div className="absolute inset-0 bg-glow opacity-60 pointer-events-none animate-pulse-glow" />
           <div className="relative max-w-3xl mx-auto text-center">
@@ -160,7 +157,6 @@ function AboutPage() {
           </div>
         </div>
 
-        {/* Timeline */}
         <div className="reveal">
           <p className="text-sm font-medium text-brand">Roadmap</p>
           <h2 className="mt-2 text-3xl sm:text-4xl font-bold tracking-tight">Where we've been, where we're going.</h2>
@@ -171,10 +167,10 @@ function AboutPage() {
               {timeline.map((t, i) => (
                 <li key={i} className="relative pl-12 reveal" style={{ transitionDelay: `${i * 100}ms` }}>
                   <span className="absolute left-[11px] top-1.5 flex items-center justify-center h-5 w-5">
-                     <span className="absolute h-full w-full rounded-full bg-brand/20 animate-ping" />
-                     <span className="h-2.5 w-2.5 rounded-full bg-brand shadow-[0_0_8px_var(--brand)]" />
+                    <span className="absolute h-full w-full rounded-full bg-brand/20 animate-ping" />
+                    <span className="h-2.5 w-2.5 rounded-full bg-brand shadow-[0_0_8px_var(--brand)]" />
                   </span>
-                  
+
                   <div className="inline-flex items-center gap-2 rounded-full border border-brand/30 bg-brand/5 px-2.5 py-0.5 text-xs font-semibold text-brand tracking-widest uppercase mb-2">
                     {t.year}
                   </div>

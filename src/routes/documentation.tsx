@@ -134,7 +134,7 @@ function DocsPage() {
     observerRef.current = new IntersectionObserver(
       (entries) => {
         if (isManualScroll.current) return;
-        
+
         const visible = entries
           .filter((e) => e.isIntersecting)
           .sort((a, b) => b.intersectionRatio - a.intersectionRatio);
@@ -170,11 +170,10 @@ function DocsPage() {
     setSidebarOpen(false);
     setActiveSection(id);
     isManualScroll.current = true;
-    
+
     const el = document.getElementById(id);
     if (el) el.scrollIntoView({ behavior: "smooth", block: "start" });
-    
-    // Re-enable intersection observer after smooth scroll completes
+
     setTimeout(() => {
       isManualScroll.current = false;
     }, 1000);
@@ -668,7 +667,7 @@ function DocsPage() {
               <p className="mt-5 text-muted-foreground leading-relaxed">
                 Zyphor OS maintains its own collection of official packages that are developed specifically for the distribution. These packages include system utilities, desktop enhancements, command-line tools, themes, configuration packages, applications, and other components that make up the Zyphor OS experience.
               </p>
-              
+
               <ul className="mt-5 space-y-2 text-sm text-muted-foreground list-decimal list-inside ml-2">
                 <li><InlineCode>zyphor-cli</InlineCode> - shell script</li>
                 <li><InlineCode>zyphor-command-center</InlineCode> - python</li>
@@ -695,7 +694,7 @@ function DocsPage() {
 
               <ul className="mt-4 space-y-3 text-sm text-muted-foreground list-disc list-inside ml-2">
                 <li><strong className="font-semibold text-foreground">Step 1:</strong> Fork the <InlineCode>https://github.com/zyphor-os/zyphor-os-desktop</InlineCode> repository.</li>
-                <li><strong className="font-semibold text-foreground">Step 2:</strong> Clone your fork:<br/><span className="ml-5 mt-1 block"><InlineCode>git clone https://github.com/YOUR_USERNAME/zyphor-os-desktop</InlineCode></span></li>
+                <li><strong className="font-semibold text-foreground">Step 2:</strong> Clone your fork:<br /><span className="ml-5 mt-1 block"><InlineCode>git clone https://github.com/YOUR_USERNAME/zyphor-os-desktop</InlineCode></span></li>
                 <li><strong className="font-semibold text-foreground">Step 3:</strong> Open the <InlineCode>/pkg</InlineCode> folder.</li>
                 <li><strong className="font-semibold text-foreground">Step 4:</strong> Find the package you want to update, or create a new one.</li>
                 <li><strong className="font-semibold text-foreground">Step 5:</strong> Make your changes and test them.</li>
@@ -705,10 +704,10 @@ function DocsPage() {
 
               <h3 className="mt-8 text-lg font-semibold tracking-tight text-foreground">How to Test a Package?</h3>
               <p className="mt-3 text-muted-foreground leading-relaxed">
-                The easiest way to test a package is by installing <InlineCode>zyphor-cli</InlineCode>. It comes with a command that builds packages for you:<br/>
+                The easiest way to test a package is by installing <InlineCode>zyphor-cli</InlineCode>. It comes with a command that builds packages for you:<br />
                 <span className="mt-2 block"><InlineCode>zyphor build package PACKAGE_NAME</InlineCode></span>
               </p>
-              
+
               <p className="mt-4 text-muted-foreground leading-relaxed">
                 For example, if you're updating the <InlineCode>zylearn</InlineCode> package in Ada Lovelace LTS:
               </p>
@@ -717,8 +716,8 @@ function DocsPage() {
                 <li><InlineCode>cd pkg/v2/zylearn</InlineCode></li>
                 <li>Update the version number in <InlineCode>DEBIAN/control</InlineCode>.</li>
                 <li>Edit the files you want to change.</li>
-                <li>Go back to the package directory:<br/><span className="ml-5 mt-1 block"><InlineCode>cd ..</InlineCode></span></li>
-                <li>Build the package:<br/><span className="ml-5 mt-1 block"><InlineCode>zyphor build package zylearn</InlineCode></span></li>
+                <li>Go back to the package directory:<br /><span className="ml-5 mt-1 block"><InlineCode>cd ..</InlineCode></span></li>
+                <li>Build the package:<br /><span className="ml-5 mt-1 block"><InlineCode>zyphor build package zylearn</InlineCode></span></li>
                 <li>A <InlineCode>.deb</InlineCode> file will be created, ready for testing.</li>
               </ol>
 

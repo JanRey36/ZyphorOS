@@ -20,8 +20,6 @@ import { cn } from "@/lib/utils";
 import { useZyphorDownloads } from "@/lib/useZyphorDownloads";
 import { useScrollReveal } from "@/lib/useScrollReveal";
 
-// ─── Route ────────────────────────────────────────────────────────────────────
-
 export const Route = createFileRoute("/download")({
   head: () => ({
     meta: [
@@ -36,8 +34,6 @@ export const Route = createFileRoute("/download")({
   component: DownloadPage,
 });
 
-// ─── Page ─────────────────────────────────────────────────────────────────────
-
 function DownloadPage() {
   const { desktopLatest, serverLatest, adaTags, legacyTags, state } = useZyphorDownloads();
   useScrollReveal();
@@ -51,7 +47,6 @@ function DownloadPage() {
       />
 
       <section className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-16 space-y-24">
-        {/* ── Status Banner ── */}
         {state === "rate-limited" && (
           <StatusBanner
             icon={AlertCircle}
@@ -67,15 +62,13 @@ function DownloadPage() {
           />
         )}
 
-        {/* ── Latest Releases Grid ── */}
         <div className="reveal">
           <div className="flex items-center gap-3 mb-8">
             <Download className="h-6 w-6 text-brand" />
             <h2 className="text-3xl font-bold">Latest Releases</h2>
           </div>
-          
+
           <div className="grid gap-6 md:grid-cols-2">
-            {/* Desktop */}
             <EditionCard
               title="Zyphor OS Desktop"
               description="The flagship experience. A beautiful, intuitive, and powerful desktop environment for daily drivers and developers."
@@ -84,7 +77,6 @@ function DownloadPage() {
               loading={state === "loading"}
               url="https://github.com/zyphor-os/zyphor-os-desktop"
             />
-            {/* Server */}
             <EditionCard
               title="Zyphor OS Server"
               description="Lean, headless, and optimized for performance. Perfect for hosting, cloud deployments, and homelabs."
@@ -93,16 +85,14 @@ function DownloadPage() {
               loading={state === "loading"}
               url="https://github.com/zyphor-os/zyphor-os-server"
             />
-            {/* Horizon */}
             <EditionCard
               title="Zyphor OS Horizon"
               description="The experimental edge. Test drive the latest features and next-generation architecture before they reach stable."
               icon={Layers}
               version="v1.0.0-beta-2026.06.14-r1"
               loading={false}
-              url="https://github.com/zyphor-os/zyphor-os-desktop" // As defined in docs.html
+              url="https://github.com/zyphor-os/zyphor-os-desktop"
             />
-            {/* Minimal */}
             <EditionCard
               title="Zyphor OS Minimal"
               description="The skeleton codebase. Build your own custom Zyphor-based distribution from the ground up."
@@ -114,7 +104,6 @@ function DownloadPage() {
           </div>
         </div>
 
-        {/* ── Hardware Requirements ── */}
         <div className="grid gap-5 lg:grid-cols-2 reveal">
           <ReqCard
             title="Minimum hardware"
@@ -134,7 +123,6 @@ function DownloadPage() {
           />
         </div>
 
-        {/* ── Installation Guide ── */}
         <div className="card-elevated rounded-2xl p-8 reveal">
           <h3 className="text-2xl font-semibold">Installation guide</h3>
           <p className="mt-2 text-muted-foreground max-w-2xl">
@@ -158,7 +146,6 @@ function DownloadPage() {
           </ol>
         </div>
 
-        {/* ── Release Archives ── */}
         <div id="archives" className="reveal">
           <div className="flex items-center gap-3 mb-8">
             <Package className="h-6 w-6 text-brand" />
@@ -166,13 +153,12 @@ function DownloadPage() {
           </div>
 
           <div className="grid gap-8 lg:grid-cols-2">
-            {/* Ada Lovelace LTS */}
             <div className="card-elevated rounded-2xl p-6 flex flex-col">
               <h3 className="text-xl font-semibold mb-2">New Source (Ada Lovelace LTS)</h3>
               <p className="text-sm text-muted-foreground mb-6">
                 The modern Zyphor OS codebase. Long-term support releases carrying the Ada Lovelace codename.
               </p>
-              
+
               <div className="flex-1 bg-background/50 rounded-xl border border-border/60 overflow-hidden flex flex-col">
                 {state === "loading" ? (
                   <div className="p-8 flex justify-center"><Loader2 className="h-6 w-6 animate-spin text-brand" /></div>
@@ -182,7 +168,7 @@ function DownloadPage() {
                   <ul className="divide-y divide-border/60 max-h-[400px] overflow-y-auto">
                     {adaTags.map(tag => (
                       <li key={tag}>
-                        <a 
+                        <a
                           href={`https://github.com/zyphor-os/zyphor-os-desktop/releases/tag/${tag}`}
                           target="_blank"
                           rel="noreferrer"
@@ -198,13 +184,12 @@ function DownloadPage() {
               </div>
             </div>
 
-            {/* Legacy Codebase */}
             <div className="card-elevated rounded-2xl p-6 flex flex-col">
               <h3 className="text-xl font-semibold mb-2">Legacy Codebase</h3>
               <p className="text-sm text-muted-foreground mb-6">
                 The original stable releases from the legacy repository. Maintained for archival purposes.
               </p>
-              
+
               <div className="flex-1 bg-background/50 rounded-xl border border-border/60 overflow-hidden flex flex-col">
                 {state === "loading" ? (
                   <div className="p-8 flex justify-center"><Loader2 className="h-6 w-6 animate-spin text-brand" /></div>
@@ -214,7 +199,7 @@ function DownloadPage() {
                   <ul className="divide-y divide-border/60 max-h-[400px] overflow-y-auto">
                     {legacyTags.map(tag => (
                       <li key={tag}>
-                        <a 
+                        <a
                           href={`https://github.com/markjasonespelita/zyphor_os/releases/tag/${tag}`}
                           target="_blank"
                           rel="noreferrer"
@@ -235,8 +220,6 @@ function DownloadPage() {
     </SiteLayout>
   );
 }
-
-// ─── Edition Card ─────────────────────────────────────────────────────────────
 
 function EditionCard({
   title,
@@ -259,7 +242,7 @@ function EditionCard({
         <div className="inline-flex h-12 w-12 items-center justify-center rounded-xl bg-brand/10 text-brand ring-1 ring-brand/20 group-hover:bg-brand group-hover:text-white transition-colors">
           <Icon className="h-6 w-6" />
         </div>
-        
+
         {loading ? (
           <div className="h-6 w-24 bg-surface rounded-full animate-pulse" />
         ) : version ? (
@@ -285,8 +268,6 @@ function EditionCard({
   );
 }
 
-// ─── Status Banner ────────────────────────────────────────────────────────────
-
 function StatusBanner({
   icon: Icon,
   variant,
@@ -310,8 +291,6 @@ function StatusBanner({
     </div>
   );
 }
-
-// ─── Requirements Card ────────────────────────────────────────────────────────
 
 function ReqCard({
   title,

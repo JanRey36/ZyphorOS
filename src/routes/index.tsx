@@ -106,7 +106,6 @@ function HomePage() {
 
   return (
     <SiteLayout>
-      {/* HERO */}
       <section className="relative overflow-hidden">
         <div className="absolute inset-0 bg-aurora opacity-70 pointer-events-none" />
         <div className="absolute inset-0 bg-grid opacity-[0.18] pointer-events-none [mask-image:radial-gradient(ellipse_at_center,black_40%,transparent_75%)]" />
@@ -176,7 +175,6 @@ function HomePage() {
         </div>
       </section>
 
-      {/* FEATURES */}
       <section className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-20 reveal">
         <div className="max-w-2xl">
           <p className="text-sm font-medium text-brand">Why Zyphor OS</p>
@@ -208,8 +206,6 @@ function HomePage() {
         </div>
       </section>
 
-
-      {/* LATEST RELEASE */}
       <section className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-20 reveal">
         <div className="relative overflow-hidden rounded-3xl card-elevated p-8 sm:p-12">
           <div className="absolute inset-0 bg-glow opacity-70 pointer-events-none" />
@@ -227,7 +223,7 @@ function HomePage() {
               </h2>
               <p className="mt-2 text-muted-foreground">
                 Codename <span className="text-foreground font-medium">
-                {latestRelease.codename}
+                  {latestRelease.codename}
                 </span>{" "}
                 · Released {new Date(latestRelease.date).toLocaleDateString("en-US", {
                   year: "numeric",
@@ -262,17 +258,16 @@ function HomePage() {
                 <span className="ml-2 text-xs text-muted-foreground">terminal</span>
               </div>
               <pre className="text-muted-foreground leading-relaxed whitespace-pre-wrap">
-<span className="text-brand">$</span> zyphor system upgrade
-<span className="text-brand">$</span> zyphor setup theme dark
-<span className="text-brand">$</span> zyphor doctor scan
-<span className="text-muted-foreground">→ System healthy · 0 issues found</span><span className="animate-blink inline-block w-2 h-4 bg-foreground align-middle ml-1"></span>
+                <span className="text-brand">$</span> zyphor system upgrade
+                <span className="text-brand">$</span> zyphor setup theme dark
+                <span className="text-brand">$</span> zyphor doctor scan
+                <span className="text-muted-foreground">→ System healthy · 0 issues found</span><span className="animate-blink inline-block w-2 h-4 bg-foreground align-middle ml-1"></span>
               </pre>
             </div>
           </div>
         </div>
       </section>
 
-      {/* WHY CHOOSE — alternating */}
       <section className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-20 space-y-24">
         <div className="reveal">
           <p className="text-sm font-medium text-brand">Why choose Zyphor</p>
@@ -296,7 +291,7 @@ function HomePage() {
             </div>
             <div className={i % 2 === 1 ? "lg:order-1" : ""}>
               <div className="rounded-2xl overflow-hidden border-glow card-elevated group relative">
-                 <div className="absolute inset-0 bg-brand/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 mix-blend-overlay z-10" />
+                <div className="absolute inset-0 bg-brand/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 mix-blend-overlay z-10" />
                 <img src={row.image} alt="" className="w-full h-auto block transition-transform duration-700 group-hover:scale-105" loading="lazy" />
               </div>
             </div>
@@ -304,15 +299,14 @@ function HomePage() {
         ))}
       </section>
 
-      {/* COMMUNITY CTA */}
       <section className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-20 reveal">
         <div className="relative overflow-hidden rounded-3xl border border-border/60 bg-surface/60 p-10 sm:p-14 text-center">
           <div className="absolute inset-0 bg-glow opacity-60 pointer-events-none animate-pulse-glow" />
           <div className="relative">
             <div className="inline-flex items-center justify-center p-3 rounded-full bg-brand/10 text-brand ring-1 ring-brand/30 mb-4 shadow-[0_0_15px_-3px_var(--brand)] animate-float">
-               <Terminal className="h-8 w-8" />
+              <Terminal className="h-8 w-8" />
             </div>
-            
+
             <h2 className="mt-4 text-3xl sm:text-4xl font-bold tracking-tight">
               Zyphor is built in the open.
             </h2>

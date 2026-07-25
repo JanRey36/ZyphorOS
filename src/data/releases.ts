@@ -3,13 +3,12 @@ export type ReleaseChannel = "LTS" | "Stable" | "Legacy";
 export interface Release {
   version: string;
   codename?: string;
-  date: string; // ISO
+  date: string;
   channel: ReleaseChannel;
   notes?: string;
   latest?: boolean;
 }
 
-// Zyphor OS release archive
 export const releases: Release[] = [
   {
     version: "v1.13.0-LTS-AdaLovelace-u21",

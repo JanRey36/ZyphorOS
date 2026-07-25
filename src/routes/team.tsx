@@ -55,7 +55,7 @@ function TeamPage() {
     fetch(`https://api.github.com/users/${LEAD_USERNAME}`)
       .then((r) => r.json())
       .then((d: GitHubUser) => setLead(d))
-      .catch(() => {})
+      .catch(() => { })
       .finally(() => setLoadingLead(false));
 
     fetch(`https://api.github.com/repos/${REPO}/contributors?per_page=50`)
@@ -63,7 +63,7 @@ function TeamPage() {
       .then((d: GitHubContributor[]) =>
         setContributors(Array.isArray(d) ? d : [])
       )
-      .catch(() => {})
+      .catch(() => { })
       .finally(() => setLoadingContribs(false));
   }, []);
 
@@ -76,7 +76,6 @@ function TeamPage() {
       />
       <div className="w-full max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 pb-32 pt-16">
 
-        {/* ── Lead Maintainer ── */}
         <section className="text-center mb-24 reveal">
           <div className="inline-flex items-center gap-2 rounded-full bg-brand/10 text-brand px-3 py-1 text-xs font-semibold ring-1 ring-brand/20 mb-8 uppercase tracking-widest">
             Creator And Lead OS Maintainer
@@ -109,7 +108,6 @@ function TeamPage() {
                 </p>
               )}
 
-              {/* Stats */}
               <div className="mt-10 flex items-start justify-center gap-10 sm:gap-16">
                 <div className="flex flex-col items-center group">
                   <span className="text-3xl font-bold font-mono text-foreground group-hover:text-brand transition-colors duration-300">{lead.followers}</span>
@@ -148,7 +146,6 @@ function TeamPage() {
           )}
         </section>
 
-        {/* ── Contributors ── */}
         <section className="mb-24 reveal">
           <div className="text-center mb-12">
             <h2 className="text-2xl sm:text-3xl font-bold tracking-tight mb-3">Contributors</h2>
@@ -179,12 +176,12 @@ function TeamPage() {
                   style={{ transitionDelay: `${(idx % 4) * 50}ms` }}
                 >
                   <div className="relative">
-                     <div className="absolute inset-0 bg-brand/20 blur-xl rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                     <img
-                       src={c.avatar_url}
-                       alt={c.login}
-                       className="relative h-20 w-20 sm:h-24 sm:w-24 rounded-full object-cover ring-2 ring-transparent group-hover:ring-brand/30 transition-all duration-300"
-                     />
+                    <div className="absolute inset-0 bg-brand/20 blur-xl rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                    <img
+                      src={c.avatar_url}
+                      alt={c.login}
+                      className="relative h-20 w-20 sm:h-24 sm:w-24 rounded-full object-cover ring-2 ring-transparent group-hover:ring-brand/30 transition-all duration-300"
+                    />
                   </div>
                   <p className="mt-4 text-sm font-semibold break-all leading-snug group-hover:text-brand transition-colors">
                     {c.login}
@@ -198,7 +195,6 @@ function TeamPage() {
           )}
         </section>
 
-        {/* ── Stats banner ── */}
         <section className="rounded-3xl card-elevated mb-24 reveal overflow-hidden relative">
           <div className="absolute inset-0 bg-glow opacity-30 pointer-events-none" />
           <div className="grid grid-cols-1 sm:grid-cols-3 divide-y sm:divide-y-0 sm:divide-x divide-border/60 relative">
@@ -221,7 +217,6 @@ function TeamPage() {
           </div>
         </section>
 
-        {/* ── CTA ── */}
         <section className="text-center space-y-6 reveal">
           <h2 className="text-4xl sm:text-5xl font-bold tracking-tight text-foreground">
             The Future Belongs To Builders

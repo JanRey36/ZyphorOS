@@ -21,10 +21,8 @@ export function useScrollReveal() {
       });
     };
 
-    // Initial observation
     observeElements();
 
-    // Watch for dynamically added elements (like async loaded contributors or releases)
     const mutationObserver = new MutationObserver(() => {
       observeElements();
     });

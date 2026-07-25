@@ -23,7 +23,6 @@ export function Nav() {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  /* Close on outside click */
   useEffect(() => {
     if (!open) return;
     const handler = (e: MouseEvent) => {
@@ -35,7 +34,6 @@ export function Nav() {
     return () => document.removeEventListener("mousedown", handler);
   }, [open]);
 
-  /* Close on route change (escape too) */
   useEffect(() => {
     const onKey = (e: KeyboardEvent) => { if (e.key === "Escape") setOpen(false); };
     document.addEventListener("keydown", onKey);
@@ -56,7 +54,6 @@ export function Nav() {
         <div className="flex h-16 items-center justify-between gap-4">
           <Logo />
 
-          {/* Desktop nav */}
           <nav className="hidden lg:flex items-center gap-1" aria-label="Primary">
             {links.map((l) => (
               <Link
@@ -72,7 +69,6 @@ export function Nav() {
                 {({ isActive }) => (
                   <>
                     {l.label}
-                    {/* Active underline pill */}
                     <span
                       className={cn(
                         "absolute bottom-1 left-1/2 -translate-x-1/2 h-0.5 rounded-full bg-brand transition-all duration-300",
@@ -85,7 +81,6 @@ export function Nav() {
             ))}
           </nav>
 
-          {/* Desktop actions */}
           <div className="hidden lg:flex items-center gap-2">
             <a
               href="https://github.com/zyphor-os/zyphor-os-desktop"
@@ -105,7 +100,6 @@ export function Nav() {
             </Link>
           </div>
 
-          {/* Mobile toggle */}
           <button
             className="lg:hidden p-2 rounded-lg text-muted-foreground hover:text-foreground hover:bg-white/5 transition-colors"
             onClick={() => setOpen((v) => !v)}
@@ -131,7 +125,6 @@ export function Nav() {
           </button>
         </div>
 
-        {/* Mobile menu — animated slide-down */}
         <div
           className={cn(
             "lg:hidden overflow-hidden transition-all duration-300 ease-in-out",
