@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="en" data-bs-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Documentation</title>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/css/bootstrap.min.css" rel="stylesheet">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" rel="stylesheet">
+<style>
+  :root {
+    --sidebar-width: 280px;
+  }
+
+  body {
+    font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+  }
+
+  /* Sidebar */
+  .sidebar {
+    width: var(--sidebar-width);
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    overflow-y: auto;
+    border-right: 1px solid var(--bs-border-color);
+    background-color: var(--bs-tertiary-bg);
+    transition: transform 0.3s ease;
+    z-index: 1030;
+  }
+
+  .sidebar-brand {
+    padding: 1.25rem 1.5rem;
+    border-bottom: 1px solid var(--bs-border-color);
+  }
+
+  .sidebar .nav-link {
+    color: var(--bs-body-color);
+    padding: 0.5rem 1.5rem;
+    border-radius: 0;
+    font-size: 0.92rem;
+  }
+
+  .sidebar .nav-link.active {
+    background-color: var(--bs-primary);
+    color: #fff;
+    font-weight: 500;
+  }
+
+  .sidebar .nav-link:hover:not(.active) {
+    background-color: var(--bs-secondary-bg);
+  }
+
+  .sidebar .nav-section-title {
+    text-transform: uppercase;
+    font-size: 0.72rem;
+    letter-spacing: 0.06em;
+    color: var(--bs-secondary-color);
+    padding: 1rem 1.5rem 0.35rem;
+    font-weight: 600;
+  }
+
+  /* Main content */
+  .main-content {
+    margin-left: var(--sidebar-width);
+    min-height: 100vh;
+  }
+
+  .topbar {
+    border-bottom: 1px solid var(--bs-border-color);
+    background-color: var(--bs-body-bg);
+    position: sticky;
+    top: 0;
+    z-index: 1020;
+  }
+
+  .content-section {
+    scroll-margin-top: 80px;
+  }
+
+  pre.code-block {
+    background-color: var(--bs-tertiary-bg);
+    border: 1px solid var(--bs-border-color);
+    border-radius: 0.5rem;
+    padding: 1rem 1.25rem;
+    overflow-x: auto;
+    font-size: 0.875rem;
+  }
+
+  .theme-toggle-btn {
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  /* Mobile sidebar */
+  @media (max-width: 991.98px) {
+    .sidebar {
+      transform: translateX(-100%);
+    }
+    .sidebar.show {
+      transform: translateX(0);
+    }
+    .main-content {
+      margin-left: 0;
+    }
+  }
+
+  .sidebar-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.4);
+    z-index: 1025;
+  }
+  .sidebar-overlay.show {
+    display: block;
+  }
+
+  ::-webkit-scrollbar { width: 8px; }
+  ::-webkit-scrollbar-thumb { background: var(--bs-secondary-color); border-radius: 4px; }
+</style>
+</head>
+<body>
+
+<!-- Sidebar -->
+<nav class="sidebar" id="sidebar">
+  <div class="sidebar-brand d-flex align-items-center gap-2">
+    <i class="fa-solid fa-book fs-5 text-primary"></i>
+    <span class="fw-bold fs-5">Documentation</span>
+  </div>
+
+  <div class="pb-4">
+    <div class="nav-section-title">Getting Started</div>
+    <ul class="nav flex-column">
+      <li class="nav-item"><a class="nav-link active" href="#introduction"><i class="fa-solid fa-circle-info me-2"></i>Introduction</a></li>
+      <li class="nav-item"><a class="nav-link" href="#installation"><i class="fa-solid fa-download me-2"></i>Installation</a></li>
+      <li class="nav-item"><a class="nav-link" href="#quick-start"><i class="fa-solid fa-bolt me-2"></i>Quick Start</a></li>
+    </ul>
+
+    <div class="nav-section-title">Support</div>
+    <ul class="nav flex-column">
+      <li class="nav-item"><a class="nav-link" href="#faq"><i class="fa-solid fa-circle-question me-2"></i>FAQ</a></li>
+    </ul>
+  </div>
+</nav>
+
+<div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+<!-- Main content -->
+<div class="main-content">
+
+  <!-- Top bar -->
+  <div class="topbar d-flex align-items-center justify-content-between px-3 px-md-4 py-3">
+    <div class="d-flex align-items-center gap-3">
+      <button class="btn btn-outline-secondary d-lg-none" id="sidebarToggle">
+        <i class="fa-solid fa-bars"></i>
+      </button>
+      <div class="position-relative d-none d-sm-block">
+        <i class="fa-solid fa-magnifying-glass position-absolute top-50 translate-middle-y ms-3 text-secondary"></i>
+        <input type="text" class="form-control ps-5" style="width: 280px;" placeholder="Search docs...">
+      </div>
+    </div>
+
+    <div class="d-flex align-items-center gap-2">
+      <a href="" class="btn btn-outline-secondary d-none d-sm-inline-flex _repoUrl">
+        <i class="fa-brands fa-github me-1"></i> GitHub
+      </a>
+      <button class="btn btn-outline-secondary theme-toggle-btn" id="themeToggle" title="Toggle theme">
+        <i class="fa-solid fa-moon" id="themeIcon"></i>
+      </button>
+    </div>
+  </div>
+
+  <!-- Content -->
+  <div class="container-fluid px-3 px-md-5 py-4" style="max-width: 900px;">
+
+    <section id="introduction" class="content-section mb-5">
+      <span class="badge text-bg-primary mb-2 _latestVersion">v....</span>
+      <h1 class="fw-bold">Introduction</h1>
+      <p class="lead text-secondary">Everything you need to know to get up and running quickly.</p>
+      <p class="_description"></p>
+      <div class="_topics"></div> <br>
+      <div class="alert alert-info d-flex align-items-start gap-2" role="alert">
+        <i class="fa-solid fa-lightbulb mt-1"></i>
+        <div>Tip: you can toggle between light and dark mode using the button in the top-right corner.</div>
+      </div>
+    </section>
+
+    <section id="installation" class="content-section mb-5">
+      <h2 class="fw-bold">Installation</h2>
+      <p>Install via your package manager of choice:</p>
+      <pre class="code-block"><code>npm install your-package-name</code></pre>
+      <p>Or using yarn:</p>
+      <pre class="code-block"><code>yarn add your-package-name</code></pre>
+    </section>
+
+    <section id="quick-start" class="content-section mb-5">
+      <h2 class="fw-bold">Quick Start</h2>
+      <p>Here's a minimal example to get something running on screen:</p>
+      <pre class="code-block"><code>import { init } from "your-package-name";
+
+init({
+  target: "#app",
+  theme: "auto"
+});</code></pre>
+      <p>That's it — your app should now be initialized and ready to use.</p>
+    </section>
+
+    <section id="configuration" class="content-section mb-5">
+      <h2 class="fw-bold">Configuration</h2>
+      <p>Configuration options can be passed when initializing the app, or defined in a config file at the root of your project.</p>
+      <div class="table-responsive">
+        <table class="table table-bordered align-middle">
+          <thead>
+            <tr><th>Option</th><th>Type</th><th>Default</th><th>Description</th></tr>
+          </thead>
+          <tbody>
+            <tr><td><code>theme</code></td><td>string</td><td>"light"</td><td>Sets the default theme.</td></tr>
+            <tr><td><code>strict</code></td><td>boolean</td><td>false</td><td>Enables strict mode checks.</td></tr>
+            <tr><td><code>locale</code></td><td>string</td><td>"en"</td><td>Default locale for content.</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section id="routing" class="content-section mb-5">
+      <h2 class="fw-bold">Routing</h2>
+      <p>Routes are defined declaratively and map paths to views. Nested routes are supported out of the box.</p>
+      <pre class="code-block"><code>routes: [
+  { path: "/", component: Home },
+  { path: "/docs/:slug", component: DocPage }
+]</code></pre>
+    </section>
+
+    <section id="components" class="content-section mb-5">
+      <h2 class="fw-bold">Components</h2>
+      <p>Components are reusable, self-contained building blocks. They can accept props, emit events, and be composed together.</p>
+      <ul>
+        <li>Stateless presentational components</li>
+        <li>Composable layout primitives</li>
+        <li>Lifecycle-aware containers</li>
+      </ul>
+    </section>
+
+    <section id="api-endpoints" class="content-section mb-5">
+      <h2 class="fw-bold">Endpoints</h2>
+      <div class="d-flex align-items-center gap-2 mb-2">
+        <span class="badge text-bg-success">GET</span>
+        <code>/api/v1/items</code>
+      </div>
+      <p class="text-secondary mb-3">Returns a paginated list of items.</p>
+
+      <div class="d-flex align-items-center gap-2 mb-2">
+        <span class="badge text-bg-primary">POST</span>
+        <code>/api/v1/items</code>
+      </div>
+      <p class="text-secondary">Creates a new item.</p>
+    </section>
+
+    <section id="authentication" class="content-section mb-5">
+      <h2 class="fw-bold">Authentication</h2>
+      <p>All requests must include a bearer token in the <code>Authorization</code> header:</p>
+      <pre class="code-block"><code>Authorization: Bearer YOUR_API_KEY</code></pre>
+    </section>
+
+    <section id="faq" class="content-section mb-5">
+      <h2 class="fw-bold">FAQ</h2>
+      <div class="accordion" id="faqAccordion">
+        <div class="accordion-item">
+          <h2 class="accordion-header">
+            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#faq1">
+              Is this free to use?
+            </button>
+          </h2>
+          <div id="faq1" class="accordion-collapse collapse show" data-bs-parent="#faqAccordion">
+            <div class="accordion-body">Yes, it's open source and free under the MIT license.</div>
+          </div>
+        </div>
+        <div class="accordion-item">
+          <h2 class="accordion-header">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq2">
+              Does it support TypeScript?
+            </button>
+          </h2>
+          <div id="faq2" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+            <div class="accordion-body">Yes, type definitions are included out of the box.</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer class="border-top pt-4 pb-5 text-secondary small">
+      © 2026 DevDocs. Built with Bootstrap.
+    </footer>
+
+  </div>
+</div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+
+<script>
+    $(document).ready(function() {
+        $.get('https://api.github.com/repos/zyphor-os/zyphor-os-desktop', function(res) {
+            let repoUrl = res.html_url;
+            let description = res.description;
+            let topics = res.topics;
+
+            console.log(res);
+
+            // implementation
+            $('._repoUrl').attr('href', repoUrl);
+            $('._description').text(description);
+            topics.forEach(element => {
+                $('._topics').append(`
+                    <span class="badge rounded-pill text-bg-secondary me-1">
+                        ${element}
+                    </span>
+                `);
+            });
+        })
+
+        $.get('https://api.github.com/repos/zyphor-os/zyphor-os-desktop/releases/latest', function(res) {
+            let latestVersion = res.tag_name;
+            console.log(res);
+
+            // implementation
+            $('._latestVersion').text(latestVersion);
+        })
+    })
+</script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/js/bootstrap.bundle.min.js"></script>
+<script>
+  // Theme toggle
+  const root = document.documentElement;
+  const themeToggle = document.getElementById('themeToggle');
+  const themeIcon = document.getElementById('themeIcon');
+
+  function setTheme(theme) {
+    root.setAttribute('data-bs-theme', theme);
+    themeIcon.className = theme === 'dark' ? 'fa-solid fa-sun' : 'fa-solid fa-moon';
+  }
+
+  // Default to light; could also check matchMedia, kept simple here
+  setTheme('light');
+
+  themeToggle.addEventListener('click', () => {
+    const current = root.getAttribute('data-bs-theme');
+    setTheme(current === 'dark' ? 'light' : 'dark');
+  });
+
+  // Mobile sidebar toggle
+  const sidebar = document.getElementById('sidebar');
+  const sidebarToggle = document.getElementById('sidebarToggle');
+  const sidebarOverlay = document.getElementById('sidebarOverlay');
+
+  function toggleSidebar() {
+    sidebar.classList.toggle('show');
+    sidebarOverlay.classList.toggle('show');
+  }
+
+  sidebarToggle.addEventListener('click', toggleSidebar);
+  sidebarOverlay.addEventListener('click', toggleSidebar);
+
+  // Close mobile sidebar on link click
+  document.querySelectorAll('.sidebar .nav-link').forEach(link => {
+    link.addEventListener('click', () => {
+      if (window.innerWidth < 992) {
+        sidebar.classList.remove('show');
+        sidebarOverlay.classList.remove('show');
+      }
+    });
+  });
+
+  // Active link highlighting on scroll
+  const sections = document.querySelectorAll('.content-section');
+  const navLinks = document.querySelectorAll('.sidebar .nav-link');
+
+  window.addEventListener('scroll', () => {
+    let current = '';
+    sections.forEach(section => {
+      const rect = section.getBoundingClientRect();
+      if (rect.top <= 100) {
+        current = section.id;
+      }
+    });
+    navLinks.forEach(link => {
+      link.classList.remove('active');
+      if (link.getAttribute('href') === '#' + current) {
+        link.classList.add('active');
+      }
+    });
+  });
+</script>
+</body>
+</html>

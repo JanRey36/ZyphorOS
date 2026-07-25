@@ -1,0 +1,729 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zyphor OS - Learn. Build. Create.</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+    <style>
+        :root{
+            --zyphor-primary:#4de6ff;
+            --zyphor-secondary:#4a6cff;
+            --zyphor-dark:#020817;
+            --zyphor-card:#0f172a;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body{
+            background: var(--zyphor-dark);
+            color:white;
+            font-family: 'Inter', sans-serif;
+            overflow-x:hidden;
+        }
+
+        .navbar{
+            background: rgba(2, 8, 23, 0.7);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(255,255,255,.05);
+        }
+
+        .navbar-brand{
+            font-family:'Orbitron', sans-serif;
+            font-weight:700;
+            letter-spacing: 1px;
+        }
+
+        .hero{
+            min-height:100vh;
+            display:flex;
+            align-items:center;
+            position:relative;
+            overflow:hidden;
+            padding-top: 80px;
+        }
+
+        .hero::before{
+            content:'';
+            position:absolute;
+            width:800px;
+            height:800px;
+            background: radial-gradient(circle, rgba(77,230,255,.12), transparent 70%);
+            top:-200px;
+            right:-200px;
+            pointer-events: none;
+        }
+
+        .hero::after{
+            content:'';
+            position:absolute;
+            width:600px;
+            height:600px;
+            background: radial-gradient(circle, rgba(74,108,255,.1), transparent 70%);
+            bottom:-200px;
+            left:-200px;
+            pointer-events: none;
+        }
+
+        .logo{
+            max-width:420px;
+            width: 100%;
+            height: auto;
+            filter: drop-shadow(0 0 30px rgba(77,230,255,.2));
+        }
+
+        .hero-title{
+            font-family:'Orbitron', sans-serif;
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            font-weight:700;
+            line-height:1.1;
+        }
+
+        .gradient-text{
+            background:linear-gradient(90deg, var(--zyphor-primary), var(--zyphor-secondary));
+            -webkit-background-clip:text;
+            -webkit-text-fill-color:transparent;
+        }
+
+        .btn-zyphor{
+            background:linear-gradient(135deg, var(--zyphor-primary), var(--zyphor-secondary));
+            border:none;
+            color:white;
+            padding:14px 30px;
+            font-weight:600;
+            border-radius:12px;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .btn-zyphor:hover{
+            transform:translateY(-2px);
+            box-shadow: 0 8px 20px rgba(77,230,255,.25);
+            color: white;
+        }
+
+        .feature-card, .philosophy-card{
+            background:var(--zyphor-card);
+            border:1px solid rgba(255,255,255,.05);
+            border-radius:20px;
+            padding:30px;
+            height:100%;
+            transition: transform .3s ease, border-color .3s ease;
+        }
+
+        .feature-card:hover, .philosophy-card:hover{
+            transform:translateY(-5px);
+            border-color:rgba(77,230,255,.3);
+        }
+
+        .feature-icon{
+            font-size:2rem;
+            color:var(--zyphor-primary);
+        }
+
+        .section-title{
+            font-family:'Orbitron', sans-serif;
+        }
+
+        .stats{
+            background:linear-gradient(135deg, rgba(77,230,255,.05), rgba(74,108,255,.05));
+            border: 1px solid rgba(255,255,255,.03);
+            border-radius:24px;
+        }
+
+        .quote-block {
+            border-left: 3px solid var(--zyphor-primary);
+            padding-left: 15px;
+            font-style: italic;
+            color: rgba(255,255,255,0.8);
+        }
+
+        footer{
+            border-top:1px solid rgba(255,255,255,.08);
+        }
+
+        /* release */
+
+        .release-card{
+            border-radius:20px;
+            background:linear-gradient(135deg,#0d6efd,#20c997);
+            color:#fff;
+            overflow:hidden;
+        }
+
+        .release-label{
+            text-transform:uppercase;
+            letter-spacing:2px;
+            font-size:.9rem;
+            opacity:.8;
+        }
+
+        .release-version{
+            font-size:50px;
+            font-weight:800;
+            line-height:1;
+        }
+
+        .release-subtitle{
+            font-size:1.25rem;
+            opacity:.9;
+        }
+    </style>
+</head>
+<body>
+
+<nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+    <div class="container">
+        <a class="navbar-brand text-light" href="#home">ZYPHOR OS</a>
+
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#nav" aria-controls="nav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="nav">
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item"><a class="nav-link" href="#home">Home</a></li>
+                <li class="nav-item"><a class="nav-link" href="#features">Features</a></li>
+                <li class="nav-item"><a class="nav-link" href="#philosophy">Philosophy</a></li>
+                <li class="nav-item"><a class="nav-link" href="#download">Download</a></li>
+                <li class="nav-item"><a class="nav-link" href="docs.html">Documentation</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<main>
+    <section id="home" class="hero">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6">
+                    <h1 class="hero-title">
+                        Learn.<br>
+                        Build.<br>
+                        <span class="gradient-text">Create.</span>
+                    </h1>
+                    <p class="lead mt-4 text-light opacity-75">
+                        Your Zyphor buddy!
+                        <br>
+                        <br>
+                        <b>Download Latest Releases: 
+                            <hr>
+                            <a href="" class="nav-link fw-bold _zyphorOSDesktopUrl" target="_blank">Desktop - <span class="_zyphorOSDesktopLatestVersion">...</span></a>
+                            <hr>
+                            <a href="" class="nav-link fw-bold _zyphorOSDesktopUrl" target="_blank">Horizon - v1.0.0-beta-2026.06.14-r1</a>
+                            <hr>
+                            <a href="" class="nav-link fw-bold _zyphorOSServerUrl" target="_blank">Server - <span class="_zyphorOSServerLatestVersion">...</span></a>
+                            <hr>
+                            <a href="https://github.com/zyphor-os/zyphor-os-minimal" class="nav-link fw-bold" target="_blank">Minimal Version (Skeleton) Codebase</a>
+                        </b>
+                    </p>
+                    <div class="mt-4">
+                        <a href="https://github.com/zyphor-os/zyphor-os-desktop" class="btn btn-zyphor me-3">Visit Our Github Repository</a>
+                        <a href="#philosophy" class="btn btn-outline-light px-4 py-3" style="border-radius:12px; font-weight:600;">Our Philosophy</a>
+                    </div>
+                    <div class="mt-4">
+                        <a href="" target="_blank" class="text-light nav-link"></a>
+                    </div>
+                </div>
+                <div class="col-lg-6 text-center mt-5 mt-lg-0">
+                    <img src="assets/images/logo.png" class="img-fluid logo" alt="Zyphor OS Tech Graphic">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="container py-5">
+        <div class="release-card p-5 shadow-lg text-center">
+
+            <div class="release-label mb-2">
+                Zyphor OS Desktop | Latest Release
+            </div>
+
+            <div class="release-version">
+                v...
+            </div>
+
+            <div class="release-subtitle mt-3">
+                Ada Lovelace
+            </div>
+
+        </div>
+    </div>
+
+    <section id="features" class="py-2">
+        <div class="container py-4">
+            <div class="text-center mb-5">
+                <h2 class="section-title">Why Zyphor OS?</h2>
+            </div>
+            <div class="row">
+                <div class="col-lg-6 col-md-6 col-sm-12">
+                    <img src="./assets/images/why.jpg" alt="" width="100%">
+                </div>
+                <div class="col-lg-6 col-md-6 col-sm-12">
+                    <p>
+                        <ol>
+                            <li><strong>Learning-Oriented:</strong> The creator of Zyphor OS developed a minimal version of the operating system to help users learn how Linux is built, from kernel space to user space.</li>
+                            <li><strong>Debian/Kali Based:</strong> Zyphor OS is built on the stability of Debian and the security-focused tools of Kali Linux, providing a lightweight, customizable, and developer-friendly Linux distribution.</li>
+                            <li><strong>Actively Maintained:</strong> Zyphor OS is continuously developed with regular updates, bug fixes, performance improvements, and new features to ensure a reliable and up-to-date user experience.</li>
+                            <li><strong>Open Source:</strong> Zyphor OS is open source, allowing anyone to inspect, modify, and contribute to its development.</li>
+                            <li><strong>Community-Driven:</strong> Learners, developers, and curious minds are welcome to join the Zyphor OS community, share ideas, report issues, and contribute to the project.</li>
+                            <li><strong>Complete Office Suite:</strong> Zyphor OS includes the full LibreOffice suite by default, providing powerful tools for word processing, spreadsheets, presentations, databases, formulas, and vector graphics.</li>
+                            <li><strong>Own Ecosystem:</strong> Zyphor OS includes its own ecosystem of tools, packages, repositories, and utilities designed to provide a consistent and integrated user experience.</li>
+                        </ol>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="philosophy" class="py-2 style="position: relative;">
+        <div class="container py-4">
+            <div class="text-center mb-5">
+                <h2 class="section-title">Philosophy & Vision</h2>
+                <p class="text-secondary">Created By: Mark Jason P. Espelita</p>
+            </div>
+            <div class="row">
+                <div class="col-lg-6 col-md-6 col-sm-12">
+                    <ol>
+                        <li><strong>Minimal and Controlled Environment:</strong> Zyphor OS is designed to include only the essential components needed for a fast, stable, and efficient system. By reducing unnecessary software and background services, users gain greater control over their environment while maintaining the flexibility to install only what they need.</li>
+                        <li><strong>CLI Abstraction Layer:</strong> Zyphor CLI simplifies Linux administration with a unified and easy-to-use command interface.</li>
+                        <li><strong>Unified Package Management:</strong> Manage applications through a centralized app registry with a consistent and simplified package management experience.</li>
+                        <li><strong>Independent Package Ecosystem:</strong> Zyphor OS maintains its own ecosystem of packages, repositories, and system components.</li>
+                        <li><strong>Branding and Identity:</strong> Zyphor OS delivers a distinct identity through its own branding, design language, tools, and user experience.</li>
+                        <li><strong>Educational and Learning-Oriented Design:</strong> Zyphor OS is designed to help users learn Linux through a minimal, transparent, and hands-on environment.</li>
+                    </ol>
+                </div>
+                <div class="col-lg-6 col-md-6 col-sm-12">
+                    <img src="./assets/images/filo.jpg" alt="" width="100%">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="philosophy" class="py-2 style="position: relative;">
+        <div class="container py-4">
+            <div class="text-center mb-5">
+                <h2 class="section-title">Release Format</h2>
+            </div>
+
+            <div class="row">
+                <div class="col-lg-6 col-md-6 col-sm-12">
+                    <img src="./assets/images/rel.jpg" alt="" width="100%">
+                </div>
+                <div class="col-lg-6 col-md-6 col-sm-12">
+                    <p>
+                        Zyphor OS follows a semantic versioning-based release format designed to provide clear information about the version, release date, ISO refresh cycle, and internal package updates.
+                    </p>
+
+                    <ul>
+                        <li><strong>Standard Release (New format introduced on May 22, 2026):</strong> <code>vx.x.x-yyyy-mm-dd-rx</code>
+                            <ul>
+                                <li><strong>vX.X.X</strong> - The main semantic version number representing major, minor, and patch releases.</li>
+                                <li><strong>yyyy-mm-dd</strong> - The official release date of the ISO.</li>
+                                <li><strong>rx</strong> - ISO refresh number, indicating how many times the ISO image has been rebuilt or refreshed after the initial release.</li>
+                            </ul>
+                        </li>
+
+                        <li><strong>LTS Release:</strong> <code>vx.x.x-lts-codename-ux</code>
+                            <ul>
+                                <li><strong>vX.X.X</strong> - The main semantic version number.</li>
+                                <li><strong>LTS</strong> - Indicates a Long-Term Support release.</li>
+                                <li><strong>Codename</strong> - The official release codename assigned to the LTS version.</li>
+                                <li><strong>ux</strong> - Internal update revision number, representing how many times Zyphor OS packages and system components have been updated and released within the LTS cycle.</li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="philosophy" class="py-2 style="position: relative;">
+        <div class="container py-4">
+            <div class="text-center mb-5">
+                <h2 class="section-title">Release Policy</h2>
+            </div>
+
+            <p>
+                Zyphor OS follows a structured release policy to provide predictable updates, long-term stability, and continuous improvement.
+            </p>
+
+            <ul>
+                <li>
+                    <strong>LTS Release Cycle:</strong>
+                    A new Long-Term Support (LTS) release is planned every 6 months, introducing new features, improvements, and updated system components.
+                </li>
+
+                <li>
+                    <strong>LTS Support Period:</strong>
+                    Each LTS version will receive maintenance, security updates, and bug fixes for 5 years after its initial release.
+                </li>
+
+                <li>
+                    <strong>LTS Codenames:</strong>
+                    Zyphor OS LTS releases use alphabetical codenames. Each LTS release follows the next letter of the alphabet, starting with <strong>A</strong> for <strong>Ada Lovelace</strong>, followed by <strong>B</strong>, <strong>C</strong>, and so on for future releases.
+                </li>
+            </ul>
+        </div>
+    </section>
+
+    <section id="releases" class="content-section mb-5">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h2 class="section-title">Releases</h2>
+                <p class="text-secondary">
+                    Available Zyphor OS release versions.
+                </p>
+            </div>
+
+            <div class="row">
+
+                <!-- Legacy -->
+                <div class="col-12 mb-4">
+                    <b>Legacy Codebase: Stable</b>
+
+                    <div class="row">
+                        <div class="col">
+                            <ul class="_releaseTags-legacy-1 list-group"></ul>
+                        </div>
+
+                        <div class="col">
+                            <ul class="_releaseTags-legacy-2 list-group"></ul>
+                        </div>
+
+                        <div class="col">
+                            <ul class="_releaseTags-legacy-3 list-group"></ul>
+                        </div>
+
+                        <div class="col">
+                            <ul class="_releaseTags-legacy-4 list-group"></ul>
+                        </div>
+
+                        <div class="col">
+                            <ul class="_releaseTags-legacy-5 list-group"></ul>
+                        </div>
+                    </div>
+                </div>
+
+
+                <!-- New Source -->
+                <div class="col-12">
+                    <b>New Source: Ada Lovelace LTS</b>
+
+                    <div class="row">
+                        <div class="col">
+                            <ul class="_releaseTags-1 list-group"></ul>
+                        </div>
+
+                        <div class="col">
+                            <ul class="_releaseTags-2 list-group"></ul>
+                        </div>
+
+                        <div class="col">
+                            <ul class="_releaseTags-3 list-group"></ul>
+                        </div>
+
+                        <div class="col">
+                            <ul class="_releaseTags-4 list-group"></ul>
+                        </div>
+
+                        <div class="col">
+                            <ul class="_releaseTags-5 list-group"></ul>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <section class="py-2">
+        <div class="container">
+
+            <div class="text-center mb-5">
+                <h2 class="section-title">Project Team</h2>
+                <p class="text-secondary">
+                    The people behind the development and maintenance of Zyphor OS.
+                </p>
+            </div>
+
+            <!-- Lead Maintainer -->
+            <div class="shadow-sm border-0 mb-5">
+                <div class="card-body text-center">
+
+                    <h4 class="mb-4">Creator And Lead OS Maintainer</h4>
+
+                    <img class="_repoOwnerAvatar rounded-circle mb-3"
+                        src=""
+                        alt="GitHub Avatar"
+                        width="120"
+                        height="120">
+
+                    <h3 class="_repoOwnerName mb-1">Loading...</h3>
+                    <p class="_repoOwnerUsername text-secondary">@loading</p>
+
+                    <p class="_repoOwnerBio text-secondary"></p>
+
+                    <div class="row justify-content-center mt-4">
+                        <div class="col-md-2 col-4">
+                            <h5 class="_repoOwnerFollowers">0</h5>
+                            <small class="">Followers</small>
+                        </div>
+
+                        <div class="col-md-2 col-4">
+                            <h5 class="_repoOwnerFollowing">0</h5>
+                            <small class="">Following</small>
+                        </div>
+
+                        <div class="col-md-2 col-4">
+                            <h5 class="_repoOwnerRepos">0</h5>
+                            <small class="">Repositories</small>
+                        </div>
+                    </div>
+
+                    <p class="mt-3">
+                        📍 <span class="_repoOwnerLocation">Unknown</span>
+                    </p>
+
+                    <a class="_repoOwnerProfile btn btn-dark"
+                    href="#"
+                    target="_blank">
+                        View GitHub Profile
+                    </a>
+
+                </div>
+            </div>
+
+            <!-- Contributors -->
+            <div>
+                <div class="text-center mb-4">
+                    <h4>Contributors</h4>
+                    <p class="text-secondary">
+                        Developers and community members who contribute to Zyphor OS.
+                    </p>
+                </div>
+
+                <div class="row justify-content-center _contributors">
+                    <!-- Contributors will load here -->
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <section id="stats" class="py-2">
+        <div class="container">
+            <div class="stats p-5">
+                <div class="row text-center g-4">
+                    <div class="col-md-4">
+                        <h2 class="gradient-text fw-bold display-5">100%</h2>
+                        <p class="mb-0 text-light opacity-75">Open Source</p>
+                    </div>
+                    <div class="col-md-4">
+                        <h2 class="gradient-text fw-bold display-5">Linux</h2>
+                        <p class="mb-0 text-light opacity-75">Powered Foundation</p>
+                    </div>
+                    <div class="col-md-4">
+                        <h2 class="gradient-text fw-bold display-5">∞</h2>
+                        <p class="mb-0 text-light opacity-75">Learning Potential</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="download" class="py-2 text-center">
+        <div class="container py-4">
+            <h2 class="section-title">The Future Belongs To Builders</h2>
+            <p class="text-secondary max-width-500 mx-auto mt-3">
+                Most people consume technology. Zyphor users learn how to create it.
+            </p>
+            <a href="#" class="btn btn-zyphor mt-3 px-5">Get Started Now</a>
+        </div>
+    </section>
+</main>
+
+<footer class="py-4 text-center">
+    <div class="container">
+        <p class="mb-0 text-secondary small">
+            &copy; 2026 Zyphor OS Foundation. All rights reserved.
+        </p>
+    </div>
+</footer>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+
+<script>
+    $(document).ready(function() {
+        // Desktop
+        $.get('https://api.github.com/repos/zyphor-os/zyphor-os-desktop', function(res) {
+            let _zyphorOSDesktopUrl = res.html_url;
+
+            console.log(res);
+
+            // implementation
+            $('._zyphorOSDesktopUrl').attr('href', _zyphorOSDesktopUrl);
+        })
+
+        $.get('https://api.github.com/repos/zyphor-os/zyphor-os-desktop/releases/latest', function(res) {
+            let zyphorOSDesktopLatestVersion = res.tag_name;
+            console.log(res);
+
+            // implementation
+            $('._zyphorOSDesktopLatestVersion').text(zyphorOSDesktopLatestVersion);
+            $('.release-version').text(zyphorOSDesktopLatestVersion);
+        })
+
+        // server
+        $.get('https://api.github.com/repos/zyphor-os/zyphor-os-server', function(res) {
+            let _zyphorOSServerUrl = res.html_url;
+
+            console.log(res);
+
+            // implementation
+            $('._zyphorOSServerUrl').attr('href', _zyphorOSServerUrl);
+        })
+
+        $.get('https://api.github.com/repos/zyphor-os/zyphor-os-server/releases/latest', function(res) {
+            let zyphorOSServerLatestVersion = res.tag_name;
+            console.log(res);
+
+            // implementation
+            $('._zyphorOSServerLatestVersion').text(zyphorOSServerLatestVersion);
+        })
+
+        $.get("https://api.github.com/repos/markjasonespelita/zyphor-os-desktop", function (repo) {
+
+            $.get(repo.owner.url, function (owner) {
+
+                $("._repoOwnerAvatar").attr("src", owner.avatar_url);
+                $("._repoOwnerName").text(owner.name || owner.login);
+                $("._repoOwnerUsername").text("@" + owner.login);
+                $("._repoOwnerBio").text(owner.bio || "No bio available.");
+                $("._repoOwnerFollowers").text(owner.followers);
+                $("._repoOwnerFollowing").text(owner.following);
+                $("._repoOwnerRepos").text(owner.public_repos);
+                $("._repoOwnerLocation").text(owner.location || "Unknown");
+                $("._repoOwnerProfile").attr("href", owner.html_url);
+
+            });
+
+        });
+
+        $.get("https://api.github.com/repos/zyphor-os/zyphor-os-desktop/contributors", function (contributors) {
+
+            let html = "";
+
+            contributors.forEach(function (contributor) {
+
+                html += `
+                    <div class="col-md-3 col-sm-6 mb-4">
+                        <div class="shadow-sm border-0 text-center h-100">
+
+                            <div class="card-body">
+
+                                <img src="${contributor.avatar_url}"
+                                    class="rounded-circle mb-3"
+                                    width="100"
+                                    height="100"
+                                    alt="${contributor.login}">
+
+                                <h5 class="mb-1">
+                                    ${contributor.login}
+                                </h5>
+
+                                <p class="">
+                                    ${contributor.contributions} contributions
+                                </p>
+
+                                <a href="${contributor.html_url}"
+                                target="_blank"
+                                class="btn btn-dark btn-sm">
+                                    GitHub Profile
+                                </a>
+
+                            </div>
+
+                        </div>
+                    </div>
+                `;
+
+            });
+
+
+            $("._contributors").html(html);
+
+        });
+
+        $.get('https://api.github.com/repos/markjasonespelita/zyphor_os/tags?per_page=100', function(tags) {
+
+            let columns = ["", "", "", "", ""];
+
+            let chunkSize = Math.ceil(tags.length / 5);
+
+            tags.forEach(function(tag, index) {
+
+                let column = Math.floor(index / chunkSize);
+
+                columns[column] += `
+                    <li>
+                        <a class="nav-link"
+                        href="https://github.com/markjasonespelita/zyphor_os/releases/tag/${tag.name}"
+                        target="_blank">
+                            ${tag.name}
+                        </a>
+                    </li>
+                `;
+
+            });
+
+
+            $('._releaseTags-legacy-1').html(columns[0]);
+            $('._releaseTags-legacy-2').html(columns[1]);
+            $('._releaseTags-legacy-3').html(columns[2]);
+            $('._releaseTags-legacy-4').html(columns[3]);
+            $('._releaseTags-legacy-5').html(columns[4]);
+
+        });
+
+        $.get('https://api.github.com/repos/zyphor-os/zyphor-os-desktop/tags?per_page=100', function(tags) {
+
+            let columns = ["", "", "", "", ""];
+
+            let chunkSize = Math.ceil(tags.length / 5);
+
+            tags.forEach(function(tag, index) {
+
+                let column = Math.floor(index / chunkSize);
+
+                columns[column] += `
+                    <li>
+                        <a class="nav-link"
+                        href="https://github.com/zyphor-os/zyphor-os-desktop/releases/tag/${tag.name}"
+                        target="_blank">
+                            ${tag.name}
+                        </a>
+                    </li>
+                `;
+
+            });
+
+
+            $('._releaseTags-1').html(columns[0]);
+            $('._releaseTags-2').html(columns[1]);
+            $('._releaseTags-3').html(columns[2]);
+            $('._releaseTags-4').html(columns[3]);
+            $('._releaseTags-5').html(columns[4]);
+
+        });
+    })
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
