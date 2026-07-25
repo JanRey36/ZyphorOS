@@ -186,9 +186,12 @@ function TeamPage() {
                   <p className="mt-4 text-sm font-semibold break-all leading-snug group-hover:text-brand transition-colors">
                     {c.login}
                   </p>
-                  <p className="text-xs text-muted-foreground mt-1">
+                  <p className="text-xs text-muted-foreground mt-1 mb-4">
                     {c.contributions} contribution{c.contributions !== 1 ? "s" : ""}
                   </p>
+                  <div className="btn-ghost inline-flex items-center justify-center gap-2 rounded-lg px-4 py-1.5 text-xs font-semibold opacity-80 group-hover:opacity-100 w-full mt-auto">
+                    <Github className="h-3 w-3" /> Profile
+                  </div>
                 </a>
               ))}
             </div>
