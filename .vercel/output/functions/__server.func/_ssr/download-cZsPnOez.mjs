@@ -1,69 +1,9 @@
-import { r as __toESM } from "../_runtime.mjs";
-import { n as require_jsx_runtime, r as require_react } from "../_libs/react+tanstack__react-query.mjs";
+import { n as require_jsx_runtime } from "../_libs/react+tanstack__react-query.mjs";
 import { A as Cpu, F as Check, M as CircleAlert, O as ExternalLink, _ as MemoryStick, f as Package, j as CodeXml, k as Download, p as Monitor, u as Server, w as HardDrive, x as Layers, y as LoaderCircle } from "../_libs/lucide-react.mjs";
 import { a as useScrollReveal, n as SiteLayout, r as cn, t as PageHeader } from "./useScrollReveal-BKRdfTJB.mjs";
-//#region node_modules/.nitro/vite/services/ssr/assets/download-BBqOFnsV.js
-var import_react = /* @__PURE__ */ __toESM(require_react());
+import { t as useZyphorDownloads } from "./useZyphorDownloads-Dm9zGf_H.mjs";
+//#region node_modules/.nitro/vite/services/ssr/assets/download-cZsPnOez.js
 var import_jsx_runtime = require_jsx_runtime();
-function useZyphorDownloads() {
-	const [data, setData] = (0, import_react.useState)({
-		desktopLatest: null,
-		serverLatest: null,
-		adaTags: [],
-		legacyTags: []
-	});
-	const [state, setState] = (0, import_react.useState)("loading");
-	(0, import_react.useEffect)(() => {
-		let mounted = true;
-		async function fetchData() {
-			try {
-				const cached = sessionStorage.getItem("zyphor_downloads_cache");
-				if (cached) {
-					setData(JSON.parse(cached));
-					setState("success");
-					return;
-				}
-				const [desktopRes, serverRes, adaRes, legacyRes] = await Promise.all([
-					fetch("https://api.github.com/repos/zyphor-os/zyphor-os-desktop/releases/latest"),
-					fetch("https://api.github.com/repos/zyphor-os/zyphor-os-server/releases/latest"),
-					fetch("https://api.github.com/repos/zyphor-os/zyphor-os-desktop/tags?per_page=100"),
-					fetch("https://api.github.com/repos/markjasonespelita/zyphor_os/tags?per_page=100")
-				]);
-				if (desktopRes.status === 403 || serverRes.status === 403 || adaRes.status === 403 || legacyRes.status === 403) {
-					setState("rate-limited");
-					return;
-				}
-				if (!desktopRes.ok || !serverRes.ok || !adaRes.ok || !legacyRes.ok) throw new Error("Failed to fetch some resources");
-				const desktopData = await desktopRes.json();
-				const serverData = await serverRes.json();
-				const adaData = await adaRes.json();
-				const legacyData = await legacyRes.json();
-				const result = {
-					desktopLatest: desktopData.tag_name,
-					serverLatest: serverData.tag_name,
-					adaTags: adaData.map((t) => t.name),
-					legacyTags: legacyData.map((t) => t.name)
-				};
-				sessionStorage.setItem("zyphor_downloads_cache", JSON.stringify(result));
-				if (mounted) {
-					setData(result);
-					setState("success");
-				}
-			} catch (err) {
-				console.error("Failed to fetch downloads:", err);
-				if (mounted) setState("error");
-			}
-		}
-		fetchData();
-		return () => {
-			mounted = false;
-		};
-	}, []);
-	return {
-		...data,
-		state
-	};
-}
 function DownloadPage() {
 	const { desktopLatest, serverLatest, adaTags, legacyTags, state } = useZyphorDownloads();
 	useScrollReveal();

@@ -1,29 +1,9 @@
-import { r as __toESM } from "../_runtime.mjs";
-import { n as require_jsx_runtime, r as require_react, t as QueryClientProvider } from "../_libs/react+tanstack__react-query.mjs";
+import { n as require_jsx_runtime, t as QueryClientProvider } from "../_libs/react+tanstack__react-query.mjs";
 import { c as HeadContent, d as createRouter, f as Outlet, g as Link, h as createRootRouteWithContext, m as createFileRoute, p as lazyRouteComponent, s as Scripts, v as useRouter } from "../_libs/@tanstack/react-router+[...].mjs";
 import { t as QueryClient } from "../_libs/tanstack__query-core.mjs";
-//#region node_modules/.nitro/vite/services/ssr/assets/router-DwlqyrRH.js
-var import_react = /* @__PURE__ */ __toESM(require_react());
+//#region node_modules/.nitro/vite/services/ssr/assets/router-Cdvw2WiC.js
 var import_jsx_runtime = require_jsx_runtime();
-var styles_default = "/assets/styles-BVYnkIx_.css";
-function reportLovableError(error, context = {}) {
-	if (typeof window === "undefined") return;
-	window.__lovableEvents?.captureException?.(error, {
-		source: "react_error_boundary",
-		route: window.location.pathname,
-		...context
-	}, {
-		mechanism: "react_error_boundary",
-		handled: false,
-		severity: "error"
-	});
-	const message = error instanceof Response ? `Response ${error.status}${error.url ? ` at ${error.url}` : ""}` : error instanceof Error ? error.message : String(error);
-	window.__lovableReportRuntimeError?.({
-		message,
-		stack: error instanceof Error ? error.stack : void 0,
-		filename: window.location.pathname
-	});
-}
+var styles_default = "/assets/styles-fQCOTKsf.css";
 function NotFoundComponent() {
 	return /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
 		className: "flex min-h-screen items-center justify-center bg-background px-4",
@@ -57,9 +37,6 @@ function NotFoundComponent() {
 function ErrorComponent({ error, reset }) {
 	console.error(error);
 	const router = useRouter();
-	(0, import_react.useEffect)(() => {
-		reportLovableError(error, { boundary: "tanstack_root_error_component" });
-	}, [error]);
 	return /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
 		className: "flex min-h-screen items-center justify-center bg-background px-4",
 		children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
@@ -169,7 +146,7 @@ function RootComponent() {
 		children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Outlet, {})
 	});
 }
-var $$splitComponentImporter$5 = () => import("./routes-DOO_LErJ.mjs");
+var $$splitComponentImporter$5 = () => import("./routes-BTeXQ5up.mjs");
 var Route$6 = createFileRoute("/")({
 	head: () => ({ meta: [
 		{ title: "Zyphor OS — Learn Linux From The Inside Out" },
@@ -242,7 +219,7 @@ var Route$4 = createFileRoute("/documentation")({
 	] }),
 	component: lazyRouteComponent($$splitComponentImporter$3, "component")
 });
-var $$splitComponentImporter$2 = () => import("./download-BBqOFnsV.mjs");
+var $$splitComponentImporter$2 = () => import("./download-cZsPnOez.mjs");
 var Route$3 = createFileRoute("/download")({
 	head: () => ({ meta: [{ title: "Download & Releases — Zyphor OS" }, {
 		name: "description",

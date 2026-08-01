@@ -2,7 +2,8 @@ import { n as require_jsx_runtime } from "../_libs/react+tanstack__react-query.m
 import { g as Link } from "../_libs/@tanstack/react-router+[...].mjs";
 import { A as Cpu, D as FileText, E as Github, R as BookOpen, k as Download, l as ShieldCheck, r as Users, s as Terminal, x as Layers, z as ArrowRight } from "../_libs/lucide-react.mjs";
 import { a as useScrollReveal, i as logo_default, n as SiteLayout } from "./useScrollReveal-BKRdfTJB.mjs";
-//#region node_modules/.nitro/vite/services/ssr/assets/routes-DOO_LErJ.js
+import { t as useZyphorDownloads } from "./useZyphorDownloads-Dm9zGf_H.mjs";
+//#region node_modules/.nitro/vite/services/ssr/assets/routes-BTeXQ5up.js
 var import_jsx_runtime = require_jsx_runtime();
 var _1_default = "/assets/1-BiWIRq-y.jpg";
 var _2_default = "/assets/2-MiokMX8I.jpg";
@@ -124,6 +125,9 @@ var whyChoose = [
 ];
 function HomePage() {
 	useScrollReveal();
+	const { desktopLatest, state: dlState } = useZyphorDownloads();
+	const displayVersion = (dlState === "success" && desktopLatest ? desktopLatest : null) ?? latestRelease.version;
+	const isLoadingVersion = dlState === "loading";
 	return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(SiteLayout, { children: [
 		/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("section", {
 			className: "relative overflow-hidden",
@@ -139,16 +143,15 @@ function HomePage() {
 							children: [
 								/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
 									className: "inline-flex items-center gap-2 rounded-full border border-border/60 bg-surface/60 px-3 py-1 text-xs font-medium text-muted-foreground backdrop-blur",
-									children: [
-										/* @__PURE__ */ (0, import_jsx_runtime.jsx)("img", {
-											src: logo_default,
-											alt: "Zyphor OS Logo",
-											className: "h-4 w-4 rounded-sm animate-pulse"
-										}),
-										latestRelease.version,
+									children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("img", {
+										src: logo_default,
+										alt: "Zyphor OS Logo",
+										className: "h-4 w-4 rounded-sm animate-pulse"
+									}), isLoadingVersion ? /* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", { className: "h-3 w-44 rounded-full bg-surface animate-pulse inline-block" }) : /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(import_jsx_runtime.Fragment, { children: [
+										displayVersion,
 										" · ",
 										latestRelease.codename ?? "Stable"
-									]
+									] })]
 								}),
 								/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("h1", {
 									className: "mt-5 text-4xl sm:text-5xl lg:text-6xl font-bold leading-[1.05] tracking-tight",
@@ -276,18 +279,20 @@ function HomePage() {
 						}),
 						/* @__PURE__ */ (0, import_jsx_runtime.jsx)("h2", {
 							className: "mt-4 text-3xl sm:text-4xl font-bold tracking-tight",
-							children: latestRelease.version
+							children: isLoadingVersion ? /* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", { className: "inline-block h-10 w-80 rounded-lg bg-surface animate-pulse" }) : displayVersion
 						}),
 						/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("p", {
 							className: "mt-2 text-muted-foreground",
 							children: [
-								"Codename ",
+								"Codename",
+								" ",
 								/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
 									className: "text-foreground font-medium",
 									children: latestRelease.codename
 								}),
 								" ",
-								"· Released ",
+								"· Released",
+								" ",
 								new Date(latestRelease.date).toLocaleDateString("en-US", {
 									year: "numeric",
 									month: "long",
@@ -313,42 +318,66 @@ function HomePage() {
 						})
 					] }), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
 						className: "rounded-xl border border-border/60 bg-background/60 p-5 font-mono text-sm shadow-xl code-block",
-						children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-							className: "flex items-center gap-1.5 mb-3",
-							children: [
-								/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", { className: "h-2.5 w-2.5 rounded-full bg-red-400/70" }),
-								/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", { className: "h-2.5 w-2.5 rounded-full bg-yellow-400/70" }),
-								/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", { className: "h-2.5 w-2.5 rounded-full bg-green-400/70" }),
-								/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
-									className: "ml-2 text-xs text-muted-foreground",
-									children: "terminal"
-								})
-							]
-						}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("pre", {
-							className: "text-muted-foreground leading-relaxed whitespace-pre-wrap",
-							children: [
-								/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
-									className: "text-brand",
-									children: "$"
-								}),
-								" zyphor system upgrade",
-								/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
-									className: "text-brand",
-									children: "$"
-								}),
-								" zyphor setup theme dark",
-								/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
-									className: "text-brand",
-									children: "$"
-								}),
-								" zyphor doctor scan",
-								/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
-									className: "text-muted-foreground",
-									children: "→ System healthy · 0 issues found"
-								}),
-								/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", { className: "animate-blink inline-block w-2 h-4 bg-foreground align-middle ml-1" })
-							]
-						})]
+						children: [
+							/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+								className: "flex items-center gap-1.5 mb-3",
+								children: [
+									/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", { className: "h-2.5 w-2.5 rounded-full bg-red-400/70" }),
+									/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", { className: "h-2.5 w-2.5 rounded-full bg-yellow-400/70" }),
+									/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", { className: "h-2.5 w-2.5 rounded-full bg-green-400/70" }),
+									/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
+										className: "ml-2 text-xs text-muted-foreground",
+										children: "terminal"
+									})
+								]
+							}),
+							/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("pre", {
+								className: "text-muted-foreground leading-relaxed whitespace-pre-wrap",
+								children: [
+									/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
+										className: "text-brand",
+										children: "$"
+									}),
+									" zyphor system upgrade",
+									/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
+										className: "text-brand",
+										children: "$"
+									}),
+									" zyphor system upgrade",
+									/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
+										className: "text-brand",
+										children: "$"
+									}),
+									" zyphor setup theme dark",
+									/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
+										className: "text-brand",
+										children: "$"
+									}),
+									" zyphor doctor scan",
+									"\n",
+									/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
+										className: "text-muted-foreground",
+										children: "→ System healthy · 0 issues found"
+									}),
+									/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", { className: "animate-blink inline-block w-2 h-4 bg-foreground align-middle ml-1" })
+								]
+							}),
+							/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+								className: "mt-4 flex items-center gap-2 pt-3 border-t border-border/40",
+								children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("img", {
+									src: logo_default,
+									alt: "",
+									className: "h-4 w-4 rounded-sm"
+								}), isLoadingVersion ? /* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", { className: "h-4 w-48 rounded bg-surface animate-pulse inline-block" }) : /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("span", {
+									className: "font-mono text-xs text-muted-foreground",
+									children: [
+										displayVersion,
+										" · ",
+										latestRelease.codename
+									]
+								})]
+							})
+						]
 					})]
 				})]
 			})
