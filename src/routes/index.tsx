@@ -14,6 +14,7 @@ import {
 } from "lucide-react";
 import { SiteLayout } from "@/components/site/SiteLayout";
 import { useScrollReveal } from "@/lib/useScrollReveal";
+import { useZyphorDownloads } from "@/lib/useZyphorDownloads";
 import image1 from "@/assets/1.jpg";
 import image2 from "@/assets/2.jpg";
 import image3 from "@/assets/3.jpg";
@@ -103,6 +104,12 @@ const whyChoose = [
 
 function HomePage() {
   useScrollReveal();
+  const { desktopLatest, state: dlState } = useZyphorDownloads();
+
+  // Derive display values: prefer live GitHub data, fall back to static releases.ts
+  const liveVersion = dlState === "success" && desktopLatest ? desktopLatest : null;
+  const displayVersion = liveVersion ?? latestRelease.version;
+  const isLoadingVersion = dlState === "loading";
 
   return (
     <SiteLayout>
@@ -115,7 +122,11 @@ function HomePage() {
             <div className="lg:col-span-6 animate-fade-in-up">
               <div className="inline-flex items-center gap-2 rounded-full border border-border/60 bg-surface/60 px-3 py-1 text-xs font-medium text-muted-foreground backdrop-blur">
                 <img src={logoImage} alt="Zyphor OS Logo" className="h-4 w-4 rounded-sm animate-pulse" />
-                {latestRelease.version} · {latestRelease.codename ?? "Stable"}
+                {isLoadingVersion ? (
+                  <span className="h-3 w-44 rounded-full bg-surface animate-pulse inline-block" />
+                ) : (
+                  <>{displayVersion} · {latestRelease.codename ?? "Stable"}</>
+                )}
               </div>
               <h1 className="mt-5 text-4xl sm:text-5xl lg:text-6xl font-bold leading-[1.05] tracking-tight">
                 Learn Linux from{" "}
@@ -218,22 +229,34 @@ function HomePage() {
                 </span>
                 Latest release
               </div>
+
+              {/* Version — skeleton while loading, live tag once resolved */}
               <h2 className="mt-4 text-3xl sm:text-4xl font-bold tracking-tight">
-                {latestRelease.version}
+                {isLoadingVersion ? (
+                  <span className="inline-block h-10 w-80 rounded-lg bg-surface animate-pulse" />
+                ) : (
+                  displayVersion
+                )}
               </h2>
+
+              {/* Codename / date — always from static data (reliable metadata) */}
               <p className="mt-2 text-muted-foreground">
-                Codename <span className="text-foreground font-medium">
+                Codename{" "}
+                <span className="text-foreground font-medium">
                   {latestRelease.codename}
                 </span>{" "}
-                · Released {new Date(latestRelease.date).toLocaleDateString("en-US", {
+                · Released{" "}
+                {new Date(latestRelease.date).toLocaleDateString("en-US", {
                   year: "numeric",
                   month: "long",
                   day: "numeric",
                 })}
               </p>
+
               <p className="mt-4 text-sm text-muted-foreground max-w-lg">
                 {latestRelease.notes}
               </p>
+
               <div className="mt-6 flex flex-wrap gap-3">
                 <Link
                   to="/download"
@@ -259,10 +282,23 @@ function HomePage() {
               </div>
               <pre className="text-muted-foreground leading-relaxed whitespace-pre-wrap">
                 <span className="text-brand">$</span> zyphor system upgrade
+                <span className="text-brand">$</span> zyphor system upgrade
                 <span className="text-brand">$</span> zyphor setup theme dark
                 <span className="text-brand">$</span> zyphor doctor scan
-                <span className="text-muted-foreground">→ System healthy · 0 issues found</span><span className="animate-blink inline-block w-2 h-4 bg-foreground align-middle ml-1"></span>
+                {"\n"}<span className="text-muted-foreground">→ System healthy · 0 issues found</span><span className="animate-blink inline-block w-2 h-4 bg-foreground align-middle ml-1"></span>
               </pre>
+
+              {/* Live version badge pinned inside terminal */}
+              <div className="mt-4 flex items-center gap-2 pt-3 border-t border-border/40">
+                <img src={logoImage} alt="" className="h-4 w-4 rounded-sm" />
+                {isLoadingVersion ? (
+                  <span className="h-4 w-48 rounded bg-surface animate-pulse inline-block" />
+                ) : (
+                  <span className="font-mono text-xs text-muted-foreground">
+                    {displayVersion} · {latestRelease.codename}
+                  </span>
+                )}
+              </div>
             </div>
           </div>
         </div>
