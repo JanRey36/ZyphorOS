@@ -72,11 +72,36 @@ const pillars = [
 ];
 
 const timeline = [
-  { year: "2024", title: "Project inception", body: "First internal builds — legacy codebase." },
-  { year: "2024", title: "Public preview", body: "First public preview released as v0.9.0." },
-  { year: "2025", title: "Unified CLI", body: "Introduction of the `zyphor` command surface." },
-  { year: "2026", title: "Ada Lovelace LTS", body: "First LTS release under the new naming scheme." },
-  { year: "Next", title: "Babbage LTS", body: "Second LTS milestone — coming in the next cycle." },
+  {
+    year: "Mar 30, 2026",
+    title: "Project inception",
+    body: "First successful boot and the initial Zyphor OS codebase release.",
+  },
+  {
+    year: "Apr 16, 2026",
+    title: "First stable release",
+    body: "Released Zyphor OS v1.0.0 after completing the beta development cycle.",
+  },
+  {
+    year: "Jun 3, 2026",
+    title: "Open-source contributors",
+    body: "Welcomed the first community contributors for security testing and graphic design.",
+  },
+  {
+    year: "Jun 16, 2026",
+    title: "New GitHub & documentation",
+    body: "Migrated development to the new GitHub organization, launched the official documentation website, and released the final v1 stable version.",
+  },
+  {
+    year: "Jun 30, 2026",
+    title: "Ada Lovelace LTS",
+    body: "Released v2.0.0-2026.06.30-r6, the first Long-Term Support (LTS) release under the Ada Lovelace codename.",
+  },
+  {
+    year: "Jul 11, 2026",
+    title: "Windows app support",
+    body: "Successfully ran the first Windows (.exe) application on Zyphor OS using Wine.",
+  },
 ];
 
 function AboutPage() {
