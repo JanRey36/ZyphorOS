@@ -299,18 +299,21 @@ function DocsPage() {
             >
               <SectionHeading level={2}>Installation</SectionHeading>
               <p className="mt-3 text-muted-foreground">
-                Watch this installation video after you download the .iso
-                bootable file.
+                <li>
+                  ISO File Size: 3.5GB
+                </li>
+                <li>
+                  Download the latest ISO version in the Github README.md file:
+                  <a
+                    href="https://github.com/zyphor-os/zyphor-os-desktop"
+                    target="_blank"
+                    rel="noreferrer"
+                    className="underline underline-offset-2 hover:text-brand transition"
+                  >
+                    GitHub repository
+                  </a>{" "}
+                </li>
               </p>
-              <div className="mt-5 relative w-full aspect-video rounded-xl overflow-hidden border border-border/60 bg-surface/40">
-                <iframe
-                  src="https://drive.google.com/file/d/1QqyUYzDJKbLRnqAmLOLGIoHBECEsIeuK/preview"
-                  className="absolute inset-0 w-full h-full"
-                  allow="autoplay"
-                  allowFullScreen
-                  title="Zyphor OS Installation Guide"
-                />
-              </div>
             </section>
 
             <section
