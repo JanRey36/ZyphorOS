@@ -1,7 +1,7 @@
 import { n as require_jsx_runtime } from "../_libs/react+tanstack__react-query.mjs";
 import { I as Boxes, T as GraduationCap, d as Palette, f as Package, m as Minimize2, s as Terminal } from "../_libs/lucide-react.mjs";
 import { a as useScrollReveal, n as SiteLayout, t as PageHeader } from "./useScrollReveal-BKRdfTJB.mjs";
-//#region node_modules/.nitro/vite/services/ssr/assets/about-Dg81zeNm.js
+//#region node_modules/.nitro/vite/services/ssr/assets/about-CTfrywbF.js
 var import_jsx_runtime = require_jsx_runtime();
 var pillars = [
 	{
@@ -37,29 +37,34 @@ var pillars = [
 ];
 var timeline = [
 	{
-		year: "2024",
+		year: "Mar 30, 2026",
 		title: "Project inception",
-		body: "First internal builds — legacy codebase."
+		body: "First successful boot and the initial Zyphor OS codebase release."
 	},
 	{
-		year: "2024",
-		title: "Public preview",
-		body: "First public preview released as v0.9.0."
+		year: "Apr 16, 2026",
+		title: "First stable release",
+		body: "Released Zyphor OS v1.0.0 after completing the beta development cycle."
 	},
 	{
-		year: "2025",
-		title: "Unified CLI",
-		body: "Introduction of the `zyphor` command surface."
+		year: "Jun 3, 2026",
+		title: "Open-source contributors",
+		body: "Welcomed the first community contributors for security testing and graphic design."
 	},
 	{
-		year: "2026",
+		year: "Jun 16, 2026",
+		title: "New GitHub & documentation",
+		body: "Migrated development to the new GitHub organization, launched the official documentation website, and released the final v1 stable version."
+	},
+	{
+		year: "Jun 30, 2026",
 		title: "Ada Lovelace LTS",
-		body: "First LTS release under the new naming scheme."
+		body: "Released v2.0.0-2026.06.30-r6, the first Long-Term Support (LTS) release under the Ada Lovelace codename."
 	},
 	{
-		year: "Next",
-		title: "Babbage LTS",
-		body: "Second LTS milestone — coming in the next cycle."
+		year: "Jul 11, 2026",
+		title: "Windows app support",
+		body: "Successfully ran the first Windows (.exe) application on Zyphor OS using Wine."
 	}
 ];
 function AboutPage() {

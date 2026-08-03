@@ -3,7 +3,7 @@ import { n as require_jsx_runtime, r as require_react } from "../_libs/react+tan
 import { g as Link } from "../_libs/@tanstack/react-router+[...].mjs";
 import { C as House, E as Github, L as Box, R as BookOpen, b as Lightbulb, c as Shield, g as Menu, i as User, k as Download, o as TriangleAlert } from "../_libs/lucide-react.mjs";
 import { a as useScrollReveal, n as SiteLayout, r as cn } from "./useScrollReveal-BKRdfTJB.mjs";
-//#region node_modules/.nitro/vite/services/ssr/assets/documentation-B7gDtJZ8.js
+//#region node_modules/.nitro/vite/services/ssr/assets/documentation-D5wOHa4s.js
 var import_react = /* @__PURE__ */ __toESM(require_react());
 var import_jsx_runtime = require_jsx_runtime();
 var zcc_jpg_default = "/assets/2-MiokMX8I.jpg";
@@ -235,26 +235,23 @@ function DocsPage() {
 						/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("section", {
 							id: "installation",
 							className: "mb-16 [scroll-margin-top:5.5rem] lg:[scroll-margin-top:4.5rem] reveal",
-							children: [
-								/* @__PURE__ */ (0, import_jsx_runtime.jsx)(SectionHeading, {
-									level: 2,
-									children: "Installation"
-								}),
-								/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
-									className: "mt-3 text-muted-foreground",
-									children: "Watch this installation video after you download the .iso bootable file."
-								}),
-								/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
-									className: "mt-5 relative w-full aspect-video rounded-xl overflow-hidden border border-border/60 bg-surface/40",
-									children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)("iframe", {
-										src: "https://drive.google.com/file/d/1QqyUYzDJKbLRnqAmLOLGIoHBECEsIeuK/preview",
-										className: "absolute inset-0 w-full h-full",
-										allow: "autoplay",
-										allowFullScreen: true,
-										title: "Zyphor OS Installation Guide"
-									})
-								})
-							]
+							children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(SectionHeading, {
+								level: 2,
+								children: "Installation"
+							}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("p", {
+								className: "mt-3 text-muted-foreground",
+								children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("li", { children: "ISO File Size: 3.5GB" }), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("li", { children: [
+									"Download the latest ISO version in the Github README.md file:",
+									/* @__PURE__ */ (0, import_jsx_runtime.jsx)("a", {
+										href: "https://github.com/zyphor-os/zyphor-os-desktop",
+										target: "_blank",
+										rel: "noreferrer",
+										className: "underline underline-offset-2 hover:text-brand transition",
+										children: "GitHub repository"
+									}),
+									" "
+								] })]
+							})]
 						}),
 						/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("section", {
 							id: "profile-management",
