@@ -963,6 +963,54 @@ const cliCommands = [
   },
   {
     category: "SETUP",
+    command: "zyphor setup pentest recon",
+    description:
+      "Install reconnaissance and scanning tools such as Nmap, Masscan, Amass, and Gobuster for network and target discovery.",
+  },
+  {
+    category: "SETUP",
+    command: "zyphor setup pentest web",
+    description:
+      "Install web application testing tools including Sqlmap, Nikto, Burp Suite, ZAP, and Wpscan for auditing web apps.",
+  },
+  {
+    category: "SETUP",
+    command: "zyphor setup pentest wireless",
+    description:
+      "Install wireless auditing tools such as Aircrack-ng, Kismet, and Wifite for testing Wi-Fi networks you own or are authorized to assess.",
+  },
+  {
+    category: "SETUP",
+    command: "zyphor setup pentest passwords",
+    description:
+      "Install password auditing tools including John the Ripper, Hashcat, Hydra, and Medusa for credential strength testing.",
+  },
+  {
+    category: "SETUP",
+    command: "zyphor setup pentest sniffing",
+    description:
+      "Install traffic analysis tools such as Wireshark, Tcpdump, and Bettercap, and configure non-root packet capture.",
+  },
+  {
+    category: "SETUP",
+    command: "zyphor setup pentest forensics",
+    description:
+      "Install forensics and analysis tools including Autopsy, Sleuth Kit, Binwalk, and Volatility3 for investigating systems and files.",
+  },
+  {
+    category: "SETUP",
+    command: "zyphor setup pentest exploitation",
+    description:
+      "Install exploitation framework tools such as Metasploit, Exploit-DB, and SET for authorized penetration testing engagements.",
+  },
+  {
+    category: "SETUP",
+    command: "zyphor setup pentest full",
+    description:
+      "Install the complete pentest toolkit, covering recon, web, wireless, passwords, sniffing, forensics, and exploitation in one run.",
+  },
+  {
+    category: "SETUP",
     command: "zyphor setup theme light",
     description:
       "Apply the Windows-10 inspired desktop theme for a bright and familiar user experience.",
