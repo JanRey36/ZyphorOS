@@ -675,10 +675,11 @@ function DocsPage() {
                 <li><InlineCode>zyphor-cli</InlineCode> - shell script</li>
                 <li><InlineCode>zyphor-command-center</InlineCode> - python</li>
                 <li><InlineCode>zyphor-command-center-web</InlineCode> - php</li>
-                <li><InlineCode>zylearn</InlineCode> - C</li>
+                <li><InlineCode>zylearn</InlineCode> - C++</li>
                 <li><InlineCode>zyphor-updates</InlineCode> - Debian config file</li>
                 <li><InlineCode>zysh</InlineCode> - shell script</li>
                 <li><InlineCode>zyshell</InlineCode> - C (removed temporary)</li>
+                <li><InlineCode>zycamera-launcher</InlineCode> - C++</li>
                 <li><InlineCode>fastfetch-config-1</InlineCode> - filesystem config and Debian config file</li>
                 <li><InlineCode>grub-screensaver-1</InlineCode> - filesystem config and Debian config file</li>
                 <li><InlineCode>zyphor-display-mac-v1</InlineCode> - filesystem config and Debian config file (optional - for v1 Stable)</li>
@@ -959,6 +960,54 @@ const cliCommands = [
     command: "zyphor setup dev git",
     description:
       "Generate SSH keys, configure Git settings, and prepare secure authentication for GitHub and Git-based workflows.",
+  },
+  {
+    category: "SETUP",
+    command: "zyphor setup pentest recon",
+    description:
+      "Install reconnaissance and scanning tools such as Nmap, Masscan, Amass, and Gobuster for network and target discovery.",
+  },
+  {
+    category: "SETUP",
+    command: "zyphor setup pentest web",
+    description:
+      "Install web application testing tools including Sqlmap, Nikto, Burp Suite, ZAP, and Wpscan for auditing web apps.",
+  },
+  {
+    category: "SETUP",
+    command: "zyphor setup pentest wireless",
+    description:
+      "Install wireless auditing tools such as Aircrack-ng, Kismet, and Wifite for testing Wi-Fi networks you own or are authorized to assess.",
+  },
+  {
+    category: "SETUP",
+    command: "zyphor setup pentest passwords",
+    description:
+      "Install password auditing tools including John the Ripper, Hashcat, Hydra, and Medusa for credential strength testing.",
+  },
+  {
+    category: "SETUP",
+    command: "zyphor setup pentest sniffing",
+    description:
+      "Install traffic analysis tools such as Wireshark, Tcpdump, and Bettercap, and configure non-root packet capture.",
+  },
+  {
+    category: "SETUP",
+    command: "zyphor setup pentest forensics",
+    description:
+      "Install forensics and analysis tools including Autopsy, Sleuth Kit, Binwalk, and Volatility3 for investigating systems and files.",
+  },
+  {
+    category: "SETUP",
+    command: "zyphor setup pentest exploitation",
+    description:
+      "Install exploitation framework tools such as Metasploit, Exploit-DB, and SET for authorized penetration testing engagements.",
+  },
+  {
+    category: "SETUP",
+    command: "zyphor setup pentest full",
+    description:
+      "Install the complete pentest toolkit, covering recon, web, wireless, passwords, sniffing, forensics, and exploitation in one run.",
   },
   {
     category: "SETUP",
