@@ -675,10 +675,11 @@ function DocsPage() {
                 <li><InlineCode>zyphor-cli</InlineCode> - shell script</li>
                 <li><InlineCode>zyphor-command-center</InlineCode> - python</li>
                 <li><InlineCode>zyphor-command-center-web</InlineCode> - php</li>
-                <li><InlineCode>zylearn</InlineCode> - C</li>
+                <li><InlineCode>zylearn</InlineCode> - C++</li>
                 <li><InlineCode>zyphor-updates</InlineCode> - Debian config file</li>
                 <li><InlineCode>zysh</InlineCode> - shell script</li>
                 <li><InlineCode>zyshell</InlineCode> - C (removed temporary)</li>
+                <li><InlineCode>zycamera-launcher</InlineCode> - C++</li>
                 <li><InlineCode>fastfetch-config-1</InlineCode> - filesystem config and Debian config file</li>
                 <li><InlineCode>grub-screensaver-1</InlineCode> - filesystem config and Debian config file</li>
                 <li><InlineCode>zyphor-display-mac-v1</InlineCode> - filesystem config and Debian config file (optional - for v1 Stable)</li>
