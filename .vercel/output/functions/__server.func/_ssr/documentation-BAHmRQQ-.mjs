@@ -3,7 +3,7 @@ import { n as require_jsx_runtime, r as require_react } from "../_libs/react+tan
 import { g as Link } from "../_libs/@tanstack/react-router+[...].mjs";
 import { C as House, E as Github, L as Box, R as BookOpen, b as Lightbulb, c as Shield, g as Menu, i as User, k as Download, o as TriangleAlert } from "../_libs/lucide-react.mjs";
 import { a as useScrollReveal, n as SiteLayout, r as cn } from "./useScrollReveal-BKRdfTJB.mjs";
-//#region node_modules/.nitro/vite/services/ssr/assets/documentation-D5wOHa4s.js
+//#region node_modules/.nitro/vite/services/ssr/assets/documentation-BAHmRQQ-.js
 var import_react = /* @__PURE__ */ __toESM(require_react());
 var import_jsx_runtime = require_jsx_runtime();
 var zcc_jpg_default = "/assets/2-MiokMX8I.jpg";
@@ -758,10 +758,11 @@ function DocsPage() {
 										/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("li", { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(InlineCode, { children: "zyphor-cli" }), " - shell script"] }),
 										/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("li", { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(InlineCode, { children: "zyphor-command-center" }), " - python"] }),
 										/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("li", { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(InlineCode, { children: "zyphor-command-center-web" }), " - php"] }),
-										/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("li", { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(InlineCode, { children: "zylearn" }), " - C"] }),
+										/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("li", { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(InlineCode, { children: "zylearn" }), " - C++"] }),
 										/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("li", { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(InlineCode, { children: "zyphor-updates" }), " - Debian config file"] }),
 										/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("li", { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(InlineCode, { children: "zysh" }), " - shell script"] }),
 										/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("li", { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(InlineCode, { children: "zyshell" }), " - C (removed temporary)"] }),
+										/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("li", { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(InlineCode, { children: "zycamera-launcher" }), " - C++"] }),
 										/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("li", { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(InlineCode, { children: "fastfetch-config-1" }), " - filesystem config and Debian config file"] }),
 										/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("li", { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(InlineCode, { children: "grub-screensaver-1" }), " - filesystem config and Debian config file"] }),
 										/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("li", { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(InlineCode, { children: "zyphor-display-mac-v1" }), " - filesystem config and Debian config file (optional - for v1 Stable)"] }),
@@ -1029,6 +1030,46 @@ var cliCommands = [
 		category: "SETUP",
 		command: "zyphor setup dev git",
 		description: "Generate SSH keys, configure Git settings, and prepare secure authentication for GitHub and Git-based workflows."
+	},
+	{
+		category: "SETUP",
+		command: "zyphor setup pentest recon",
+		description: "Install reconnaissance and scanning tools such as Nmap, Masscan, Amass, and Gobuster for network and target discovery."
+	},
+	{
+		category: "SETUP",
+		command: "zyphor setup pentest web",
+		description: "Install web application testing tools including Sqlmap, Nikto, Burp Suite, ZAP, and Wpscan for auditing web apps."
+	},
+	{
+		category: "SETUP",
+		command: "zyphor setup pentest wireless",
+		description: "Install wireless auditing tools such as Aircrack-ng, Kismet, and Wifite for testing Wi-Fi networks you own or are authorized to assess."
+	},
+	{
+		category: "SETUP",
+		command: "zyphor setup pentest passwords",
+		description: "Install password auditing tools including John the Ripper, Hashcat, Hydra, and Medusa for credential strength testing."
+	},
+	{
+		category: "SETUP",
+		command: "zyphor setup pentest sniffing",
+		description: "Install traffic analysis tools such as Wireshark, Tcpdump, and Bettercap, and configure non-root packet capture."
+	},
+	{
+		category: "SETUP",
+		command: "zyphor setup pentest forensics",
+		description: "Install forensics and analysis tools including Autopsy, Sleuth Kit, Binwalk, and Volatility3 for investigating systems and files."
+	},
+	{
+		category: "SETUP",
+		command: "zyphor setup pentest exploitation",
+		description: "Install exploitation framework tools such as Metasploit, Exploit-DB, and SET for authorized penetration testing engagements."
+	},
+	{
+		category: "SETUP",
+		command: "zyphor setup pentest full",
+		description: "Install the complete pentest toolkit, covering recon, web, wireless, passwords, sniffing, forensics, and exploitation in one run."
 	},
 	{
 		category: "SETUP",
