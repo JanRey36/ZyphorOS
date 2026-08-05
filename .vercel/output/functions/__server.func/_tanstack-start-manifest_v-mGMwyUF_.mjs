@@ -1,4 +1,4 @@
-//#region node_modules/.nitro/vite/services/ssr/assets/_tanstack-start-manifest_v-ClQT-QuW.js
+//#region node_modules/.nitro/vite/services/ssr/assets/_tanstack-start-manifest_v-mGMwyUF_.js
 var tsrStartManifest = () => ({ routes: {
 	__root__: {
 		filePath: "/home/janrey/Documents/My Projects/ZyphorOS/src/routes/__root.tsx",
@@ -11,57 +11,57 @@ var tsrStartManifest = () => ({ routes: {
 			"/sitemap.xml",
 			"/team"
 		],
-		preloads: ["/assets/index-B_RpF7Q2.js"],
+		preloads: ["/assets/index-DCR6dapR.js"],
 		scripts: [{ attrs: {
 			type: "module",
 			async: !0,
-			src: "/assets/index-B_RpF7Q2.js"
+			src: "/assets/index-DCR6dapR.js"
 		} }]
 	},
 	"/": {
 		filePath: "/home/janrey/Documents/My Projects/ZyphorOS/src/routes/index.tsx",
 		children: void 0,
 		preloads: [
-			"/assets/routes-DKH8otdf.js",
-			"/assets/useScrollReveal-D0TPT42P.js",
-			"/assets/useZyphorDownloads-UK0yC8VY.js",
-			"/assets/terminal-DWR7JHeT.js"
+			"/assets/routes-DV4MS3n9.js",
+			"/assets/useScrollReveal-Ba2Vi1_1.js",
+			"/assets/useZyphorDownloads-D3ZyNPwD.js",
+			"/assets/terminal-BjeNL-UK.js"
 		]
 	},
 	"/about": {
 		filePath: "/home/janrey/Documents/My Projects/ZyphorOS/src/routes/about.tsx",
 		children: void 0,
 		preloads: [
-			"/assets/about-czydCKEo.js",
-			"/assets/useScrollReveal-D0TPT42P.js",
-			"/assets/package-Camsz-T9.js",
-			"/assets/terminal-DWR7JHeT.js"
+			"/assets/about-CX5cHdZd.js",
+			"/assets/useScrollReveal-Ba2Vi1_1.js",
+			"/assets/package-Bg-do2h6.js",
+			"/assets/terminal-BjeNL-UK.js"
 		]
 	},
 	"/documentation": {
 		filePath: "/home/janrey/Documents/My Projects/ZyphorOS/src/routes/documentation.tsx",
 		children: void 0,
-		preloads: ["/assets/documentation-Choykg3e.js", "/assets/useScrollReveal-D0TPT42P.js"]
+		preloads: ["/assets/documentation-laC2al4Z.js", "/assets/useScrollReveal-Ba2Vi1_1.js"]
 	},
 	"/download": {
 		filePath: "/home/janrey/Documents/My Projects/ZyphorOS/src/routes/download.tsx",
 		children: void 0,
 		preloads: [
-			"/assets/download-C1fOTXlc.js",
-			"/assets/useScrollReveal-D0TPT42P.js",
-			"/assets/useZyphorDownloads-UK0yC8VY.js",
-			"/assets/package-Camsz-T9.js"
+			"/assets/download-CGPS131v.js",
+			"/assets/useScrollReveal-Ba2Vi1_1.js",
+			"/assets/useZyphorDownloads-D3ZyNPwD.js",
+			"/assets/package-Bg-do2h6.js"
 		]
 	},
 	"/gallery": {
 		filePath: "/home/janrey/Documents/My Projects/ZyphorOS/src/routes/gallery.tsx",
 		children: void 0,
-		preloads: ["/assets/gallery-BU1Vl_01.js", "/assets/useScrollReveal-D0TPT42P.js"]
+		preloads: ["/assets/gallery-CSKf6rjx.js", "/assets/useScrollReveal-Ba2Vi1_1.js"]
 	},
 	"/team": {
 		filePath: "/home/janrey/Documents/My Projects/ZyphorOS/src/routes/team.tsx",
 		children: void 0,
-		preloads: ["/assets/team-DzRK1PV0.js", "/assets/useScrollReveal-D0TPT42P.js"]
+		preloads: ["/assets/team-Bu02mg_K.js", "/assets/useScrollReveal-Ba2Vi1_1.js"]
 	}
 } });
 //#endregion
