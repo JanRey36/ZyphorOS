@@ -1,10 +1,10 @@
 import { r as __toESM } from "../_runtime.mjs";
 import { n as require_jsx_runtime, r as require_react } from "../_libs/react+tanstack__react-query.mjs";
 import { g as Link, l as useLocation } from "../_libs/@tanstack/react-router+[...].mjs";
-import { E as Github, R as BookOpen, a as Twitter, g as Menu, h as MessageCircle, k as Download, n as X } from "../_libs/lucide-react.mjs";
+import { E as Facebook, L as BookOpen, O as Download, m as Menu, n as X, w as Github } from "../_libs/lucide-react.mjs";
 import { t as clsx } from "../_libs/clsx.mjs";
 import { t as twMerge } from "../_libs/tailwind-merge.mjs";
-//#region node_modules/.nitro/vite/services/ssr/assets/useScrollReveal-BKRdfTJB.js
+//#region node_modules/.nitro/vite/services/ssr/assets/useScrollReveal-DGsG-_Ds.js
 var import_react = /* @__PURE__ */ __toESM(require_react());
 var import_jsx_runtime = require_jsx_runtime();
 var logo_default = "/assets/logo-BxOMS6c-.png";
@@ -250,22 +250,22 @@ function Footer() {
 					className: "flex items-center gap-2",
 					children: [
 						/* @__PURE__ */ (0, import_jsx_runtime.jsx)(SocialIcon, {
-							href: "https://github.com/",
+							href: "https://github.com/zyphor-os/zyphor-os-desktop",
 							label: "GitHub",
 							children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Github, { className: "h-4 w-4" })
 						}),
 						/* @__PURE__ */ (0, import_jsx_runtime.jsx)(SocialIcon, {
-							href: "#",
-							label: "Twitter",
-							children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Twitter, { className: "h-4 w-4" })
+							href: "https://www.facebook.com/profile.php?id=61573426796629",
+							label: "Facebook Page",
+							children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Facebook, { className: "h-4 w-4" })
 						}),
 						/* @__PURE__ */ (0, import_jsx_runtime.jsx)(SocialIcon, {
-							href: "#",
-							label: "Chat",
-							children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(MessageCircle, { className: "h-4 w-4" })
+							href: "https://www.facebook.com/groups/1297494746772755",
+							label: "Facebook Group",
+							children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Facebook, { className: "h-4 w-4" })
 						}),
 						/* @__PURE__ */ (0, import_jsx_runtime.jsx)(SocialIcon, {
-							href: "#",
+							href: "/documentation",
 							label: "Docs",
 							children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(BookOpen, { className: "h-4 w-4" })
 						})

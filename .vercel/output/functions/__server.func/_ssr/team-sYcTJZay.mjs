@@ -1,8 +1,8 @@
 import { r as __toESM } from "../_runtime.mjs";
 import { n as require_jsx_runtime, r as require_react } from "../_libs/react+tanstack__react-query.mjs";
-import { E as Github, S as Infinity$1, v as MapPin } from "../_libs/lucide-react.mjs";
-import { a as useScrollReveal, n as SiteLayout, t as PageHeader } from "./useScrollReveal-BKRdfTJB.mjs";
-//#region node_modules/.nitro/vite/services/ssr/assets/team-CeyhB69e.js
+import { b as Infinity$1, g as MapPin, w as Github } from "../_libs/lucide-react.mjs";
+import { a as useScrollReveal, n as SiteLayout, t as PageHeader } from "./useScrollReveal-DGsG-_Ds.mjs";
+//#region node_modules/.nitro/vite/services/ssr/assets/team-sYcTJZay.js
 var import_react = /* @__PURE__ */ __toESM(require_react());
 var import_jsx_runtime = require_jsx_runtime();
 var REPO = "zyphor-os/zyphor-os-desktop";

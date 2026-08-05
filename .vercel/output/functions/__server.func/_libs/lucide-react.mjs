@@ -407,6 +407,16 @@ var ExternalLink = createLucideIcon("external-link", [
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
+var Facebook = createLucideIcon("facebook", [["path", {
+	d: "M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z",
+	key: "1jg4f8"
+}]]);
+/**
+* @license lucide-react v0.575.0 - ISC
+*
+* This source code is licensed under the ISC license.
+* See the LICENSE file in the root directory of this source tree.
+*/
 var FileText = createLucideIcon("file-text", [
 	["path", {
 		d: "M6 22a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h8a2.4 2.4 0 0 1 1.704.706l3.588 3.588A2.4 2.4 0 0 1 20 8v12a2 2 0 0 1-2 2z",
@@ -656,16 +666,6 @@ var Menu = createLucideIcon("menu", [
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var MessageCircle = createLucideIcon("message-circle", [["path", {
-	d: "M2.992 16.342a2 2 0 0 1 .094 1.167l-1.065 3.29a1 1 0 0 0 1.236 1.168l3.413-.998a2 2 0 0 1 1.099.092 10 10 0 1 0-4.777-4.719",
-	key: "1sd12s"
-}]]);
-/**
-* @license lucide-react v0.575.0 - ISC
-*
-* This source code is licensed under the ISC license.
-* See the LICENSE file in the root directory of this source tree.
-*/
 var Minimize2 = createLucideIcon("minimize-2", [
 	["path", {
 		d: "m14 10 7-7",
@@ -880,16 +880,6 @@ var TriangleAlert = createLucideIcon("triangle-alert", [
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var Twitter = createLucideIcon("twitter", [["path", {
-	d: "M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2z",
-	key: "pff0z6"
-}]]);
-/**
-* @license lucide-react v0.575.0 - ISC
-*
-* This source code is licensed under the ISC license.
-* See the LICENSE file in the root directory of this source tree.
-*/
 var User = createLucideIcon("user", [["path", {
 	d: "M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2",
 	key: "975kel"
@@ -974,4 +964,4 @@ var ZoomIn = createLucideIcon("zoom-in", [
 	}]
 ]);
 //#endregion
-export { Cpu as A, House as C, FileText as D, Github as E, Check as F, Boxes as I, Box as L, CircleAlert as M, ChevronRight as N, ExternalLink as O, ChevronLeft as P, BookOpen as R, Infinity$1 as S, GraduationCap as T, MemoryStick as _, Twitter as a, Lightbulb as b, Shield as c, Palette as d, Package as f, Menu as g, MessageCircle as h, User as i, CodeXml as j, Download as k, ShieldCheck as l, Minimize2 as m, X as n, TriangleAlert as o, Monitor as p, Users as r, Terminal as s, ZoomIn as t, Server as u, MapPin as v, HardDrive as w, Layers as x, LoaderCircle as y, ArrowRight as z };
+export { CodeXml as A, GraduationCap as C, ExternalLink as D, Facebook as E, Boxes as F, Box as I, BookOpen as L, ChevronRight as M, ChevronLeft as N, Download as O, Check as P, ArrowRight as R, HardDrive as S, FileText as T, LoaderCircle as _, TriangleAlert as a, Infinity$1 as b, ShieldCheck as c, Package as d, Monitor as f, MapPin as g, MemoryStick as h, User as i, CircleAlert as j, Cpu as k, Server as l, Menu as m, X as n, Terminal as o, Minimize2 as p, Users as r, Shield as s, ZoomIn as t, Palette as u, Lightbulb as v, Github as w, House as x, Layers as y };

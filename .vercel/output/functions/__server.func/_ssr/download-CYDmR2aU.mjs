@@ -1,8 +1,8 @@
 import { n as require_jsx_runtime } from "../_libs/react+tanstack__react-query.mjs";
-import { A as Cpu, F as Check, M as CircleAlert, O as ExternalLink, _ as MemoryStick, f as Package, j as CodeXml, k as Download, p as Monitor, u as Server, w as HardDrive, x as Layers, y as LoaderCircle } from "../_libs/lucide-react.mjs";
-import { a as useScrollReveal, n as SiteLayout, r as cn, t as PageHeader } from "./useScrollReveal-BKRdfTJB.mjs";
+import { A as CodeXml, D as ExternalLink, O as Download, P as Check, S as HardDrive, _ as LoaderCircle, d as Package, f as Monitor, h as MemoryStick, j as CircleAlert, k as Cpu, l as Server, y as Layers } from "../_libs/lucide-react.mjs";
+import { a as useScrollReveal, n as SiteLayout, r as cn, t as PageHeader } from "./useScrollReveal-DGsG-_Ds.mjs";
 import { t as useZyphorDownloads } from "./useZyphorDownloads-Dm9zGf_H.mjs";
-//#region node_modules/.nitro/vite/services/ssr/assets/download-cZsPnOez.js
+//#region node_modules/.nitro/vite/services/ssr/assets/download-CYDmR2aU.js
 var import_jsx_runtime = require_jsx_runtime();
 function DownloadPage() {
 	const { desktopLatest, serverLatest, adaTags, legacyTags, state } = useZyphorDownloads();

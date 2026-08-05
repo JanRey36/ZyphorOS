@@ -1,5 +1,5 @@
 import { Link } from "@tanstack/react-router";
-import { Github, MessageCircle, Twitter, BookOpen } from "lucide-react";
+import { Github, Facebook, BookOpen } from "lucide-react";
 import { Logo } from "./Logo";
 
 export function Footer() {
@@ -60,16 +60,16 @@ export function Footer() {
             Created by Mark Jason P. Espelita.
           </p>
           <div className="flex items-center gap-2">
-            <SocialIcon href="https://github.com/" label="GitHub">
+            <SocialIcon href="https://github.com/zyphor-os/zyphor-os-desktop" label="GitHub">
               <Github className="h-4 w-4" />
             </SocialIcon>
-            <SocialIcon href="#" label="Twitter">
-              <Twitter className="h-4 w-4" />
+            <SocialIcon href="https://www.facebook.com/profile.php?id=61573426796629" label="Facebook Page">
+              <Facebook className="h-4 w-4" />
             </SocialIcon>
-            <SocialIcon href="#" label="Chat">
-              <MessageCircle className="h-4 w-4" />
+            <SocialIcon href="https://www.facebook.com/groups/1297494746772755" label="Facebook Group">
+              <Facebook className="h-4 w-4" />
             </SocialIcon>
-            <SocialIcon href="#" label="Docs">
+            <SocialIcon href="/documentation" label="Docs">
               <BookOpen className="h-4 w-4" />
             </SocialIcon>
           </div>
