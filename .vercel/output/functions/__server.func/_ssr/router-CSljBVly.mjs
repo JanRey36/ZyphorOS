@@ -2,9 +2,9 @@ import { t as logo_default } from "./logo-hcg7UTE5.mjs";
 import { n as require_jsx_runtime, t as QueryClientProvider } from "../_libs/react+tanstack__react-query.mjs";
 import { c as HeadContent, d as createRouter, f as Outlet, g as Link, h as createRootRouteWithContext, m as createFileRoute, p as lazyRouteComponent, s as Scripts, v as useRouter } from "../_libs/@tanstack/react-router+[...].mjs";
 import { t as QueryClient } from "../_libs/tanstack__query-core.mjs";
-//#region node_modules/.nitro/vite/services/ssr/assets/router-b4i8pQqt.js
+//#region node_modules/.nitro/vite/services/ssr/assets/router-CSljBVly.js
 var import_jsx_runtime = require_jsx_runtime();
-var styles_default = "/assets/styles-fQCOTKsf.css";
+var styles_default = "/assets/styles-55VsBg4d.css";
 function NotFoundComponent() {
 	return /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
 		className: "flex min-h-screen items-center justify-center bg-background px-4",
@@ -197,7 +197,7 @@ var Route$5 = createFileRoute("/about")({
 	] }),
 	component: lazyRouteComponent($$splitComponentImporter$4, "component")
 });
-var $$splitComponentImporter$3 = () => import("./documentation-r2CScrbs.mjs");
+var $$splitComponentImporter$3 = () => import("./documentation-0h516Z4n.mjs");
 var Route$4 = createFileRoute("/documentation")({
 	head: () => ({ meta: [
 		{ title: "Documentation — Zyphor OS" },

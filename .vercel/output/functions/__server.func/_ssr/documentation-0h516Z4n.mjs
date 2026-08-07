@@ -3,7 +3,7 @@ import { n as require_jsx_runtime, r as require_react } from "../_libs/react+tan
 import { g as Link } from "../_libs/@tanstack/react-router+[...].mjs";
 import { I as Box, L as BookOpen, O as Download, a as TriangleAlert, i as User, m as Menu, s as Shield, v as Lightbulb, w as Github, x as House } from "../_libs/lucide-react.mjs";
 import { i as useScrollReveal, n as SiteLayout, r as cn } from "./useScrollReveal-DkVzoxtN.mjs";
-//#region node_modules/.nitro/vite/services/ssr/assets/documentation-r2CScrbs.js
+//#region node_modules/.nitro/vite/services/ssr/assets/documentation-0h516Z4n.js
 var import_react = /* @__PURE__ */ __toESM(require_react());
 var import_jsx_runtime = require_jsx_runtime();
 var zcc_jpg_default = "/assets/2-MiokMX8I.jpg";
@@ -70,6 +70,11 @@ var navSections = [
 			{
 				id: "zysh",
 				label: "Zysh",
+				Icon: Box
+			},
+			{
+				id: "zywin",
+				label: "Zywin",
 				Icon: Box
 			}
 		]
@@ -741,6 +746,109 @@ function DocsPage() {
 							]
 						}),
 						/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("section", {
+							id: "zywin",
+							className: "scroll-mt-24",
+							children: [
+								/* @__PURE__ */ (0, import_jsx_runtime.jsx)(SectionHeading, {
+									level: 2,
+									children: "Zywin"
+								}),
+								/* @__PURE__ */ (0, import_jsx_runtime.jsxs)(WarnAlert, {
+									className: "mt-4",
+									children: [
+										"Note: Please run",
+										" ",
+										/* @__PURE__ */ (0, import_jsx_runtime.jsx)(InlineCode, { children: "zyphor setup wine" }),
+										" ",
+										"first to install and configure Wine before using ZyWin."
+									]
+								}),
+								/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("p", {
+									className: "mt-5 text-muted-foreground leading-relaxed",
+									children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("strong", {
+										className: "font-semibold text-foreground",
+										children: "ZyWin"
+									}), " is a lightweight command-line utility that makes running Windows software on Zyphor OS easier. It automatically detects supported installer formats, prepares the required Wine environment, and launches applications with minimal user interaction."]
+								}),
+								/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("p", {
+									className: "mt-4 text-muted-foreground leading-relaxed",
+									children: [
+										"ZyWin supports Windows executable files (",
+										/* @__PURE__ */ (0, import_jsx_runtime.jsx)(InlineCode, { children: ".exe" }),
+										"), Windows Installer packages (",
+										/* @__PURE__ */ (0, import_jsx_runtime.jsx)(InlineCode, { children: ".msi" }),
+										"), and optical disc images (",
+										/* @__PURE__ */ (0, import_jsx_runtime.jsx)(InlineCode, { children: ".iso" }),
+										"). When an ISO image is provided, ZyWin automatically extracts its contents to a temporary directory, searches for executable installers, and prompts the user to select one when multiple executables are available."
+									]
+								}),
+								/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("p", {
+									className: "mt-4 text-muted-foreground leading-relaxed",
+									children: [
+										"Each application is executed using its own dedicated Wine prefix stored under",
+										" ",
+										/* @__PURE__ */ (0, import_jsx_runtime.jsx)(InlineCode, { children: "~/.local/share/zywin/prefixes/" }),
+										". This keeps applications isolated from one another, helping prevent registry conflicts, DLL incompatibilities, and configuration issues that can occur when sharing a single Wine prefix."
+									]
+								}),
+								/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("p", {
+									className: "mt-4 text-muted-foreground leading-relaxed",
+									children: [
+										"Temporary files created while extracting ISO images are stored under",
+										" ",
+										/* @__PURE__ */ (0, import_jsx_runtime.jsx)(InlineCode, { children: "/tmp/zywin-installer-iso-extract-<timestamp>" }),
+										". These can be removed at any time using the cleanup command."
+									]
+								}),
+								/* @__PURE__ */ (0, import_jsx_runtime.jsx)("h3", {
+									className: "mt-8 text-lg font-semibold tracking-tight",
+									children: "Available Commands"
+								}),
+								/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
+									className: "mt-4 overflow-x-auto rounded-xl border border-border/60",
+									children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("table", {
+										className: "w-full text-sm",
+										children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("thead", { children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("tr", {
+											className: "border-b border-border/60 bg-surface/60",
+											children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("th", {
+												className: "px-4 py-3 text-left font-semibold text-foreground w-[30%]",
+												children: "Command"
+											}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("th", {
+												className: "px-4 py-3 text-left font-semibold text-foreground",
+												children: "Description"
+											})]
+										}) }), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("tbody", { children: [
+											{
+												command: "zywin <application.exe>",
+												description: "Launches a Windows executable using a dedicated Wine prefix."
+											},
+											{
+												command: "zywin <installer.msi>",
+												description: "Installs an MSI package using Wine's Windows Installer service."
+											},
+											{
+												command: "zywin <image.iso>",
+												description: "Extracts the ISO, locates executable installers, and launches the selected executable using Wine."
+											},
+											{
+												command: "zywin cleanup",
+												description: "Removes temporary ISO extraction directories created by ZyWin."
+											}
+										].map((row, i) => /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("tr", {
+											className: cn("border-b border-border/40", i % 2 === 0 ? "bg-surface/20" : "bg-transparent"),
+											children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("td", {
+												className: "px-4 py-3 align-top",
+												children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(InlineCode, { children: row.command })
+											}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("td", {
+												className: "px-4 py-3 text-muted-foreground leading-relaxed align-top",
+												children: row.description
+											})]
+										}, i)) })]
+									})
+								})
+							]
+						}),
+						/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("section", {
 							id: "contributing-packages",
 							className: "mb-16 [scroll-margin-top:5.5rem] lg:[scroll-margin-top:4.5rem] reveal",
 							children: [
@@ -763,6 +871,7 @@ function DocsPage() {
 										/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("li", { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(InlineCode, { children: "zysh" }), " - shell script"] }),
 										/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("li", { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(InlineCode, { children: "zyshell" }), " - C (removed temporary)"] }),
 										/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("li", { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(InlineCode, { children: "zycamera-launcher" }), " - C++"] }),
+										/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("li", { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(InlineCode, { children: "zywin" }), " - C++"] }),
 										/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("li", { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(InlineCode, { children: "fastfetch-config-1" }), " - filesystem config and Debian config file"] }),
 										/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("li", { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(InlineCode, { children: "grub-screensaver-1" }), " - filesystem config and Debian config file"] }),
 										/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("li", { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(InlineCode, { children: "zyphor-display-mac-v1" }), " - filesystem config and Debian config file (optional - for v1 Stable)"] }),
