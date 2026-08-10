@@ -79,6 +79,7 @@ const navSections: NavSection[] = [
       { id: "zylearn", label: "ZyLearn", Icon: Box },
       { id: "zyphor-updates", label: "Zyphor Updates", Icon: Box },
       { id: "zysh", label: "Zysh", Icon: Box },
+      { id: "zywin", label: "Zywin", Icon: Box },
     ],
   },
   {
@@ -662,6 +663,109 @@ function DocsPage() {
               </p>
             </section>
 
+            <section id="zywin" className="scroll-mt-24">
+              <SectionHeading level={2}>Zywin</SectionHeading>
+
+              <WarnAlert className="mt-4">
+                Note: Please run{" "}
+                <InlineCode>zyphor setup wine</InlineCode>{" "}
+                first to install and configure Wine before using ZyWin.
+              </WarnAlert>
+
+              <p className="mt-5 text-muted-foreground leading-relaxed">
+                <strong className="font-semibold text-foreground">ZyWin</strong> is a
+                lightweight command-line utility that makes running Windows software on
+                Zyphor OS easier. It automatically detects supported installer formats,
+                prepares the required Wine environment, and launches applications with
+                minimal user interaction.
+              </p>
+
+              <p className="mt-4 text-muted-foreground leading-relaxed">
+                ZyWin supports Windows executable files (
+                <InlineCode>.exe</InlineCode>), Windows Installer packages (
+                <InlineCode>.msi</InlineCode>), and optical disc images (
+                <InlineCode>.iso</InlineCode>). When an ISO image is provided, ZyWin
+                automatically extracts its contents to a temporary directory, searches
+                for executable installers, and prompts the user to select one when
+                multiple executables are available.
+              </p>
+
+              <p className="mt-4 text-muted-foreground leading-relaxed">
+                Each application is executed using its own dedicated Wine prefix stored
+                under{" "}
+                <InlineCode>~/.local/share/zywin/prefixes/</InlineCode>. This keeps
+                applications isolated from one another, helping prevent registry
+                conflicts, DLL incompatibilities, and configuration issues that can
+                occur when sharing a single Wine prefix.
+              </p>
+
+              <p className="mt-4 text-muted-foreground leading-relaxed">
+                Temporary files created while extracting ISO images are stored under{" "}
+                <InlineCode>/tmp/zywin-installer-iso-extract-&lt;timestamp&gt;</InlineCode>.
+                These can be removed at any time using the cleanup command.
+              </p>
+
+              <h3 className="mt-8 text-lg font-semibold tracking-tight">
+                Available Commands
+              </h3>
+
+              <div className="mt-4 overflow-x-auto rounded-xl border border-border/60">
+                <table className="w-full text-sm">
+                  <thead>
+                    <tr className="border-b border-border/60 bg-surface/60">
+                      <th className="px-4 py-3 text-left font-semibold text-foreground w-[30%]">
+                        Command
+                      </th>
+                      <th className="px-4 py-3 text-left font-semibold text-foreground">
+                        Description
+                      </th>
+                    </tr>
+                  </thead>
+
+                  <tbody>
+                    {[
+                      {
+                        command: "zywin <application.exe>",
+                        description:
+                          "Launches a Windows executable using a dedicated Wine prefix.",
+                      },
+                      {
+                        command: "zywin <installer.msi>",
+                        description:
+                          "Installs an MSI package using Wine's Windows Installer service.",
+                      },
+                      {
+                        command: "zywin <image.iso>",
+                        description:
+                          "Extracts the ISO, locates executable installers, and launches the selected executable using Wine.",
+                      },
+                      {
+                        command: "zywin cleanup",
+                        description:
+                          "Removes temporary ISO extraction directories created by ZyWin.",
+                      },
+                    ].map((row, i) => (
+                      <tr
+                        key={i}
+                        className={cn(
+                          "border-b border-border/40",
+                          i % 2 === 0 ? "bg-surface/20" : "bg-transparent",
+                        )}
+                      >
+                        <td className="px-4 py-3 align-top">
+                          <InlineCode>{row.command}</InlineCode>
+                        </td>
+
+                        <td className="px-4 py-3 text-muted-foreground leading-relaxed align-top">
+                          {row.description}
+                        </td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+            </section>
+
             <section
               id="contributing-packages"
               className="mb-16 [scroll-margin-top:5.5rem] lg:[scroll-margin-top:4.5rem] reveal"
@@ -680,6 +784,7 @@ function DocsPage() {
                 <li><InlineCode>zysh</InlineCode> - shell script</li>
                 <li><InlineCode>zyshell</InlineCode> - C (removed temporary)</li>
                 <li><InlineCode>zycamera-launcher</InlineCode> - C++</li>
+                <li><InlineCode>zywin</InlineCode> - C++</li>
                 <li><InlineCode>fastfetch-config-1</InlineCode> - filesystem config and Debian config file</li>
                 <li><InlineCode>grub-screensaver-1</InlineCode> - filesystem config and Debian config file</li>
                 <li><InlineCode>zyphor-display-mac-v1</InlineCode> - filesystem config and Debian config file (optional - for v1 Stable)</li>
