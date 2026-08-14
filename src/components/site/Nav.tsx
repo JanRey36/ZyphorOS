@@ -10,6 +10,7 @@ const links = [
   { to: "/documentation", label: "Documentation" },
   { to: "/gallery", label: "Gallery" },
   { to: "/team", label: "Team" },
+  { to: "https://white-opossum-308929.hostingersite.com/zyphor-os-wiki/", label: "Wiki" },
 ] as const;
 
 export function Nav() {

@@ -5,7 +5,7 @@ import { g as Link, l as useLocation } from "../_libs/@tanstack/react-router+[..
 import { E as Facebook, L as BookOpen, O as Download, m as Menu, n as X, w as Github } from "../_libs/lucide-react.mjs";
 import { t as clsx } from "../_libs/clsx.mjs";
 import { t as twMerge } from "../_libs/tailwind-merge.mjs";
-//#region node_modules/.nitro/vite/services/ssr/assets/useScrollReveal-DkVzoxtN.js
+//#region node_modules/.nitro/vite/services/ssr/assets/useScrollReveal-BA44SaI7.js
 var import_react = /* @__PURE__ */ __toESM(require_react());
 var import_jsx_runtime = require_jsx_runtime();
 function Logo({ size = 32 }) {
@@ -54,6 +54,10 @@ var links = [
 	{
 		to: "/team",
 		label: "Team"
+	},
+	{
+		to: "https://white-opossum-308929.hostingersite.com/zyphor-os-wiki/",
+		label: "Wiki"
 	}
 ];
 function Nav() {
