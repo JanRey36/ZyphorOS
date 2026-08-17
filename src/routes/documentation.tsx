@@ -1163,6 +1163,24 @@ const cliCommands = [
       "Connect and mount a remote SMB/CIFS network share, making it accessible like a local directory.",
   },
   {
+    category: "NETWORK / STORAGE",
+    command: "zyphor smb share-add",
+    description:
+      "Share a local folder over SMB so it's accessible from other devices, including Windows PCs, on the network.",
+  },
+  {
+    category: "NETWORK / STORAGE",
+    command: "zyphor smb share-list",
+    description:
+      "List all folders currently being shared over SMB from this machine.",
+  },
+  {
+    category: "NETWORK / STORAGE",
+    command: "zyphor smb share-remove",
+    description:
+      "Stop sharing a folder that was previously shared over SMB.",
+  },
+  {
     category: "FTP",
     command: "zyphor ftp upload",
     description:
