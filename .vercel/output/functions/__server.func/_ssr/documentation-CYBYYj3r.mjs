@@ -3,7 +3,7 @@ import { n as require_jsx_runtime, r as require_react } from "../_libs/react+tan
 import { g as Link } from "../_libs/@tanstack/react-router+[...].mjs";
 import { I as Box, L as BookOpen, O as Download, a as TriangleAlert, i as User, m as Menu, s as Shield, v as Lightbulb, w as Github, x as House } from "../_libs/lucide-react.mjs";
 import { i as useScrollReveal, n as SiteLayout, r as cn } from "./useScrollReveal-BA44SaI7.mjs";
-//#region node_modules/.nitro/vite/services/ssr/assets/documentation-CP9AdP96.js
+//#region node_modules/.nitro/vite/services/ssr/assets/documentation-CYBYYj3r.js
 var import_react = /* @__PURE__ */ __toESM(require_react());
 var import_jsx_runtime = require_jsx_runtime();
 var zcc_jpg_default = "/assets/2-MiokMX8I.jpg";
@@ -1219,6 +1219,21 @@ var cliCommands = [
 		category: "NETWORK / STORAGE",
 		command: "zyphor smb mount",
 		description: "Connect and mount a remote SMB/CIFS network share, making it accessible like a local directory."
+	},
+	{
+		category: "NETWORK / STORAGE",
+		command: "zyphor smb share-add",
+		description: "Share a local folder over SMB so it's accessible from other devices, including Windows PCs, on the network."
+	},
+	{
+		category: "NETWORK / STORAGE",
+		command: "zyphor smb share-list",
+		description: "List all folders currently being shared over SMB from this machine."
+	},
+	{
+		category: "NETWORK / STORAGE",
+		command: "zyphor smb share-remove",
+		description: "Stop sharing a folder that was previously shared over SMB."
 	},
 	{
 		category: "FTP",

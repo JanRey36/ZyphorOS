@@ -1,4 +1,4 @@
-//#region node_modules/.nitro/vite/services/ssr/assets/_tanstack-start-manifest_v-BHRgYjic.js
+//#region node_modules/.nitro/vite/services/ssr/assets/_tanstack-start-manifest_v-BIPKP2HU.js
 var tsrStartManifest = () => ({ routes: {
 	__root__: {
 		filePath: "/home/programmer/ZyphorOS/src/routes/__root.tsx",
@@ -11,57 +11,57 @@ var tsrStartManifest = () => ({ routes: {
 			"/sitemap.xml",
 			"/team"
 		],
-		preloads: ["/assets/index-Wqv77r7d.js"],
+		preloads: ["/assets/index-DN0qvYRE.js"],
 		scripts: [{ attrs: {
 			type: "module",
 			async: !0,
-			src: "/assets/index-Wqv77r7d.js"
+			src: "/assets/index-DN0qvYRE.js"
 		} }]
 	},
 	"/": {
 		filePath: "/home/programmer/ZyphorOS/src/routes/index.tsx",
 		children: void 0,
 		preloads: [
-			"/assets/routes-DswElEVV.js",
-			"/assets/useScrollReveal-CLXdS1WU.js",
-			"/assets/useZyphorDownloads-UDkeqzhZ.js",
-			"/assets/terminal-BmuKbAov.js"
+			"/assets/routes-CCkOJjKn.js",
+			"/assets/useScrollReveal-D5hIZ8_u.js",
+			"/assets/useZyphorDownloads-C1msY2py.js",
+			"/assets/terminal-tru_7Mo3.js"
 		]
 	},
 	"/about": {
 		filePath: "/home/programmer/ZyphorOS/src/routes/about.tsx",
 		children: void 0,
 		preloads: [
-			"/assets/about-Dbjwh3Ts.js",
-			"/assets/useScrollReveal-CLXdS1WU.js",
-			"/assets/package-B1URIRhi.js",
-			"/assets/terminal-BmuKbAov.js"
+			"/assets/about-BEWpjBRV.js",
+			"/assets/useScrollReveal-D5hIZ8_u.js",
+			"/assets/package-D_CYyjQT.js",
+			"/assets/terminal-tru_7Mo3.js"
 		]
 	},
 	"/documentation": {
 		filePath: "/home/programmer/ZyphorOS/src/routes/documentation.tsx",
 		children: void 0,
-		preloads: ["/assets/documentation-2cwgNDUj.js", "/assets/useScrollReveal-CLXdS1WU.js"]
+		preloads: ["/assets/documentation-BAFasM9I.js", "/assets/useScrollReveal-D5hIZ8_u.js"]
 	},
 	"/download": {
 		filePath: "/home/programmer/ZyphorOS/src/routes/download.tsx",
 		children: void 0,
 		preloads: [
-			"/assets/download-DC8c-8kQ.js",
-			"/assets/useScrollReveal-CLXdS1WU.js",
-			"/assets/useZyphorDownloads-UDkeqzhZ.js",
-			"/assets/package-B1URIRhi.js"
+			"/assets/download-DVMA9itL.js",
+			"/assets/useScrollReveal-D5hIZ8_u.js",
+			"/assets/useZyphorDownloads-C1msY2py.js",
+			"/assets/package-D_CYyjQT.js"
 		]
 	},
 	"/gallery": {
 		filePath: "/home/programmer/ZyphorOS/src/routes/gallery.tsx",
 		children: void 0,
-		preloads: ["/assets/gallery-BVReztx0.js", "/assets/useScrollReveal-CLXdS1WU.js"]
+		preloads: ["/assets/gallery-CLT_2CwQ.js", "/assets/useScrollReveal-D5hIZ8_u.js"]
 	},
 	"/team": {
 		filePath: "/home/programmer/ZyphorOS/src/routes/team.tsx",
 		children: void 0,
-		preloads: ["/assets/team-r05jTYqb.js", "/assets/useScrollReveal-CLXdS1WU.js"]
+		preloads: ["/assets/team-C_-D14uU.js", "/assets/useScrollReveal-D5hIZ8_u.js"]
 	}
 } });
 //#endregion
