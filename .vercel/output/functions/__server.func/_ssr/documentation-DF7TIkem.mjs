@@ -3,10 +3,11 @@ import { n as require_jsx_runtime, r as require_react } from "../_libs/react+tan
 import { g as Link } from "../_libs/@tanstack/react-router+[...].mjs";
 import { I as Box, L as BookOpen, O as Download, a as TriangleAlert, i as User, m as Menu, s as Shield, v as Lightbulb, w as Github, x as House } from "../_libs/lucide-react.mjs";
 import { i as useScrollReveal, n as SiteLayout, r as cn } from "./useScrollReveal-BA44SaI7.mjs";
-//#region node_modules/.nitro/vite/services/ssr/assets/documentation-CYBYYj3r.js
+//#region node_modules/.nitro/vite/services/ssr/assets/documentation-DF7TIkem.js
 var import_react = /* @__PURE__ */ __toESM(require_react());
 var import_jsx_runtime = require_jsx_runtime();
 var zcc_jpg_default = "/assets/2-MiokMX8I.jpg";
+var zywin_default = "/assets/zywin-BYBzPaGp.png";
 var profile_login_1_default = "/assets/profile-login-1-DSNwx6cn.jpg";
 var profile_login_2_default = "/assets/profile-login-2-CzGlUgk-.jpg";
 var profile_login_3_default = "/assets/profile-login-3-BlNA6Bsi.jpg";
@@ -75,6 +76,11 @@ var navSections = [
 			{
 				id: "zywin",
 				label: "Zywin",
+				Icon: Box
+			},
+			{
+				id: "zywin-ui",
+				label: "Zywin-UI",
 				Icon: Box
 			}
 		]
@@ -849,6 +855,60 @@ function DocsPage() {
 							]
 						}),
 						/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("section", {
+							id: "zywin-ui",
+							className: "mb-16 [scroll-margin-top:5.5rem] lg:[scroll-margin-top:4.5rem] reveal",
+							children: [
+								/* @__PURE__ */ (0, import_jsx_runtime.jsx)(SectionHeading, {
+									level: 2,
+									children: "Zywin UI"
+								}),
+								/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("p", {
+									className: "mt-3 text-muted-foreground",
+									children: [
+										"Installation:",
+										" ",
+										/* @__PURE__ */ (0, import_jsx_runtime.jsx)(InlineCode, { children: "zyphor pkg install zywin-ui" })
+									]
+								}),
+								/* @__PURE__ */ (0, import_jsx_runtime.jsx)(InfoAlert, {
+									className: "mt-4",
+									children: "Note: Zywin UI is NOT pre-installed and available by default after operating system installation."
+								}),
+								/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("p", {
+									className: "mt-5 text-muted-foreground leading-relaxed",
+									children: [
+										/* @__PURE__ */ (0, import_jsx_runtime.jsx)("strong", {
+											className: "font-semibold text-foreground",
+											children: "Zywin UI"
+										}),
+										" ",
+										"— A graphical interface for installing and initializing Windows applications on Zyphor OS using Wine, providing a simple point-and-click experience without requiring terminal commands."
+									]
+								}),
+								/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
+									className: "mt-5 rounded-xl border border-border/60 bg-surface/40 overflow-hidden",
+									children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)("img", {
+										src: zywin_default,
+										alt: "Zywin UI screenshot",
+										className: "w-full h-auto block",
+										onError: (e) => {
+											const target = e.currentTarget;
+											target.style.display = "none";
+											const parent = target.parentElement;
+											if (parent && !parent.querySelector(".img-placeholder")) {
+												const placeholder = document.createElement("div");
+												placeholder.className = "img-placeholder flex flex-col items-center justify-center gap-3 py-16 text-muted-foreground";
+												placeholder.innerHTML = `
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10 opacity-40" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 17V7m0 10a2 2 0 01-2 2H5a2 2 0 01-2-2V7a2 2 0 012-2h2a2 2 0 012 2m0 10a2 2 0 002 2h2a2 2 0 002-2M9 7a2 2 0 012-2h2a2 2 0 012 2m0 10V7m0 10a2 2 0 002 2h2a2 2 0 002-2V7a2 2 0 00-2-2h-2a2 2 0 00-2 2"/></svg>
+                        <span class="text-sm">Zywin UI</span>`;
+												parent.appendChild(placeholder);
+											}
+										}
+									})
+								})
+							]
+						}),
+						/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("section", {
 							id: "contributing-packages",
 							className: "mb-16 [scroll-margin-top:5.5rem] lg:[scroll-margin-top:4.5rem] reveal",
 							children: [
@@ -1139,6 +1199,11 @@ var cliCommands = [
 		category: "SETUP",
 		command: "zyphor setup dev git",
 		description: "Generate SSH keys, configure Git settings, and prepare secure authentication for GitHub and Git-based workflows."
+	},
+	{
+		category: "SETUP",
+		command: "zyphor setup dev android-studio",
+		description: "Install and configure Android Studio and the required tools for Android development."
 	},
 	{
 		category: "SETUP",

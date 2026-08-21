@@ -19,6 +19,7 @@ import { SiteLayout } from "@/components/site/SiteLayout";
 import { cn } from "@/lib/utils";
 import { useScrollReveal } from "@/lib/useScrollReveal";
 import zccImage from "@/documentation/zyphor-os/assets/images/zcc.jpg.jpg";
+import zywinImage from "@/documentation/zyphor-os/assets/images/zywin.png";
 import profileImage1 from "@/documentation/zyphor-os/assets/images/profile-login-1.jpg";
 import profileImage2 from "@/documentation/zyphor-os/assets/images/profile-login-2.jpg";
 import profileImage3 from "@/documentation/zyphor-os/assets/images/profile-login-3.jpg";
@@ -80,6 +81,7 @@ const navSections: NavSection[] = [
       { id: "zyphor-updates", label: "Zyphor Updates", Icon: Box },
       { id: "zysh", label: "Zysh", Icon: Box },
       { id: "zywin", label: "Zywin", Icon: Box },
+      { id: "zywin-ui", label: "Zywin-UI", Icon: Box },
     ],
   },
   {
@@ -767,6 +769,51 @@ function DocsPage() {
             </section>
 
             <section
+              id="zywin-ui"
+              className="mb-16 [scroll-margin-top:5.5rem] lg:[scroll-margin-top:4.5rem] reveal"
+            >
+              <SectionHeading level={2}>Zywin UI</SectionHeading>
+              <p className="mt-3 text-muted-foreground">
+                Installation:{" "}
+                <InlineCode>zyphor pkg install zywin-ui</InlineCode>
+              </p>
+
+              <InfoAlert className="mt-4">
+                Note: Zywin UI is NOT pre-installed and available by
+                default after operating system installation.
+              </InfoAlert>
+
+              <p className="mt-5 text-muted-foreground leading-relaxed">
+                <strong className="font-semibold text-foreground">
+                  Zywin UI
+                </strong>{" "}
+                — A graphical interface for installing and initializing Windows applications on Zyphor OS using Wine, providing a simple point-and-click experience without requiring terminal commands.
+              </p>
+
+              <div className="mt-5 rounded-xl border border-border/60 bg-surface/40 overflow-hidden">
+                <img
+                  src={zywinImage}
+                  alt="Zywin UI screenshot"
+                  className="w-full h-auto block"
+                  onError={(e) => {
+                    const target = e.currentTarget;
+                    target.style.display = "none";
+                    const parent = target.parentElement;
+                    if (parent && !parent.querySelector(".img-placeholder")) {
+                      const placeholder = document.createElement("div");
+                      placeholder.className =
+                        "img-placeholder flex flex-col items-center justify-center gap-3 py-16 text-muted-foreground";
+                      placeholder.innerHTML = `
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10 opacity-40" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 17V7m0 10a2 2 0 01-2 2H5a2 2 0 01-2-2V7a2 2 0 012-2h2a2 2 0 012 2m0 10a2 2 0 002 2h2a2 2 0 002-2M9 7a2 2 0 012-2h2a2 2 0 012 2m0 10V7m0 10a2 2 0 002 2h2a2 2 0 002-2V7a2 2 0 00-2-2h-2a2 2 0 00-2 2"/></svg>
+                        <span class="text-sm">Zywin UI</span>`;
+                      parent.appendChild(placeholder);
+                    }
+                  }}
+                />
+              </div>
+            </section>
+
+            <section
               id="contributing-packages"
               className="mb-16 [scroll-margin-top:5.5rem] lg:[scroll-margin-top:4.5rem] reveal"
             >
@@ -1065,6 +1112,12 @@ const cliCommands = [
     command: "zyphor setup dev git",
     description:
       "Generate SSH keys, configure Git settings, and prepare secure authentication for GitHub and Git-based workflows.",
+  },
+  {
+    category: "SETUP",
+    command: "zyphor setup dev android-studio",
+    description:
+      "Install and configure Android Studio and the required tools for Android development.",
   },
   {
     category: "SETUP",
