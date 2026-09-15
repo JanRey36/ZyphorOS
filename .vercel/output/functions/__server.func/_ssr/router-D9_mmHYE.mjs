@@ -2,7 +2,7 @@ import { t as logo_default } from "./logo-hcg7UTE5.mjs";
 import { n as require_jsx_runtime, t as QueryClientProvider } from "../_libs/react+tanstack__react-query.mjs";
 import { c as HeadContent, d as createRouter, f as Outlet, g as Link, h as createRootRouteWithContext, m as createFileRoute, p as lazyRouteComponent, s as Scripts, v as useRouter } from "../_libs/@tanstack/react-router+[...].mjs";
 import { t as QueryClient } from "../_libs/tanstack__query-core.mjs";
-//#region node_modules/.nitro/vite/services/ssr/assets/router-CVR8HTJH.js
+//#region node_modules/.nitro/vite/services/ssr/assets/router-D9_mmHYE.js
 var import_jsx_runtime = require_jsx_runtime();
 var styles_default = "/assets/styles-D1upfVFF.css";
 function NotFoundComponent() {
@@ -147,7 +147,7 @@ function RootComponent() {
 		children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Outlet, {})
 	});
 }
-var $$splitComponentImporter$5 = () => import("./routes-oYFMynAz.mjs");
+var $$splitComponentImporter$5 = () => import("./routes-DXoWX2yQ.mjs");
 var Route$6 = createFileRoute("/")({
 	head: () => ({ meta: [
 		{ title: "Zyphor OS — Learn Linux From The Inside Out" },
@@ -174,7 +174,7 @@ var Route$6 = createFileRoute("/")({
 	] }),
 	component: lazyRouteComponent($$splitComponentImporter$5, "component")
 });
-var $$splitComponentImporter$4 = () => import("./about-D1rCNgR0.mjs");
+var $$splitComponentImporter$4 = () => import("./about-NaP9Iu3c.mjs");
 var Route$5 = createFileRoute("/about")({
 	head: () => ({ meta: [
 		{ title: "About — Zyphor OS" },
@@ -197,7 +197,7 @@ var Route$5 = createFileRoute("/about")({
 	] }),
 	component: lazyRouteComponent($$splitComponentImporter$4, "component")
 });
-var $$splitComponentImporter$3 = () => import("./documentation-DF7TIkem.mjs");
+var $$splitComponentImporter$3 = () => import("./documentation-DqPfT-Xq.mjs");
 var Route$4 = createFileRoute("/documentation")({
 	head: () => ({ meta: [
 		{ title: "Documentation — Zyphor OS" },
@@ -220,7 +220,7 @@ var Route$4 = createFileRoute("/documentation")({
 	] }),
 	component: lazyRouteComponent($$splitComponentImporter$3, "component")
 });
-var $$splitComponentImporter$2 = () => import("./download-DtN0zUMq.mjs");
+var $$splitComponentImporter$2 = () => import("./download-sa0A1JCU.mjs");
 var Route$3 = createFileRoute("/download")({
 	head: () => ({ meta: [{ title: "Download & Releases — Zyphor OS" }, {
 		name: "description",
@@ -228,7 +228,7 @@ var Route$3 = createFileRoute("/download")({
 	}] }),
 	component: lazyRouteComponent($$splitComponentImporter$2, "component")
 });
-var $$splitComponentImporter$1 = () => import("./gallery-udHWRuDh.mjs");
+var $$splitComponentImporter$1 = () => import("./gallery-BKnIOf2D.mjs");
 var Route$2 = createFileRoute("/gallery")({
 	head: () => ({ meta: [
 		{ title: "Gallery — Zyphor OS" },
@@ -295,7 +295,7 @@ var Route$1 = createFileRoute("/sitemap.xml")({ server: { handlers: { GET: async
 		"Cache-Control": "public, max-age=3600"
 	} });
 } } } });
-var $$splitComponentImporter = () => import("./team-Dc4FKdqI.mjs");
+var $$splitComponentImporter = () => import("./team-CQ3aDx_T.mjs");
 var Route = createFileRoute("/team")({
 	head: () => ({ meta: [
 		{ title: "Team — Zyphor OS" },

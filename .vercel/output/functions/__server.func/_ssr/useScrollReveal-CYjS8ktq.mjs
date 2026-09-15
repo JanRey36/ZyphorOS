@@ -5,7 +5,7 @@ import { g as Link, l as useLocation } from "../_libs/@tanstack/react-router+[..
 import { E as Facebook, L as BookOpen, O as Download, m as Menu, n as X, w as Github } from "../_libs/lucide-react.mjs";
 import { t as clsx } from "../_libs/clsx.mjs";
 import { t as twMerge } from "../_libs/tailwind-merge.mjs";
-//#region node_modules/.nitro/vite/services/ssr/assets/useScrollReveal-BA44SaI7.js
+//#region node_modules/.nitro/vite/services/ssr/assets/useScrollReveal-CYjS8ktq.js
 var import_react = /* @__PURE__ */ __toESM(require_react());
 var import_jsx_runtime = require_jsx_runtime();
 function Logo({ size = 32 }) {
@@ -37,27 +37,33 @@ function cn(...inputs) {
 var links = [
 	{
 		to: "/",
-		label: "Home"
+		label: "Home",
+		external: false
 	},
 	{
 		to: "/about",
-		label: "About"
+		label: "About",
+		external: false
 	},
 	{
 		to: "/documentation",
-		label: "Documentation"
+		label: "Documentation",
+		external: false
 	},
 	{
 		to: "/gallery",
-		label: "Gallery"
+		label: "Gallery",
+		external: false
 	},
 	{
 		to: "/team",
-		label: "Team"
+		label: "Team",
+		external: false
 	},
 	{
 		to: "https://white-opossum-308929.hostingersite.com/zyphor-os-wiki/",
-		label: "Wiki"
+		label: "Wiki",
+		external: true
 	}
 ];
 function Nav() {
@@ -97,7 +103,13 @@ function Nav() {
 					/* @__PURE__ */ (0, import_jsx_runtime.jsx)("nav", {
 						className: "hidden lg:flex items-center gap-1",
 						"aria-label": "Primary",
-						children: links.map((l) => /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Link, {
+						children: links.map((l) => l.external ? /* @__PURE__ */ (0, import_jsx_runtime.jsx)("a", {
+							href: l.to,
+							target: "_blank",
+							rel: "noreferrer",
+							className: "relative px-3.5 py-2 text-sm text-muted-foreground hover:text-foreground transition-colors duration-200 rounded-lg hover:bg-white/5",
+							children: l.label
+						}, l.to) : /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Link, {
 							to: l.to,
 							className: "relative px-3.5 py-2 text-sm text-muted-foreground hover:text-foreground transition-colors duration-200 rounded-lg hover:bg-white/5 group",
 							activeProps: { className: "relative px-3.5 py-2 text-sm text-foreground font-medium rounded-lg" },
@@ -141,7 +153,15 @@ function Nav() {
 					children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("nav", {
 						className: "flex flex-col gap-1",
 						"aria-label": "Mobile",
-						children: [links.map((l, i) => /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Link, {
+						children: [links.map((l, i) => l.external ? /* @__PURE__ */ (0, import_jsx_runtime.jsx)("a", {
+							href: l.to,
+							target: "_blank",
+							rel: "noreferrer",
+							onClick: () => setOpen(false),
+							className: "px-3 py-2.5 text-sm rounded-lg text-muted-foreground hover:text-foreground hover:bg-white/5 transition-all duration-200",
+							style: { transitionDelay: open ? `${i * 35}ms` : "0ms" },
+							children: l.label
+						}, l.to) : /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Link, {
 							to: l.to,
 							onClick: () => setOpen(false),
 							className: "px-3 py-2.5 text-sm rounded-lg text-muted-foreground hover:text-foreground hover:bg-white/5 transition-all duration-200",

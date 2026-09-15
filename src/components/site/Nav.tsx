@@ -5,12 +5,16 @@ import { Logo } from "./Logo";
 import { cn } from "@/lib/utils";
 
 const links = [
-  { to: "/", label: "Home" },
-  { to: "/about", label: "About" },
-  { to: "/documentation", label: "Documentation" },
-  { to: "/gallery", label: "Gallery" },
-  { to: "/team", label: "Team" },
-  { to: "https://white-opossum-308929.hostingersite.com/zyphor-os-wiki/", label: "Wiki" },
+  { to: "/", label: "Home", external: false },
+  { to: "/about", label: "About", external: false },
+  { to: "/documentation", label: "Documentation", external: false },
+  { to: "/gallery", label: "Gallery", external: false },
+  { to: "/team", label: "Team", external: false },
+  {
+    to: "https://white-opossum-308929.hostingersite.com/zyphor-os-wiki/",
+    label: "Wiki",
+    external: true,
+  },
 ] as const;
 
 export function Nav() {
@@ -37,7 +41,9 @@ export function Nav() {
   }, [open]);
 
   useEffect(() => {
-    const onKey = (e: KeyboardEvent) => { if (e.key === "Escape") setOpen(false); };
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape") setOpen(false);
+    };
     document.addEventListener("keydown", onKey);
     return () => document.removeEventListener("keydown", onKey);
   }, []);
@@ -57,30 +63,44 @@ export function Nav() {
           <Logo />
 
           <nav className="hidden lg:flex items-center gap-1" aria-label="Primary">
-            {links.map((l) => (
-              <Link
-                key={l.to}
-                to={l.to}
-                className="relative px-3.5 py-2 text-sm text-muted-foreground hover:text-foreground transition-colors duration-200 rounded-lg hover:bg-white/5 group"
-                activeProps={{
-                  className:
-                    "relative px-3.5 py-2 text-sm text-foreground font-medium rounded-lg",
-                }}
-                activeOptions={{ exact: l.to === "/" }}
-              >
-                {({ isActive }) => (
-                  <>
-                    {l.label}
-                    <span
-                      className={cn(
-                        "absolute bottom-1 left-1/2 -translate-x-1/2 h-0.5 rounded-full bg-brand transition-all duration-300",
-                        isActive ? "w-4/5 opacity-100" : "w-0 opacity-0 group-hover:w-2/5 group-hover:opacity-40",
-                      )}
-                    />
-                  </>
-                )}
-              </Link>
-            ))}
+            {links.map((l) =>
+              l.external ? (
+                <a
+                  key={l.to}
+                  href={l.to}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="relative px-3.5 py-2 text-sm text-muted-foreground hover:text-foreground transition-colors duration-200 rounded-lg hover:bg-white/5"
+                >
+                  {l.label}
+                </a>
+              ) : (
+                <Link
+                  key={l.to}
+                  to={l.to}
+                  className="relative px-3.5 py-2 text-sm text-muted-foreground hover:text-foreground transition-colors duration-200 rounded-lg hover:bg-white/5 group"
+                  activeProps={{
+                    className:
+                      "relative px-3.5 py-2 text-sm text-foreground font-medium rounded-lg",
+                  }}
+                  activeOptions={{ exact: l.to === "/" }}
+                >
+                  {({ isActive }) => (
+                    <>
+                      {l.label}
+                      <span
+                        className={cn(
+                          "absolute bottom-1 left-1/2 -translate-x-1/2 h-0.5 rounded-full bg-brand transition-all duration-300",
+                          isActive
+                            ? "w-4/5 opacity-100"
+                            : "w-0 opacity-0 group-hover:w-2/5 group-hover:opacity-40",
+                        )}
+                      />
+                    </>
+                  )}
+                </Link>
+              ),
+            )}
           </nav>
 
           <div className="hidden lg:flex items-center gap-2">
@@ -135,19 +155,36 @@ export function Nav() {
         >
           <div className="border-t border-border/50 pt-3">
             <nav className="flex flex-col gap-1" aria-label="Mobile">
-              {links.map((l, i) => (
-                <Link
-                  key={l.to}
-                  to={l.to}
-                  onClick={() => setOpen(false)}
-                  className="px-3 py-2.5 text-sm rounded-lg text-muted-foreground hover:text-foreground hover:bg-white/5 transition-all duration-200"
-                  activeProps={{ className: "px-3 py-2.5 text-sm rounded-lg text-foreground bg-brand/10 font-medium border border-brand/20" }}
-                  activeOptions={{ exact: l.to === "/" }}
-                  style={{ transitionDelay: open ? `${i * 35}ms` : "0ms" }}
-                >
-                  {l.label}
-                </Link>
-              ))}
+              {links.map((l, i) =>
+                l.external ? (
+                  <a
+                    key={l.to}
+                    href={l.to}
+                    target="_blank"
+                    rel="noreferrer"
+                    onClick={() => setOpen(false)}
+                    className="px-3 py-2.5 text-sm rounded-lg text-muted-foreground hover:text-foreground hover:bg-white/5 transition-all duration-200"
+                    style={{ transitionDelay: open ? `${i * 35}ms` : "0ms" }}
+                  >
+                    {l.label}
+                  </a>
+                ) : (
+                  <Link
+                    key={l.to}
+                    to={l.to}
+                    onClick={() => setOpen(false)}
+                    className="px-3 py-2.5 text-sm rounded-lg text-muted-foreground hover:text-foreground hover:bg-white/5 transition-all duration-200"
+                    activeProps={{
+                      className:
+                        "px-3 py-2.5 text-sm rounded-lg text-foreground bg-brand/10 font-medium border border-brand/20",
+                    }}
+                    activeOptions={{ exact: l.to === "/" }}
+                    style={{ transitionDelay: open ? `${i * 35}ms` : "0ms" }}
+                  >
+                    {l.label}
+                  </Link>
+                ),
+              )}
               <Link
                 to="/download"
                 onClick={() => setOpen(false)}
