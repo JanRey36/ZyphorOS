@@ -2,7 +2,7 @@ import { r as __toESM } from "../_runtime.mjs";
 import { n as require_jsx_runtime, r as require_react } from "../_libs/react+tanstack__react-query.mjs";
 import { b as Infinity$1, g as MapPin, w as Github } from "../_libs/lucide-react.mjs";
 import { i as useScrollReveal, n as SiteLayout, r as cn, t as PageHeader } from "./useScrollReveal-CYjS8ktq.mjs";
-//#region node_modules/.nitro/vite/services/ssr/assets/team-CQ3aDx_T.js
+//#region node_modules/.nitro/vite/services/ssr/assets/team-CVJdkdt0.js
 var import_react = /* @__PURE__ */ __toESM(require_react());
 var import_jsx_runtime = require_jsx_runtime();
 /**
@@ -80,6 +80,9 @@ function TeamRevealGrid({ members, className }) {
 }
 var REPO = "zyphor-os/zyphor-os-desktop";
 var LEAD_USERNAME = "markjasonespelita";
+var GITHUB_CACHE_TTL = 3600 * 1e3;
+var LEAD_CACHE_KEY = "zyphor-os:team-lead";
+var CONTRIBUTORS_CACHE_KEY = "zyphor-os:team-contributors";
 var TEAM_ROLES = {
 	JanRey36: "Lead Website & Documentation Maintainer",
 	markjasonespelita: "Lead Operating System Maintainer",
@@ -90,6 +93,54 @@ var TEAM_ROLES = {
 function getTeamRole(login) {
 	return Object.entries(TEAM_ROLES).find(([username]) => username.toLowerCase() === login.toLowerCase())?.[1];
 }
+var leadRequest = null;
+var contributorsRequest = null;
+function readCachedData(key, allowStale = false) {
+	if (typeof window === "undefined") return null;
+	try {
+		const cached = JSON.parse(localStorage.getItem(key) ?? "null");
+		if (!cached || !cached.data || !allowStale && Date.now() - cached.cachedAt >= GITHUB_CACHE_TTL) return null;
+		return cached.data;
+	} catch {
+		return null;
+	}
+}
+function cacheData(key, data) {
+	try {
+		localStorage.setItem(key, JSON.stringify({
+			cachedAt: Date.now(),
+			data
+		}));
+	} catch {}
+}
+async function fetchGitHubData(url) {
+	const response = await fetch(url);
+	if (!response.ok) throw new Error(`GitHub request failed: ${response.status}`);
+	return response.json();
+}
+function getLead() {
+	const cachedLead = readCachedData(LEAD_CACHE_KEY);
+	if (cachedLead) return Promise.resolve(cachedLead);
+	if (!leadRequest) leadRequest = fetchGitHubData(`https://api.github.com/users/${LEAD_USERNAME}`).then((lead) => {
+		cacheData(LEAD_CACHE_KEY, lead);
+		return lead;
+	}).catch(() => readCachedData(LEAD_CACHE_KEY, true)).finally(() => {
+		leadRequest = null;
+	});
+	return leadRequest;
+}
+function getContributors() {
+	const cachedContributors = readCachedData(CONTRIBUTORS_CACHE_KEY);
+	if (cachedContributors) return Promise.resolve(cachedContributors);
+	if (!contributorsRequest) contributorsRequest = fetchGitHubData(`https://api.github.com/repos/${REPO}/contributors?per_page=50`).then((contributors) => {
+		if (!Array.isArray(contributors)) throw new Error("Invalid GitHub contributor response");
+		cacheData(CONTRIBUTORS_CACHE_KEY, contributors);
+		return contributors;
+	}).catch(() => readCachedData(CONTRIBUTORS_CACHE_KEY, true)).finally(() => {
+		contributorsRequest = null;
+	});
+	return contributorsRequest;
+}
 function TeamPage() {
 	const [lead, setLead] = (0, import_react.useState)(null);
 	const [contributors, setContributors] = (0, import_react.useState)([]);
@@ -97,8 +148,18 @@ function TeamPage() {
 	const [loadingContribs, setLoadingContribs] = (0, import_react.useState)(true);
 	useScrollReveal();
 	(0, import_react.useEffect)(() => {
-		fetch(`https://api.github.com/users/${LEAD_USERNAME}`).then((r) => r.json()).then((d) => setLead(d)).catch(() => {}).finally(() => setLoadingLead(false));
-		fetch(`https://api.github.com/repos/${REPO}/contributors?per_page=50`).then((r) => r.json()).then((d) => setContributors(Array.isArray(d) ? d : [])).catch(() => {}).finally(() => setLoadingContribs(false));
+		let active = true;
+		getLead().then((data) => {
+			if (active && data) setLead(data);
+			if (active) setLoadingLead(false);
+		});
+		getContributors().then((data) => {
+			if (active && data) setContributors(data);
+			if (active) setLoadingContribs(false);
+		});
+		return () => {
+			active = false;
+		};
 	}, []);
 	return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(SiteLayout, { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(PageHeader, {
 		eyebrow: "Team",
