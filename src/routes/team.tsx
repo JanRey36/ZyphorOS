@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import { MapPin, Infinity } from "lucide-react";
 import { SiteLayout, PageHeader } from "@/components/site/SiteLayout";
 import { TeamRevealGrid } from "@/components/ui/team-reveal-grid";
+import { getGitHubJson } from "@/lib/githubCache";
 import { useScrollReveal } from "@/lib/useScrollReveal";
 
 export const Route = createFileRoute("/team")({
@@ -23,9 +24,6 @@ export const Route = createFileRoute("/team")({
 
 const REPO = "zyphor-os/zyphor-os-desktop";
 const LEAD_USERNAME = "markjasonespelita";
-const GITHUB_CACHE_TTL = 60 * 60 * 1000;
-const LEAD_CACHE_KEY = "zyphor-os:team-lead";
-const CONTRIBUTORS_CACHE_KEY = "zyphor-os:team-contributors";
 const TEAM_ROLES: Record<string, string> = {
   JanRey36: "Lead Website & Documentation Maintainer",
   markjasonespelita: "Lead Operating System Maintainer",
@@ -59,87 +57,6 @@ interface GitHubContributor {
   contributions: number;
 }
 
-interface CachedGitHubData<T> {
-  cachedAt: number;
-  data: T;
-}
-
-let leadRequest: Promise<GitHubUser | null> | null = null;
-let contributorsRequest: Promise<GitHubContributor[] | null> | null = null;
-
-function readCachedData<T>(key: string, allowStale = false): T | null {
-  if (typeof window === "undefined") return null;
-
-  try {
-    const cached = JSON.parse(localStorage.getItem(key) ?? "null") as CachedGitHubData<T> | null;
-    if (
-      !cached ||
-      !cached.data ||
-      (!allowStale && Date.now() - cached.cachedAt >= GITHUB_CACHE_TTL)
-    ) {
-      return null;
-    }
-    return cached.data;
-  } catch {
-    return null;
-  }
-}
-
-function cacheData<T>(key: string, data: T) {
-  try {
-    localStorage.setItem(key, JSON.stringify({ cachedAt: Date.now(), data }));
-  } catch {
-    // Browsers with storage disabled can still use the live GitHub response.
-  }
-}
-
-async function fetchGitHubData<T>(url: string): Promise<T> {
-  const response = await fetch(url);
-  if (!response.ok) throw new Error(`GitHub request failed: ${response.status}`);
-  return response.json() as Promise<T>;
-}
-
-function getLead() {
-  const cachedLead = readCachedData<GitHubUser>(LEAD_CACHE_KEY);
-  if (cachedLead) return Promise.resolve(cachedLead);
-
-  if (!leadRequest) {
-    leadRequest = fetchGitHubData<GitHubUser>(`https://api.github.com/users/${LEAD_USERNAME}`)
-      .then((lead) => {
-        cacheData(LEAD_CACHE_KEY, lead);
-        return lead;
-      })
-      .catch(() => readCachedData<GitHubUser>(LEAD_CACHE_KEY, true))
-      .finally(() => {
-        leadRequest = null;
-      });
-  }
-
-  return leadRequest;
-}
-
-function getContributors() {
-  const cachedContributors = readCachedData<GitHubContributor[]>(CONTRIBUTORS_CACHE_KEY);
-  if (cachedContributors) return Promise.resolve(cachedContributors);
-
-  if (!contributorsRequest) {
-    contributorsRequest = fetchGitHubData<GitHubContributor[]>(
-      `https://api.github.com/repos/${REPO}/contributors?per_page=50`,
-    )
-      .then((contributors) => {
-        if (!Array.isArray(contributors)) throw new Error("Invalid GitHub contributor response");
-        cacheData(CONTRIBUTORS_CACHE_KEY, contributors);
-        return contributors;
-      })
-      .catch(() => readCachedData<GitHubContributor[]>(CONTRIBUTORS_CACHE_KEY, true))
-      .finally(() => {
-        contributorsRequest = null;
-      });
-  }
-
-  return contributorsRequest;
-}
-
 function TeamPage() {
   const [lead, setLead] = useState<GitHubUser | null>(null);
   const [contributors, setContributors] = useState<GitHubContributor[]>([]);
@@ -151,15 +68,21 @@ function TeamPage() {
   useEffect(() => {
     let active = true;
 
-    getLead().then((data) => {
+    getGitHubJson<GitHubUser>(`https://api.github.com/users/${LEAD_USERNAME}`)
+      .then((data) => {
       if (active && data) setLead(data);
       if (active) setLoadingLead(false);
-    });
+      })
+      .catch(() => active && setLoadingLead(false));
 
-    getContributors().then((data) => {
-      if (active && data) setContributors(data);
-      if (active) setLoadingContribs(false);
-    });
+    getGitHubJson<GitHubContributor[]>(
+      `https://api.github.com/repos/${REPO}/contributors?per_page=50`,
+    )
+      .then((data) => {
+        if (active && Array.isArray(data)) setContributors(data);
+        if (active) setLoadingContribs(false);
+      })
+      .catch(() => active && setLoadingContribs(false));
 
     return () => {
       active = false;

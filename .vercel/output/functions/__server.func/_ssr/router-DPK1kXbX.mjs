@@ -2,7 +2,7 @@ import { t as logo_default } from "./logo-hcg7UTE5.mjs";
 import { n as require_jsx_runtime, t as QueryClientProvider } from "../_libs/react+tanstack__react-query.mjs";
 import { c as HeadContent, d as createRouter, f as Outlet, g as Link, h as createRootRouteWithContext, m as createFileRoute, p as lazyRouteComponent, s as Scripts, v as useRouter } from "../_libs/@tanstack/react-router+[...].mjs";
 import { t as QueryClient } from "../_libs/tanstack__query-core.mjs";
-//#region node_modules/.nitro/vite/services/ssr/assets/router-DxGo2ZDp.js
+//#region node_modules/.nitro/vite/services/ssr/assets/router-DPK1kXbX.js
 var import_jsx_runtime = require_jsx_runtime();
 var styles_default = "/assets/styles-D1upfVFF.css";
 function NotFoundComponent() {
@@ -147,7 +147,7 @@ function RootComponent() {
 		children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Outlet, {})
 	});
 }
-var $$splitComponentImporter$5 = () => import("./routes-DXoWX2yQ.mjs");
+var $$splitComponentImporter$5 = () => import("./routes-kv94NEGX.mjs");
 var Route$6 = createFileRoute("/")({
 	head: () => ({ meta: [
 		{ title: "Zyphor OS — Learn Linux From The Inside Out" },
@@ -197,7 +197,7 @@ var Route$5 = createFileRoute("/about")({
 	] }),
 	component: lazyRouteComponent($$splitComponentImporter$4, "component")
 });
-var $$splitComponentImporter$3 = () => import("./documentation-DqPfT-Xq.mjs");
+var $$splitComponentImporter$3 = () => import("./documentation-BYj7f_tB.mjs");
 var Route$4 = createFileRoute("/documentation")({
 	head: () => ({ meta: [
 		{ title: "Documentation — Zyphor OS" },
@@ -220,7 +220,7 @@ var Route$4 = createFileRoute("/documentation")({
 	] }),
 	component: lazyRouteComponent($$splitComponentImporter$3, "component")
 });
-var $$splitComponentImporter$2 = () => import("./download-sa0A1JCU.mjs");
+var $$splitComponentImporter$2 = () => import("./download-p0U_qSzF.mjs");
 var Route$3 = createFileRoute("/download")({
 	head: () => ({ meta: [{ title: "Download & Releases — Zyphor OS" }, {
 		name: "description",
@@ -295,7 +295,7 @@ var Route$1 = createFileRoute("/sitemap.xml")({ server: { handlers: { GET: async
 		"Cache-Control": "public, max-age=3600"
 	} });
 } } } });
-var $$splitComponentImporter = () => import("./team-CVJdkdt0.mjs");
+var $$splitComponentImporter = () => import("./team-DgRr2ZFr.mjs");
 var Route = createFileRoute("/team")({
 	head: () => ({ meta: [
 		{ title: "Team — Zyphor OS" },

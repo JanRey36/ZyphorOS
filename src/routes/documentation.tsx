@@ -17,6 +17,7 @@ import {
 } from "lucide-react";
 import { SiteLayout } from "@/components/site/SiteLayout";
 import { cn } from "@/lib/utils";
+import { getGitHubJson } from "@/lib/githubCache";
 import { useScrollReveal } from "@/lib/useScrollReveal";
 import zccImage from "@/documentation/zyphor-os/assets/images/zcc.jpg.jpg";
 import zywinImage from "@/documentation/zyphor-os/assets/images/zywin.png";
@@ -120,15 +121,19 @@ function DocsPage() {
   useEffect(() => {
     const REPO = "zyphor-os/zyphor-os-desktop";
 
-    fetch(`https://api.github.com/repos/${REPO}`)
-      .then((r) => r.json())
-      .then((data: RepoData) => setRepoData(data))
+    let active = true;
+
+    getGitHubJson<RepoData>(`https://api.github.com/repos/${REPO}`)
+      .then((data) => active && setRepoData(data))
       .catch(() => { });
 
-    fetch(`https://api.github.com/repos/${REPO}/releases/latest`)
-      .then((r) => r.json())
-      .then((data: ReleaseData) => setReleaseData(data))
+    getGitHubJson<ReleaseData>(`https://api.github.com/repos/${REPO}/releases/latest`)
+      .then((data) => active && setReleaseData(data))
       .catch(() => { });
+
+    return () => {
+      active = false;
+    };
   }, []);
 
   useEffect(() => {

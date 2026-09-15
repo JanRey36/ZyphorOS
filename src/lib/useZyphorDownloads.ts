@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { getGitHubJson, GitHubRequestError } from "@/lib/githubCache";
 
 export type GitHubRelease = {
   tag_name: string;
@@ -31,38 +32,20 @@ export function useZyphorDownloads() {
 
     async function fetchData() {
       try {
-        const cached = sessionStorage.getItem("zyphor_downloads_cache");
-        if (cached) {
-          setData(JSON.parse(cached));
-          setState("success");
-          return;
-        }
-
-        const [desktopRes, serverRes, adaRes, legacyRes] = await Promise.all([
-          fetch("https://api.github.com/repos/zyphor-os/zyphor-os-desktop/releases/latest"),
-          fetch("https://api.github.com/repos/zyphor-os/zyphor-os-server/releases/latest"),
-          fetch("https://api.github.com/repos/zyphor-os/zyphor-os-desktop/tags?per_page=100"),
-          fetch("https://api.github.com/repos/markjasonespelita/zyphor_os/tags?per_page=100"),
+        const [desktopData, serverData, adaData, legacyData] = await Promise.all([
+          getGitHubJson<GitHubRelease>(
+            "https://api.github.com/repos/zyphor-os/zyphor-os-desktop/releases/latest",
+          ),
+          getGitHubJson<GitHubRelease>(
+            "https://api.github.com/repos/zyphor-os/zyphor-os-server/releases/latest",
+          ),
+          getGitHubJson<GitHubTag[]>(
+            "https://api.github.com/repos/zyphor-os/zyphor-os-desktop/tags?per_page=100",
+          ),
+          getGitHubJson<GitHubTag[]>(
+            "https://api.github.com/repos/markjasonespelita/zyphor_os/tags?per_page=100",
+          ),
         ]);
-
-        if (
-          desktopRes.status === 403 ||
-          serverRes.status === 403 ||
-          adaRes.status === 403 ||
-          legacyRes.status === 403
-        ) {
-          setState("rate-limited");
-          return;
-        }
-
-        if (!desktopRes.ok || !serverRes.ok || !adaRes.ok || !legacyRes.ok) {
-          throw new Error("Failed to fetch some resources");
-        }
-
-        const desktopData: GitHubRelease = await desktopRes.json();
-        const serverData: GitHubRelease = await serverRes.json();
-        const adaData: GitHubTag[] = await adaRes.json();
-        const legacyData: GitHubTag[] = await legacyRes.json();
 
         const result: ZyphorDownloadsData = {
           desktopLatest: desktopData.tag_name,
@@ -71,15 +54,16 @@ export function useZyphorDownloads() {
           legacyTags: legacyData.map((t) => t.name),
         };
 
-        sessionStorage.setItem("zyphor_downloads_cache", JSON.stringify(result));
-
         if (mounted) {
           setData(result);
           setState("success");
         }
       } catch (err) {
         console.error("Failed to fetch downloads:", err);
-        if (mounted) setState("error");
+        if (mounted)
+          setState(
+            err instanceof GitHubRequestError && err.status === 403 ? "rate-limited" : "error",
+          );
       }
     }
 
