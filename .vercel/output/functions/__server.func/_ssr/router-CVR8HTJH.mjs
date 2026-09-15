@@ -2,9 +2,9 @@ import { t as logo_default } from "./logo-hcg7UTE5.mjs";
 import { n as require_jsx_runtime, t as QueryClientProvider } from "../_libs/react+tanstack__react-query.mjs";
 import { c as HeadContent, d as createRouter, f as Outlet, g as Link, h as createRootRouteWithContext, m as createFileRoute, p as lazyRouteComponent, s as Scripts, v as useRouter } from "../_libs/@tanstack/react-router+[...].mjs";
 import { t as QueryClient } from "../_libs/tanstack__query-core.mjs";
-//#region node_modules/.nitro/vite/services/ssr/assets/router-vBmI0I17.js
+//#region node_modules/.nitro/vite/services/ssr/assets/router-CVR8HTJH.js
 var import_jsx_runtime = require_jsx_runtime();
-var styles_default = "/assets/styles-55VsBg4d.css";
+var styles_default = "/assets/styles-D1upfVFF.css";
 function NotFoundComponent() {
 	return /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
 		className: "flex min-h-screen items-center justify-center bg-background px-4",
@@ -295,7 +295,7 @@ var Route$1 = createFileRoute("/sitemap.xml")({ server: { handlers: { GET: async
 		"Cache-Control": "public, max-age=3600"
 	} });
 } } } });
-var $$splitComponentImporter = () => import("./team-jFiKIUe2.mjs");
+var $$splitComponentImporter = () => import("./team-Dc4FKdqI.mjs");
 var Route = createFileRoute("/team")({
 	head: () => ({ meta: [
 		{ title: "Team — Zyphor OS" },
