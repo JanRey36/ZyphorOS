@@ -1,11 +1,11 @@
 import { r as __toESM } from "../_runtime.mjs";
 import { t as logo_default } from "./logo-hcg7UTE5.mjs";
 import { n as require_jsx_runtime, r as require_react } from "../_libs/react+tanstack__react-query.mjs";
-import { g as Link, l as useLocation } from "../_libs/@tanstack/react-router+[...].mjs";
+import { h as Link } from "../_libs/@tanstack/react-router+[...].mjs";
 import { E as Facebook, L as BookOpen, O as Download, m as Menu, n as X, w as Github } from "../_libs/lucide-react.mjs";
 import { t as clsx } from "../_libs/clsx.mjs";
 import { t as twMerge } from "../_libs/tailwind-merge.mjs";
-//#region node_modules/.nitro/vite/services/ssr/assets/useScrollReveal-CYjS8ktq.js
+//#region node_modules/.nitro/vite/services/ssr/assets/useScrollReveal-DKoL1YpR.js
 var import_react = /* @__PURE__ */ __toESM(require_react());
 var import_jsx_runtime = require_jsx_runtime();
 function Logo({ size = 32 }) {
@@ -326,16 +326,15 @@ function SocialIcon({ href, label, children }) {
 	});
 }
 function SiteLayout({ children }) {
-	const location = useLocation();
 	return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
 		className: "min-h-screen flex flex-col bg-background text-foreground relative z-0",
 		children: [
 			/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", { className: "fixed inset-0 bg-aurora opacity-10 pointer-events-none -z-10" }),
 			/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Nav, {}),
 			/* @__PURE__ */ (0, import_jsx_runtime.jsx)("main", {
-				className: "flex-1 animate-page-enter",
+				className: "flex-1",
 				children
-			}, location.pathname),
+			}),
 			/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Footer, {})
 		]
 	});

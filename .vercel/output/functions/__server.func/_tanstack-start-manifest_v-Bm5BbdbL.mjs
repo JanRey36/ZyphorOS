@@ -1,4 +1,4 @@
-//#region node_modules/.nitro/vite/services/ssr/assets/_tanstack-start-manifest_v-D9XJL_h_.js
+//#region node_modules/.nitro/vite/services/ssr/assets/_tanstack-start-manifest_v-Bm5BbdbL.js
 var tsrStartManifest = () => ({ routes: {
 	__root__: {
 		filePath: "/home/janrey/Documents/My Projects/ZyphorOS/src/routes/__root.tsx",
@@ -11,39 +11,39 @@ var tsrStartManifest = () => ({ routes: {
 			"/sitemap.xml",
 			"/team"
 		],
-		preloads: ["/assets/index-DyzYeIMa.js"],
+		preloads: ["/assets/index-Ct6BlilY.js"],
 		scripts: [{ attrs: {
 			type: "module",
 			async: !0,
-			src: "/assets/index-DyzYeIMa.js"
+			src: "/assets/index-Ct6BlilY.js"
 		} }]
 	},
 	"/": {
 		filePath: "/home/janrey/Documents/My Projects/ZyphorOS/src/routes/index.tsx",
 		children: void 0,
 		preloads: [
-			"/assets/routes-BytLMAQh.js",
-			"/assets/useScrollReveal-B2eUdEDp.js",
-			"/assets/useZyphorDownloads-Du0pN6e8.js",
-			"/assets/terminal-CAclXOsK.js"
+			"/assets/routes-xAGsZBgl.js",
+			"/assets/useScrollReveal-b2CYnrtK.js",
+			"/assets/useZyphorDownloads-DnmF0tPW.js",
+			"/assets/terminal-DyKLy9H5.js"
 		]
 	},
 	"/about": {
 		filePath: "/home/janrey/Documents/My Projects/ZyphorOS/src/routes/about.tsx",
 		children: void 0,
 		preloads: [
-			"/assets/about-Cv0UWC_f.js",
-			"/assets/useScrollReveal-B2eUdEDp.js",
-			"/assets/package-BP1SjlRY.js",
-			"/assets/terminal-CAclXOsK.js"
+			"/assets/about-DtOg4-Kl.js",
+			"/assets/useScrollReveal-b2CYnrtK.js",
+			"/assets/package-Dk62FIgO.js",
+			"/assets/terminal-DyKLy9H5.js"
 		]
 	},
 	"/documentation": {
 		filePath: "/home/janrey/Documents/My Projects/ZyphorOS/src/routes/documentation.tsx",
 		children: void 0,
 		preloads: [
-			"/assets/documentation-BhGb6hvp.js",
-			"/assets/useScrollReveal-B2eUdEDp.js",
+			"/assets/documentation-BSK-jHn5.js",
+			"/assets/useScrollReveal-b2CYnrtK.js",
 			"/assets/githubCache-BwHCekCy.js"
 		]
 	},
@@ -51,23 +51,23 @@ var tsrStartManifest = () => ({ routes: {
 		filePath: "/home/janrey/Documents/My Projects/ZyphorOS/src/routes/download.tsx",
 		children: void 0,
 		preloads: [
-			"/assets/download-BeXec8Tn.js",
-			"/assets/useScrollReveal-B2eUdEDp.js",
-			"/assets/useZyphorDownloads-Du0pN6e8.js",
-			"/assets/package-BP1SjlRY.js"
+			"/assets/download-BimRlJHm.js",
+			"/assets/useScrollReveal-b2CYnrtK.js",
+			"/assets/useZyphorDownloads-DnmF0tPW.js",
+			"/assets/package-Dk62FIgO.js"
 		]
 	},
 	"/gallery": {
 		filePath: "/home/janrey/Documents/My Projects/ZyphorOS/src/routes/gallery.tsx",
 		children: void 0,
-		preloads: ["/assets/gallery-D-LvTq68.js", "/assets/useScrollReveal-B2eUdEDp.js"]
+		preloads: ["/assets/gallery-BCp0DMHE.js", "/assets/useScrollReveal-b2CYnrtK.js"]
 	},
 	"/team": {
 		filePath: "/home/janrey/Documents/My Projects/ZyphorOS/src/routes/team.tsx",
 		children: void 0,
 		preloads: [
-			"/assets/team-ODnXRWCh.js",
-			"/assets/useScrollReveal-B2eUdEDp.js",
+			"/assets/team-DvY5zDdU.js",
+			"/assets/useScrollReveal-b2CYnrtK.js",
 			"/assets/githubCache-BwHCekCy.js"
 		]
 	}

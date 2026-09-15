@@ -1,9 +1,9 @@
 import { r as __toESM } from "../_runtime.mjs";
 import { n as require_jsx_runtime, r as require_react } from "../_libs/react+tanstack__react-query.mjs";
-import { _ as require_react_dom } from "../_libs/@tanstack/react-router+[...].mjs";
+import { g as require_react_dom } from "../_libs/@tanstack/react-router+[...].mjs";
 import { M as ChevronRight, N as ChevronLeft, n as X, t as ZoomIn } from "../_libs/lucide-react.mjs";
-import { i as useScrollReveal, n as SiteLayout, t as PageHeader } from "./useScrollReveal-CYjS8ktq.mjs";
-//#region node_modules/.nitro/vite/services/ssr/assets/gallery-BKnIOf2D.js
+import { i as useScrollReveal, n as SiteLayout, t as PageHeader } from "./useScrollReveal-DKoL1YpR.mjs";
+//#region node_modules/.nitro/vite/services/ssr/assets/gallery-BK40BG8-.js
 var import_react = /* @__PURE__ */ __toESM(require_react());
 var import_jsx_runtime = require_jsx_runtime();
 var import_react_dom = require_react_dom();

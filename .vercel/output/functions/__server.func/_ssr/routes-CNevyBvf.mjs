@@ -1,10 +1,10 @@
 import { t as logo_default } from "./logo-hcg7UTE5.mjs";
 import { n as require_jsx_runtime } from "../_libs/react+tanstack__react-query.mjs";
-import { g as Link } from "../_libs/@tanstack/react-router+[...].mjs";
+import { h as Link } from "../_libs/@tanstack/react-router+[...].mjs";
 import { L as BookOpen, O as Download, R as ArrowRight, T as FileText, c as ShieldCheck, k as Cpu, o as Terminal, r as Users, w as Github, y as Layers } from "../_libs/lucide-react.mjs";
-import { i as useScrollReveal, n as SiteLayout } from "./useScrollReveal-CYjS8ktq.mjs";
+import { i as useScrollReveal, n as SiteLayout } from "./useScrollReveal-DKoL1YpR.mjs";
 import { t as useZyphorDownloads } from "./useZyphorDownloads-mRczCrRB.mjs";
-//#region node_modules/.nitro/vite/services/ssr/assets/routes-kv94NEGX.js
+//#region node_modules/.nitro/vite/services/ssr/assets/routes-CNevyBvf.js
 var import_jsx_runtime = require_jsx_runtime();
 var _1_default = "/assets/1-BiWIRq-y.jpg";
 var _2_default = "/assets/2-MiokMX8I.jpg";

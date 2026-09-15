@@ -1,20 +1,15 @@
 import type { ReactNode } from "react";
-import { useLocation } from "@tanstack/react-router";
 import { Nav } from "./Nav";
 import { Footer } from "./Footer";
 import { cn } from "@/lib/utils";
 
 export function SiteLayout({ children }: { children: ReactNode }) {
-  const location = useLocation();
-
   return (
     <div className="min-h-screen flex flex-col bg-background text-foreground relative z-0">
       <div className="fixed inset-0 bg-aurora opacity-10 pointer-events-none -z-10" />
 
       <Nav />
-      <main key={location.pathname} className="flex-1 animate-page-enter">
-        {children}
-      </main>
+      <main className="flex-1">{children}</main>
       <Footer />
     </div>
   );

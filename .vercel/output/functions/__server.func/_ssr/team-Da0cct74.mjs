@@ -1,9 +1,9 @@
 import { r as __toESM } from "../_runtime.mjs";
 import { n as require_jsx_runtime, r as require_react } from "../_libs/react+tanstack__react-query.mjs";
 import { b as Infinity$1, g as MapPin, w as Github } from "../_libs/lucide-react.mjs";
-import { i as useScrollReveal, n as SiteLayout, r as cn, t as PageHeader } from "./useScrollReveal-CYjS8ktq.mjs";
+import { i as useScrollReveal, n as SiteLayout, r as cn, t as PageHeader } from "./useScrollReveal-DKoL1YpR.mjs";
 import { n as getGitHubJson } from "./githubCache-CmhbhDXg.mjs";
-//#region node_modules/.nitro/vite/services/ssr/assets/team-DgRr2ZFr.js
+//#region node_modules/.nitro/vite/services/ssr/assets/team-Da0cct74.js
 var import_react = /* @__PURE__ */ __toESM(require_react());
 var import_jsx_runtime = require_jsx_runtime();
 /**

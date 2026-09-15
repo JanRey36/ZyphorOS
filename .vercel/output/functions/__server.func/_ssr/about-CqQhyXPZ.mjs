@@ -1,7 +1,7 @@
 import { n as require_jsx_runtime } from "../_libs/react+tanstack__react-query.mjs";
 import { C as GraduationCap, F as Boxes, d as Package, o as Terminal, p as Minimize2, u as Palette } from "../_libs/lucide-react.mjs";
-import { i as useScrollReveal, n as SiteLayout, t as PageHeader } from "./useScrollReveal-CYjS8ktq.mjs";
-//#region node_modules/.nitro/vite/services/ssr/assets/about-NaP9Iu3c.js
+import { i as useScrollReveal, n as SiteLayout, t as PageHeader } from "./useScrollReveal-DKoL1YpR.mjs";
+//#region node_modules/.nitro/vite/services/ssr/assets/about-CqQhyXPZ.js
 var import_jsx_runtime = require_jsx_runtime();
 var pillars = [
 	{
