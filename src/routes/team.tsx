@@ -1,7 +1,8 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
-import { MapPin, Github, Infinity } from "lucide-react";
+import { MapPin, Infinity } from "lucide-react";
 import { SiteLayout, PageHeader } from "@/components/site/SiteLayout";
+import { TeamRevealGrid } from "@/components/ui/team-reveal-grid";
 import { useScrollReveal } from "@/lib/useScrollReveal";
 
 export const Route = createFileRoute("/team")({
@@ -23,6 +24,19 @@ export const Route = createFileRoute("/team")({
 
 const REPO = "zyphor-os/zyphor-os-desktop";
 const LEAD_USERNAME = "markjasonespelita";
+const TEAM_ROLES: Record<string, string> = {
+  JanRey36: "Lead Website & Documentation Maintainer",
+  markjasonespelita: "Lead Operating System Maintainer",
+  Isojenalyn14: "Graphic Designer",
+  NicoleHonradoErvas: "Graphic Designer",
+  "fen-lowcode": "Deputy OS Maintainer",
+};
+
+function getTeamRole(login: string) {
+  return Object.entries(TEAM_ROLES).find(
+    ([username]) => username.toLowerCase() === login.toLowerCase(),
+  )?.[1];
+}
 
 interface GitHubUser {
   login: string;
@@ -165,36 +179,17 @@ function TeamPage() {
               ))}
             </div>
           ) : (
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-x-6 gap-y-10">
-              {contributors.map((c, idx) => (
-                <a
-                  key={c.login}
-                  href={c.html_url}
-                  target="_blank"
-                  rel="noreferrer"
-                  className="group flex flex-col items-center text-center p-4 rounded-2xl hover:bg-surface/30 transition-colors border border-transparent hover:border-border/50 reveal"
-                  style={{ transitionDelay: `${(idx % 4) * 50}ms` }}
-                >
-                  <div className="relative">
-                    <div className="absolute inset-0 bg-brand/20 blur-xl rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                    <img
-                      src={c.avatar_url}
-                      alt={c.login}
-                      className="relative h-20 w-20 sm:h-24 sm:w-24 rounded-full object-cover ring-2 ring-transparent group-hover:ring-brand/30 transition-all duration-300"
-                    />
-                  </div>
-                  <p className="mt-4 text-sm font-semibold break-all leading-snug group-hover:text-brand transition-colors">
-                    {c.login}
-                  </p>
-                  <p className="text-xs text-muted-foreground mt-1 mb-4">
-                    {c.contributions} contribution{c.contributions !== 1 ? "s" : ""}
-                  </p>
-                  <div className="btn-ghost inline-flex items-center justify-center gap-2 rounded-lg px-4 py-1.5 text-xs font-semibold opacity-80 group-hover:opacity-100 w-full mt-auto">
-                    <Github className="h-3 w-3" /> Profile
-                  </div>
-                </a>
-              ))}
-            </div>
+            <TeamRevealGrid
+              members={contributors.map((c) => ({
+                id: c.login,
+                name: c.login,
+                role: getTeamRole(c.login),
+                image: c.avatar_url,
+                imageAlt: c.login,
+                contributions: c.contributions,
+                profileUrl: c.html_url,
+              }))}
+            />
           )}
         </section>
 
